@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqyblf30ytusv"]
 
-[ext_resource type="Script" path="res://Scripts/global.gd" id="1_u8uui"]
+[ext_resource type="Script" path="res://Scripts/global.gd" id="1_iiwb7"]
 
 [node name="Autoload" type="Node2D"]
 
 [node name="Global" type="Node2D" parent="."]
-script = ExtResource("1_u8uui")
+script = ExtResource("1_iiwb7")

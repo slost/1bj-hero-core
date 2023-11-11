@@ -2,18 +2,14 @@
 extends Node
 
 # ถาดสีหลัก
-var main_pallet: Array = [
-	Color.html("#000000"),
-	Color.html("#800080")
-]
+var main_pallet: Array = [Color.html("#000000"), Color.html("#800080")]
 
 # อาเรย์ถาดสี (เผื่อทำระบบเปลี่ยนถาดสี)
-var pallets: Array = [
-	main_pallet
-]
+var pallets: Array = [main_pallet]
 
-# โหมดแสดงผลความโปร่งใส
-var is_alpha_mode: bool = false
+var is_alpha_mode: bool = false # โหมดแสดงผลความโปร่งใส
+var is_debugging: bool = true
 
-# ขนาดไทล์
-var tile_size = 16
+var tile_size = 16 # ขนาดไทล์
+
+var tempo: float

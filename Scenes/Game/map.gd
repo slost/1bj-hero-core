@@ -2,7 +2,8 @@ extends Node2D
 
 
 func _draw():
-	draw_background(Global.main_pallet[0])
+	# draw_background(Global.main_pallet[0])
+	pass
 	
 
 func draw_background(color: Color) -> void:
@@ -10,4 +11,3 @@ func draw_background(color: Color) -> void:
 	var width = viewport_size.x
 	var hieght = viewport_size.y
 	draw_rect(Rect2(0, 0, width, hieght), color)
-	print_debug(color)
