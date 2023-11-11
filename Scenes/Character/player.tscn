@@ -6,9 +6,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpa3k"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "inv")]
 script = ExtResource("1_wsl20")
 stats = NodePath("Stats")
+inv = NodePath("Inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_eela0")
@@ -16,5 +17,9 @@ texture = ExtResource("2_eela0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bpa3k")
 
-[node name="Stats" type="Node2D" parent="."]
+[node name="Stats" type="Node" parent="."]
 script = ExtResource("3_6r3wu")
+
+[node name="Inventory" type="Node" parent="."]
+
+[node name="FreeMovement" type="Node" parent="Inventory"]
