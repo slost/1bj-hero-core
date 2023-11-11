@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://caox48g08q8j4"]
+
+[ext_resource type="Script" path="res://Scenes/Character/mondster_dummy.gd" id="1_6ga88"]
+[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="1_81bdr"]
+[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_3wif6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
+radius = 8.0
+
+[node name="MonsterDummy" type="CharacterBody2D"]
+script = ExtResource("1_6ga88")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_81bdr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ta6hd")
+
+[node name="Stats" type="Node2D" parent="."]
+script = ExtResource("2_3wif6")

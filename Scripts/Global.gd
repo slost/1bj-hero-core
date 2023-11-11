@@ -14,3 +14,6 @@ var pallets: Array = [
 
 # โหมดแสดงผลความโปร่งใส
 var is_alpha_mode: bool = false
+
+# ขนาดไทล์
+var tile_size = 16

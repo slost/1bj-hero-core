@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhb8lm0trf8ad"]
+
+[ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/map.tscn" id="1_yipeh"]
+[ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_jh6oc"]
+[ext_resource type="Script" path="res://Scenes/map.gd" id="2_x5epm"]
+[ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster_dummy.tscn" id="3_kcseb"]
+
+[node name="Game" type="Node2D"]
+editor_description = "ตัวควบคุมเกม"
+position = Vector2(266, 154)
+
+[node name="Map" parent="." instance=ExtResource("1_yipeh")]
+script = ExtResource("2_x5epm")
+
+[node name="Player" parent="Map" instance=ExtResource("2_jh6oc")]
+editor_description = "ผู้เล่นไง"
+position = Vector2(429, 194)
+
+[node name="MonsterDummy" parent="Map" instance=ExtResource("3_kcseb")]
+position = Vector2(118, -65)
+scale = Vector2(4, 4)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckkkvld6onpug"]
+
+[ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
+[ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
+[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="3_6r3wu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpa3k"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+script = ExtResource("1_wsl20")
+stats = NodePath("Stats")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eela0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bpa3k")
+
+[node name="Stats" type="Node2D" parent="."]
+script = ExtResource("3_6r3wu")
