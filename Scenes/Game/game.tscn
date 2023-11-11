@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhb8lm0trf8ad"]
+[gd_scene load_steps=7 format=3 uid="uid://uwkmbxoiy3ei"]
 
-[ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
+[ext_resource type="PackedScene" uid="uid://c7r46guie7nls" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_jh6oc"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster_dummy.tscn" id="3_kcseb"]
-[ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
+[ext_resource type="PackedScene" uid="uid://jonpurqpj63d" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
+[ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 
 [node name="Game" type="Node2D"]
 editor_description = "ตัวควบคุมเกม"
@@ -21,3 +22,6 @@ position = Vector2(271, 311)
 scale = Vector2(4, 4)
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
+
+[node name="DebugTool" type="Node" parent="."]
+script = ExtResource("6_3wppi")

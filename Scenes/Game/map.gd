@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _draw():
-	# draw_background(Global.main_pallet[0])
+	draw_background(Global.main_pallet[1])
 	pass
 	
 
