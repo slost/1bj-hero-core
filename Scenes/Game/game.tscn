@@ -17,8 +17,9 @@ grow_vertical = 2
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
 
-[node name="DebugTool" type="Node" parent="."]
+[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH")]
 script = ExtResource("6_3wppi")
+musicH = NodePath("../MusicHandler")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = ExtResource("3_ut7rk")
