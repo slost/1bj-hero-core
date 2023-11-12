@@ -60,6 +60,8 @@ offset_right = 359.0
 offset_bottom = 204.0
 scale = Vector2(0.25, 0.25)
 theme = ExtResource("5_klssb")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "[center]line 1
 line 2
