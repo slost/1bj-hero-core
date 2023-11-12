@@ -1,32 +1,68 @@
-[gd_scene load_steps=7 format=3 uid="uid://uwkmbxoiy3ei"]
+[gd_scene load_steps=10 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_jh6oc"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster_dummy.tscn" id="3_kcseb"]
+[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="3_u3555"]
+[ext_resource type="Material" uid="uid://bv5dllnmwrgm7" path="res://Shaders/palette.tres" id="3_ut7rk"]
 [ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1l1o7"]
+shader = ExtResource("3_u3555")
+shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
+shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
+
+[node name="Game" type="Control"]
 editor_description = "ตัวควบคุมเกม"
-
-[node name="Map" parent="." instance=ExtResource("1_yipeh")]
-script = ExtResource("2_x5epm")
-
-[node name="Player" parent="Map" instance=ExtResource("2_jh6oc")]
-editor_description = "ผู้เล่นไง"
-position = Vector2(561, 309)
-
-[node name="MonsterDummy" parent="Map" instance=ExtResource("3_kcseb")]
-position = Vector2(271, 311)
-scale = Vector2(4, 4)
-
-[node name="MonsterDummy2" parent="Map" instance=ExtResource("3_kcseb")]
-position = Vector2(120, 153)
-scale = Vector2(4, 4)
-move_type = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
 
 [node name="DebugTool" type="Node" parent="."]
 script = ExtResource("6_3wppi")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = ExtResource("3_ut7rk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Map" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_yipeh")]
+script = ExtResource("2_x5epm")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Map"]
+material = SubResource("ShaderMaterial_1l1o7")
+offset_right = 1155.0
+offset_bottom = 645.0
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Map" instance=ExtResource("2_jh6oc")]
+editor_description = "ผู้เล่นไง"
+position = Vector2(561, 309)
+
+[node name="MonsterDummy" parent="SubViewportContainer/SubViewport/Map" instance=ExtResource("3_kcseb")]
+position = Vector2(271, 311)
+scale = Vector2(4, 4)
+
+[node name="MonsterDummy2" parent="SubViewportContainer/SubViewport/Map" instance=ExtResource("3_kcseb")]
+position = Vector2(120, 153)
+scale = Vector2(4, 4)
+move_type = 2
