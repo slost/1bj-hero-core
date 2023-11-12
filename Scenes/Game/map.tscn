@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="1_qg2ia"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
-[ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster_dummy.tscn" id="3_qrfdy"]
+[ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_js8ha"]
 shader = ExtResource("1_qg2ia")
@@ -18,15 +18,15 @@ material = SubResource("ShaderMaterial_js8ha")
 offset_right = 1155.0
 offset_bottom = 645.0
 
-[node name="Player" parent="." instance=ExtResource("2_ljpgr")]
-editor_description = "ผู้เล่นไง"
-position = Vector2(561, 309)
-
 [node name="MonsterDummy" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(271, 311)
 scale = Vector2(4, 4)
 
 [node name="MonsterDummy2" parent="." instance=ExtResource("3_qrfdy")]
-position = Vector2(1029, 157)
+position = Vector2(989, 133)
 scale = Vector2(4, 4)
 move_behavior = 3
+
+[node name="Player" parent="." instance=ExtResource("2_ljpgr")]
+editor_description = "ผู้เล่นไง"
+position = Vector2(766, 367)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=10 format=3 uid="uid://caox48g08q8j4"]
 
-[ext_resource type="Script" path="res://Scenes/Character/mondster_dummy.gd" id="1_6ga88"]
-[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="1_81bdr"]
-[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_3wif6"]
-[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="4_af0j2"]
+[ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
+[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
+[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="3_j62s3"]
+[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="4_yf73r"]
+[ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="5_klssb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
@@ -41,21 +42,39 @@ shader_parameter/enable_sway_x = false
 shader_parameter/sway_x_amplitude = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ppyf"]
-shader = ExtResource("4_af0j2")
+shader = ExtResource("3_j62s3")
 shader_parameter/amplitude = 0.826
 shader_parameter/frequency = 8.0
 shader_parameter/speed = 1.665
 shader_parameter/enable_sway_x = false
 shader_parameter/sway_x_amplitude = 0.1
 
-[node name="MonsterDummy" type="CharacterBody2D"]
-script = ExtResource("1_6ga88")
+[node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("debugger")]
+script = ExtResource("1_pmis6")
+debugger = NodePath("Debugger")
+
+[node name="Debugger" type="RichTextLabel" parent="."]
+offset_left = -5.0
+offset_top = -12.0
+offset_right = 359.0
+offset_bottom = 204.0
+scale = Vector2(0.25, 0.25)
+theme = ExtResource("5_klssb")
+bbcode_enabled = true
+text = "[center]line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+[/center]"
+scroll_active = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ta6hd")
 
 [node name="Stats" type="Node2D" parent="."]
-script = ExtResource("2_3wif6")
+script = ExtResource("2_747x5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -67,4 +86,4 @@ offset_bottom = 26.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8ppyf")
-texture = ExtResource("1_81bdr")
+texture = ExtResource("4_yf73r")
