@@ -1,3 +1,10 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://bv5dllnmwrgm7"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bv5dllnmwrgm7"]
+
+[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="1_0ytjt"]
 
 [resource]
+shader = ExtResource("1_0ytjt")
+shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
+shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)

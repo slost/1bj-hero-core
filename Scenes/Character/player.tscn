@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
-[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="2_s1yia"]
+[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="2_mppg4"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="3_6r3wu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5tn6"]
-shader = ExtResource("2_s1yia")
-shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
-shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
-shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
-shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
+shader = ExtResource("2_mppg4")
+shader_parameter/amplitude = 0.374
+shader_parameter/frequency = 6.194
+shader_parameter/speed = 1.0
+shader_parameter/enable_sway_x = true
+shader_parameter/sway_x_amplitude = 0.648
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpa3k"]
 
@@ -21,7 +22,7 @@ stats = NodePath("Stats")
 inv = NodePath("Inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_p5tn6")
+material = SubResource("ShaderMaterial_oh2ir")
 texture = ExtResource("2_eela0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
