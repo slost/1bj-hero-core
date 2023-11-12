@@ -1,17 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://uwkmbxoiy3ei"]
+[gd_scene load_steps=11 format=3 uid="uid://uwkmbxoiy3ei"]
 
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_jh6oc"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster_dummy.tscn" id="3_kcseb"]
+[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="3_u3555"]
 [ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
+[ext_resource type="Shader" path="res://Shaders/screen_shader.gdshader" id="7_kyk1a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1l1o7"]
+shader = ExtResource("3_u3555")
+shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
+shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxq5d"]
+shader = ExtResource("7_kyk1a")
+shader_parameter/brightness = 5.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
 
 [node name="Game" type="Node2D"]
 editor_description = "ตัวควบคุมเกม"
 
 [node name="Map" parent="." instance=ExtResource("1_yipeh")]
 script = ExtResource("2_x5epm")
+
+[node name="ColorRect" type="ColorRect" parent="Map"]
+material = SubResource("ShaderMaterial_1l1o7")
+offset_right = 1155.0
+offset_bottom = 645.0
 
 [node name="Player" parent="Map" instance=ExtResource("2_jh6oc")]
 editor_description = "ผู้เล่นไง"
@@ -30,3 +50,8 @@ move_type = 2
 
 [node name="DebugTool" type="Node" parent="."]
 script = ExtResource("6_3wppi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uxq5d")
+offset_right = 1156.0
+offset_bottom = 646.0

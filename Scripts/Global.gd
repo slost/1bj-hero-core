@@ -2,7 +2,7 @@
 extends Node
 
 # ถาดสีหลัก
-var main_pallet: Array = [Color.html("#000000"), Color.html("#800080")]
+var main_pallet: Array = [Color.html("#000000"), Color(128.0, 0.0, 128.0, 1.0)]
 
 # อาเรย์ถาดสี (เผื่อทำระบบเปลี่ยนถาดสี)
 var pallets: Array = [main_pallet]

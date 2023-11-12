@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=7 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/mondster_dummy.gd" id="1_6ga88"]
 [ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="1_81bdr"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_3wif6"]
+[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="2_rciks"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ppyf"]
+shader = ExtResource("2_rciks")
+shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
+shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
@@ -11,9 +19,11 @@ radius = 8.0
 script = ExtResource("1_6ga88")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8ppyf")
 texture = ExtResource("1_81bdr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ta6hd")
 
 [node name="Stats" type="Node2D" parent="."]

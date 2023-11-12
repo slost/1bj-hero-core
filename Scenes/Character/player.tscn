@@ -1,20 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=7 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
+[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="2_s1yia"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="3_6r3wu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5tn6"]
+shader = ExtResource("2_s1yia")
+shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
+shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
+shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpa3k"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "inv")]
+use_parent_material = true
 script = ExtResource("1_wsl20")
 stats = NodePath("Stats")
 inv = NodePath("Inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p5tn6")
 texture = ExtResource("2_eela0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_bpa3k")
 
 [node name="Stats" type="Node" parent="."]
