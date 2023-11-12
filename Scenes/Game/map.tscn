@@ -21,11 +21,12 @@ offset_bottom = 645.0
 [node name="MonsterDummy" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(271, 311)
 scale = Vector2(4, 4)
+move_behavior = 1
 
 [node name="MonsterDummy2" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(989, 133)
 scale = Vector2(4, 4)
-move_behavior = 3
+move_behavior = 1
 
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"

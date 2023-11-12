@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c837xeovaxpfe"]
+[gd_scene load_steps=5 format=3 uid="uid://c837xeovaxpfe"]
 
 [ext_resource type="Script" path="res://Scenes/Game/music_handler.gd" id="1_lu2mf"]
 [ext_resource type="AudioStream" uid="uid://3f62s5oe1gpf" path="res://Assets/Sound/kick.wav" id="2_bvbym"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="3_qles2"]
+[ext_resource type="AudioStream" uid="uid://dyp7ya0h7gwo" path="res://Assets/Sound/snare.wav" id="3_vytnq"]
 
 [node name="MusicHandler" type="Node"]
 script = ExtResource("1_lu2mf")
 
 [node name="Kick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_bvbym")
+
+[node name="Snare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vytnq")
 
 [node name="Debugger" type="Label" parent="."]
 offset_right = 478.0
