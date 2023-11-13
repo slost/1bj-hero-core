@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=6 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
 [ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="2_mppg4"]
-[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="3_6r3wu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
 shader = ExtResource("2_mppg4")
@@ -15,10 +14,11 @@ shader_parameter/sway_x_amplitude = 0.648
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpa3k"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "inv")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inv")]
 use_parent_material = true
 script = ExtResource("1_wsl20")
-stats = NodePath("Stats")
+base_speed = 10
+size_scale = 2
 inv = NodePath("Inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,9 +29,8 @@ texture = ExtResource("2_eela0")
 visible = false
 shape = SubResource("CircleShape2D_bpa3k")
 
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("3_6r3wu")
-
 [node name="Inventory" type="Node" parent="."]
 
 [node name="FreeMovement" type="Node" parent="Inventory"]
+
+[node name="SpeedBoot" type="Node" parent="Inventory"]

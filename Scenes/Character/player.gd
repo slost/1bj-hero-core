@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
 # export
+@export var base_speed: int
+@export var size_scale: int
 @export var stats: Node
 @export var inv: Node
 
 # onready
-@onready var speed = stats.base_speed
+var speed: int
 
 
 # การควบคุม
 func get_input() -> void:
+	speed = ( base_speed * 100 * size_scale ) * 0.5
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if !has_node("Inventory/FreeMovement"):
+	if not inv.has_node("FreeMovement"):
 		if abs(input_direction.x) > abs(input_direction.y):
 			input_direction.y = 0
 		else:
@@ -21,6 +24,5 @@ func get_input() -> void:
 
 func _physics_process(_delta) -> void:
 	get_input()
-	var size_scale = stats.size_scale
 	scale = Vector2(size_scale, size_scale)
 	move_and_slide()
