@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="1_0ytjt"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_0ytjt")
 shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
 shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
