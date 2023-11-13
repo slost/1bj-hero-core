@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterDB" load_steps=2 format=3 uid="uid://brmrjogk2rdpr"]
+
+[ext_resource type="Script" path="res://Database/Character/character_db_class.gd" id="1_oar1x"]
+
+[resource]
+script = ExtResource("1_oar1x")
+stats = {
+"base_speed": 10,
+"size_scale": 4
+}

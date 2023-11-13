@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Monster
 
 @export_category("Stats")
+@export var data: Resource = preload("res://Database/Character/dummy_db.tres")
 @export var move_behavior:MOVE_TYPE = MOVE_TYPE.NONE
-@export var speed = 200
 @export var radius = 200
 @export var is_look_at_player: bool = false
 
@@ -12,6 +12,7 @@ class_name Monster
 @export var spr: Node
 
 @onready var player = $"..".get_node("Player")
+@onready var stats: Dictionary = data.stats
 
 enum STATE {
 	IDLE,
@@ -68,7 +69,7 @@ func process_state():
 			match move_behavior:
 				MOVE_TYPE.DIRECT:
 					var direction = (player.global_position - global_position).normalized()
-					velocity = direction * speed
+					velocity = direction * stats.base_speed * 10
 				MOVE_TYPE.ROUNDED, MOVE_TYPE.ROUNDED_TO_PLYER, MOVE_TYPE.ROUNDED_CLOSE_PLYER:
 					move_round()
 
@@ -84,8 +85,7 @@ func move_round():
 	# var offset = player.global_position - Vector2(sin(angle), cos(angle)) * radius
 	# With the following lines
 	var direction = (offset - global_position).normalized()
-	#velocity = direction * speed
-	velocity = direction * speed
+	velocity = direction * stats.base_speed * 10
 	
 	# เช็คว่าเดินเป็นวงกลมแล้วยัง แล้วจะอัเดตสถานะการเดินเป็นเดินเข้าใกล้
 	if move_behavior == MOVE_TYPE.ROUNDED_TO_PLYER:

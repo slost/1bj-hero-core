@@ -17,8 +17,6 @@ shader_parameter/sway_x_amplitude = 0.648
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inv")]
 use_parent_material = true
 script = ExtResource("1_wsl20")
-base_speed = 10
-size_scale = 2
 inv = NodePath("Inventory")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
