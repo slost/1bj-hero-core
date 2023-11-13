@@ -1,6 +1,6 @@
 extends Node
 
-@export var tempo: float = 90
+@export var tempo: float = 300
 
 var time: float = 0.0
 var beats: int = 1

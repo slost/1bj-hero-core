@@ -9,6 +9,7 @@ class_name Monster
 
 @export_category("Node")
 @export var debugger: Node
+@export var spr: Node
 
 @onready var player = $"..".get_node("Player")
 
@@ -56,7 +57,7 @@ func _process(_delta) -> void:
 	update_debugger_text()
 	move_and_slide()
 	if is_look_at_player:
-		$Sprite2D.rotation = position.angle_to_point(player.global_position) - deg_to_rad(90)
+		spr.rotation = position.angle_to_point(player.global_position) - deg_to_rad(90)
 			
 			
 func process_state():
