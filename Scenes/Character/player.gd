@@ -10,6 +10,7 @@ extends CharacterBody2D
 var speed: float
 
 func _ready():
+	z_index = 2
 	Global.player = self
 
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=12 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
 [ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="3_j62s3"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="4_b3buw"]
 [ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="4_yf73r"]
-[ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="5_klssb"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
@@ -49,8 +48,7 @@ offset_top = -12.0
 offset_right = 359.0
 offset_bottom = 204.0
 scale = Vector2(0.25, 0.25)
-theme = ExtResource("5_klssb")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "[center]line 1
