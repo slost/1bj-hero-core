@@ -4,7 +4,7 @@ class_name Monster
 @export_category("Stats")
 @export var data: Resource = preload("res://Database/Character/dummy_db.tres")
 @export var move_behavior:MOVE_TYPE = MOVE_TYPE.NONE
-@export var radius = 200
+@export var speed = 300
 @export var is_look_at_player: bool = false
 
 @export_category("Node")
@@ -34,17 +34,19 @@ var current_state : int
 var distance : float
 var distance_offset : float
 var offset : Vector2
+var radius
 
 # ใช้จับเวลาว่ากำลังวิ่งอยู่ในระยะวงกลมเป็นเวลาที่กำหนดหรือหรือไม่
-var round_move_timer_init = 5
+var round_move_timer_init = 10
 var round_move_timer = round_move_timer_init 
 
 var error_distance = 5 # ค่าความคลาดเคลื่อนที่ยอมรับได้ (สำหรับการเช็คว่าวิ่งอยู่ในระยะวงกลม)
-var rate_close_player = 10 # อัตราการเดินเข้าใกล้ผู้เล่น (สำหรับการเช็คเดินเข้าใกล้แบบวงกลม)
+var rate_close_player = 20 # อัตราการเดินเข้าใกล้ผู้เล่น (สำหรับการเช็คเดินเข้าใกล้แบบวงกลม)
 
 
 func _ready():
 	current_state = STATE.CHASE
+	radius = speed
 
 
 func _process(_delta) -> void:
@@ -79,16 +81,19 @@ func move_round():
 		if radius > 0:
 			radius = max(radius - delta * rate_close_player, 0)
 	else:
-		radius = radius
+		radius = speed
 	
 	angle += delta
-	# var offset = player.global_position - Vector2(sin(angle), cos(angle)) * radius
-	# With the following lines
+	var offset_x = cos(angle) * radius
+	var offset_y = sin(angle) * radius
+	offset = player.global_position - Vector2(offset_x, offset_y)
 	var direction = (offset - global_position).normalized()
-	velocity = direction * stats.base_speed * 10
+	#distance_offset = global_position.distance_to(offset)
+	velocity = direction * speed
 	
 	# เช็คว่าเดินเป็นวงกลมแล้วยัง แล้วจะอัเดตสถานะการเดินเป็นเดินเข้าใกล้
 	if move_behavior == MOVE_TYPE.ROUNDED_TO_PLYER:
+		DialogManger.start_dialog(global_position, ["Lorem Ipsum is simply dummy text", "Lorem Ipsum is simply dummy text2", "Text text text 3"])
 		if round_move_timer > 0:
 			if distance >= ( radius - error_distance ) && distance <= ( radius + error_distance ):
 				round_move_timer -= delta
@@ -96,14 +101,13 @@ func move_round():
 				round_move_timer = round_move_timer_init
 		else:
 			move_behavior = MOVE_TYPE.ROUNDED_CLOSE_PLYER
-			
 	# เช็คว่าผู้เล่นเดินหนีออกจากระยะ ให้กลับไปสถานะเดินวงกลมล้อมใหม่
 	if move_behavior == MOVE_TYPE.ROUNDED_CLOSE_PLYER:
 		if distance >= ( radius + error_distance ):
 			# ผู้เล่นวิ่งหนีไปไกลแล้ว รีเซ็ตสถานะ + ตัวแปร
 			move_behavior = MOVE_TYPE.ROUNDED_TO_PLYER
 			round_move_timer = round_move_timer_init
-			
+			radius = speed
 	
 func update_debugger_text() -> void:
 	debugger.clear()
