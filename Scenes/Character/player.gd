@@ -9,6 +9,10 @@ extends CharacterBody2D
 
 var speed: float
 
+func _ready():
+	Global.player = self
+
+
 # การควบคุม
 func get_input() -> void:
 	speed = ( stats.base_speed * 100 * stats.size_scale ) * 0.5

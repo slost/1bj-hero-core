@@ -7,9 +7,13 @@ var main_pallet: Array = [Color.html("#000000"), Color(128.0, 0.0, 128.0, 1.0)]
 # อาเรย์ถาดสี (เผื่อทำระบบเปลี่ยนถาดสี)
 var pallets: Array = [main_pallet]
 
-var is_alpha_mode: bool = false # โหมดแสดงผลความโปร่งใส
+var is_alpha_mode: bool = true # โหมดแสดงผลความโปร่งใส
 var is_debugging: bool = true
 
 var tile_size = 16 # ขนาดไทล์
 
+var player: Node
+
+# เพลง
 var tempo: float
+var bars: int = 1

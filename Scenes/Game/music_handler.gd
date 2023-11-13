@@ -10,6 +10,11 @@ var beats_timer: float = 0.0
 
 var is_played = false
 
+
+func _ready() -> void:
+	Global.bars = 1
+
+
 func _process(_delta) -> void:
 
 	Global.tempo = tempo
@@ -20,6 +25,7 @@ func _process(_delta) -> void:
 	bar_timer += _delta
 	
 	if bar_timer >= seconds_per_bar:
+		Global.bars += 1
 		is_played = false
 		bars += 1
 		bar_timer -= seconds_per_bar
