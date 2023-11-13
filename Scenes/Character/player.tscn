@@ -34,3 +34,5 @@ shape = SubResource("CircleShape2D_bpa3k")
 [node name="FreeMovement" type="Node" parent="Inventory"]
 
 [node name="SpeedBoot" type="Node" parent="Inventory"]
+
+[node name="HolyShield" type="Node" parent="Inventory"]

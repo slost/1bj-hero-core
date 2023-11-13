@@ -34,8 +34,11 @@ func _process(_delta) -> void:
 		
 	if !is_played:
 		play_sound(1, $Kick)
-		play_sound(2, $Snare)
+		play_sound(2, $Kick)
+		play_sound(4, $Kick)
 		play_sound(3, $Kick)
+		
+		play_sound(2, $Snare)
 		play_sound(4, $Snare)
 		is_played = true
 	

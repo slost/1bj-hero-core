@@ -1,29 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=13 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="Material" uid="uid://bv5dllnmwrgm7" path="res://Shaders/palette.tres" id="3_ut7rk"]
 [ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
+[ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="6_2pcim"]
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="6_fb4tr"]
 
-[sub_resource type="Gradient" id="Gradient_3fkp1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2b54e"]
+shader = ExtResource("6_2pcim")
+shader_parameter/count = 150
+shader_parameter/slant = -0.01
+shader_parameter/speed = 50.0
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(0, 0, 0, 1)
+shader_parameter/size = Vector2(0.005, 0.2)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_w83v8"]
+[sub_resource type="Gradient" id="Gradient_1wfjr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sk8hx"]
+seed = 3
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gtw68"]
-generate_mipmaps = false
-color_ramp = SubResource("Gradient_3fkp1")
-noise = SubResource("FastNoiseLite_w83v8")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4h1xw"]
+seamless = true
+color_ramp = SubResource("Gradient_1wfjr")
+noise = SubResource("FastNoiseLite_sk8hx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sro6g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ijqf"]
 shader = ExtResource("6_fb4tr")
-shader_parameter/strength = 5.0
+shader_parameter/strength = 0.2
 shader_parameter/uv_scaling = 1.0
 shader_parameter/movement_direction = Vector2(1, 0)
-shader_parameter/movement_speed = 0.1
-shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_gtw68")
+shader_parameter/movement_speed = 0.5
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
 
 [node name="Game" type="Control"]
 editor_description = "ตัวควบคุมเกม"
@@ -61,11 +72,22 @@ script = ExtResource("2_x5epm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_sro6g")
+[node name="Rain" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2b54e")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
+position = Vector2(0, -1)
+
+[node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8ijqf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
