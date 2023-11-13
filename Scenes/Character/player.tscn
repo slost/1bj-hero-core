@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=8 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
+[ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="4_388es"]
+[ext_resource type="AudioStream" uid="uid://c4q4751fn0oss" path="res://Assets/Sound/hihats.wav" id="5_usvig"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
 shader = ExtResource("3_iilgi")
@@ -28,8 +29,7 @@ inv = NodePath("Inventory")
 
 [node name="HolyShield" type="Node" parent="Inventory"]
 
-[node name="Item" type="Node" parent="Inventory"]
-script = ExtResource("4_388es")
+[node name="Item" parent="Inventory" instance=ExtResource("2_fg3uk")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_oh2ir")
@@ -38,3 +38,11 @@ texture = ExtResource("2_eela0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_bpa3k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_usvig")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_usvig")
+
+[node name="Camera2D" type="Camera2D" parent="."]

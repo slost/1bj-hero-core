@@ -9,7 +9,9 @@ extends CharacterBody2D
 
 var speed: float
 
+
 func _ready():
+	scale = Global.scale
 	z_index = 2
 	Global.player = self
 
@@ -28,5 +30,4 @@ func get_input() -> void:
 
 func _physics_process(_delta) -> void:
 	get_input()
-	scale = Vector2(stats.size_scale, stats.size_scale)
 	move_and_slide()

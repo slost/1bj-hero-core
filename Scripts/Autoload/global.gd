@@ -11,6 +11,7 @@ var is_alpha_mode: bool = true # โหมดแสดงผลความโ�
 var is_debugging: bool = true
 
 var tile_size = 16 # ขนาดไทล์
+var scale = Vector2(4, 4)
 
 var player: Node
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqyblf30ytusv"]
 
-[ext_resource type="Script" path="res://Scripts/global.gd" id="1_iiwb7"]
+[ext_resource type="Script" path="res://Scripts/Autoload/global.gd" id="1_iiwb7"]
 
 [node name="Autoload" type="Node2D"]
 
