@@ -1,0 +1,15 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bvvg5331kdc2m"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_85w3d"]
+resource_name = "EQ"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_myj0l"]
+resource_name = "Reverb"
+room_size = 1.0
+dry = 0.0
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectEQ_85w3d")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_myj0l")
+bus/0/effect/1/enabled = false

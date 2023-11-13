@@ -1,10 +1,14 @@
 extends CharacterBody2D
 class_name Monster
 
+@export_category("Stats")
 @export var move_behavior:MOVE_TYPE = MOVE_TYPE.NONE
-@export var debugger : Node
 @export var speed = 200
 @export var radius = 200
+@export var is_look_at_player: bool = false
+
+@export_category("Node")
+@export var debugger: Node
 
 @onready var player = $"..".get_node("Player")
 
@@ -51,6 +55,8 @@ func _process(_delta) -> void:
 	process_state()
 	update_debugger_text()
 	move_and_slide()
+	if is_look_at_player:
+		$Sprite2D.rotation = position.angle_to_point(player.global_position) - deg_to_rad(90)
 			
 			
 func process_state():
@@ -64,7 +70,6 @@ func process_state():
 					velocity = direction * speed
 				MOVE_TYPE.ROUNDED, MOVE_TYPE.ROUNDED_TO_PLYER, MOVE_TYPE.ROUNDED_CLOSE_PLYER:
 					move_round()
-	
 
 func move_round():
 	# ทำให้เดินเข้าไปใกล้ ๆ ผู้เล่น สำหรับ ROUNDED_CLOSE_PLYER

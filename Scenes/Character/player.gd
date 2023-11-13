@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var inv: Node
 
 # onready
-var speed: int
+var speed: float
 
 
 # การควบคุม

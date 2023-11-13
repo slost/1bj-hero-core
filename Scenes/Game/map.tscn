@@ -24,9 +24,10 @@ scale = Vector2(4, 4)
 move_behavior = 1
 
 [node name="MonsterDummy2" parent="." instance=ExtResource("3_qrfdy")]
-position = Vector2(989, 133)
+position = Vector2(845, 186)
 scale = Vector2(4, 4)
 move_behavior = 1
+is_look_at_player = true
 
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"
