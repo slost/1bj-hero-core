@@ -10,12 +10,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2b54e"]
 shader = ExtResource("6_2pcim")
-shader_parameter/count = 150
-shader_parameter/slant = -0.01
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.002
-shader_parameter/colour = Color(0, 0, 0, 1)
-shader_parameter/size = Vector2(0.005, 0.2)
+shader_parameter/rain_amount = 1600.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.89
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0, 0, 0, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.329
 
 [sub_resource type="Gradient" id="Gradient_1wfjr"]
 
@@ -70,19 +75,20 @@ render_target_update_mode = 4
 [node name="Map" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_yipeh")]
 script = ExtResource("2_x5epm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="SubViewportContainer"]
 
-[node name="Rain" type="ColorRect" parent="CanvasLayer"]
+[node name="Rain" type="ColorRect" parent="SubViewportContainer/CanvasLayer2"]
 material = SubResource("ShaderMaterial_2b54e")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
-position = Vector2(0, -1)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8ijqf")
