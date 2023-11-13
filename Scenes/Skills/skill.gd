@@ -8,7 +8,8 @@ func _init():
 	add_collision_exception_with(Global.player)
 
 func _process(_delta) -> void:
-	scale -= Vector2(1, 1)
+		
+	scale -= scale * ( 60 / Global.tempo ) * 0.1
 	
 	if Global.is_alpha_mode:
 		$Sprite2D.modulate.a = 0.5
