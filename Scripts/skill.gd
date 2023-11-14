@@ -1,9 +1,10 @@
 extends Node
 
-var skill_path = "res://Scenes/Skills/skill.tscn"
+var proj_path = "res://Scenes/Skills/projectile.tscn"
 var bars: int = 1
 
 @onready var player: Node = $"../.."
+
 var pattern
 
 func _ready():
@@ -13,15 +14,15 @@ func _ready():
 
 func _process(_delta) -> void:
 	if Global.bars >= bars:
-		spawn_skill("kick", {spawn_loc = Vector2.ZERO, skill_scale = 8})
+		spawn_projectile("kick", {spawn_loc = Vector2.ZERO, skill_scale = 8})
 		if Global.bars % 2 == 0:
-			spawn_skill_pattern("kick", "around caster", {spawn_dist = 1})
+			spawn_projectile_pattern("kick", "around caster", {spawn_dist = 1})
 		bars += 1
 	
 
 # ใช้สปอนสกิล arg0 = id skill, arg1 = paremeters (จะใส่ไม่ใส่ก็ได้)
-func spawn_skill(_skill: String, _params = null) -> void:
-	var skill = load(skill_path).instantiate()
+func spawn_projectile(_skill: String, _params = null) -> void:
+	var skill = load(proj_path).instantiate()
 	# if _params != null:
 	var spawn_loc = _params.get("spawn_loc", Vector2(0, 0))
 	var spawn_dist = _params.get("spawn_dist", 0)
@@ -36,7 +37,7 @@ func spawn_skill(_skill: String, _params = null) -> void:
 	$"..".add_child(skill)
 	
 
-func spawn_skill_pattern(_skill: String, _pattern: String, _params = null) -> void:
+func spawn_projectile_pattern(_skill: String, _pattern: String, _params = null) -> void:
 	var spawn_dist = _params.get("spawn_dist", 0)
 	var pattern_tiles = pattern.get_pattern_tiles()
 	print(pattern_tiles)
@@ -69,7 +70,7 @@ func get_spawn_location(_location: String) -> Vector2:
 		"s":
 			loc_vec = Vector2.DOWN
 		"se":
-			loc_vec = Vector2.ONE 
+			loc_vec = Vector2.ONE
 	return loc_vec * Global.tile_size * player.scale
 		
 

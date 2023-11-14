@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Monster
 
 @export_category("Stats")
-@export var data: Resource = preload("res://Database/Character/dummy_db.tres")
+@export var data: Resource = preload("res://Database/Character/dummy.tres")
 @export var move_behavior:MOVE_TYPE = MOVE_TYPE.NONE
 @export var speed = 300
 @export var is_look_at_player: bool = false

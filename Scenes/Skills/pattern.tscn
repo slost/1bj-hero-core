@@ -8,7 +8,6 @@
 position = Vector2(-8, -8)
 tile_set = ExtResource("1_ha03x")
 format = 2
-layer_0/tile_data = PackedInt32Array(-1, 131072, 2, -65536, 131072, 2, -65535, 131072, 2, 1, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 131072, 2, 65535, 131072, 2)
 script = ExtResource("1_kb8qd")
 
 [node name="ColorRect" type="ColorRect" parent="."]

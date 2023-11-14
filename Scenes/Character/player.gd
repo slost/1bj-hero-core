@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # export
-@export var data: Resource = preload("res://Database/Character/player_db.tres")
+@export var data: Resource = preload("res://Database/Character/player.tres")
 @export var inv: Node
 
 # onready
