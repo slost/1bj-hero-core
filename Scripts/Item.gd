@@ -4,11 +4,16 @@ var skill_path = "res://Scenes/Skills/skill.tscn"
 var bars: int = 1
 
 @onready var player: Node = $"../.."
+var pattern
+
+func _ready():
+	pattern = $Around
+	pattern.visible = false
 
 
 func _process(_delta) -> void:
 	if Global.bars >= bars:
-		spawn_skill("kick", {skill_scale = 4})
+		spawn_skill("kick", {spawn_loc = Vector2.ZERO, skill_scale = 8})
 		if Global.bars % 2 == 0:
 			spawn_skill_pattern("kick", "around caster", {spawn_dist = 1})
 		bars += 1
@@ -18,12 +23,14 @@ func _process(_delta) -> void:
 func spawn_skill(_skill: String, _params = null) -> void:
 	var skill = load(skill_path).instantiate()
 	# if _params != null:
-	var spawn_loc = _params.get("spawn_loc", "mid")
+	var spawn_loc = _params.get("spawn_loc", Vector2(0, 0))
 	var spawn_dist = _params.get("spawn_dist", 0)
 	var skill_scale = _params.get("skill_scale", 1)
 	var skill_dir
-	var spawn_position = player.global_position + \
-		( get_spawn_location(spawn_loc)  * (spawn_dist + 1) )
+	var spawn_position = player.global_position \
+		# + spawn_loc
+		+ ( (spawn_loc * Global.tile_size * player.scale) ) * (spawn_dist + 1)
+		# ( get_spawn_location(spawn_loc)  * (spawn_dist + 1) )
 	skill.scale = skill_scale * Global.scale
 	skill.global_position = spawn_position
 	$"..".add_child(skill)
@@ -31,16 +38,14 @@ func spawn_skill(_skill: String, _params = null) -> void:
 
 func spawn_skill_pattern(_skill: String, _pattern: String, _params = null) -> void:
 	var spawn_dist = _params.get("spawn_dist", 0)
+	var pattern_tiles = pattern.get_pattern_tiles()
+	print(pattern_tiles)
 	match _pattern:
 		"around caster":
-			spawn_skill(_skill, {spawn_loc = "n", spawn_dist = spawn_dist})
-			spawn_skill(_skill, {spawn_loc = "nw"})
-			spawn_skill(_skill, {spawn_loc = "e"})
-			spawn_skill(_skill, {spawn_loc = "w"})
-			spawn_skill(_skill, {spawn_loc = "s"})
-			spawn_skill(_skill, {spawn_loc = "ne"})
-			spawn_skill(_skill, {spawn_loc = "sw"})
-			spawn_skill(_skill, {spawn_loc = "se"})
+			pass
+	for tile in pattern_tiles:
+		spawn_skill("kick", {spawn_loc = tile[0], spawn_dist = spawn_dist})
+	
 
 
 # รีเทิร์นตำแหน่ง arg0 = ตำแหน่ง, arg1 = ระยะห่างจากตำแหน่งนั้น

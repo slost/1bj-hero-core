@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cewgw4y4rf720"]
+[gd_scene load_steps=3 format=3 uid="uid://cewgw4y4rf720"]
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_jrdpl"]
+[ext_resource type="PackedScene" uid="uid://dk7iqxoxraa8e" path="res://Scenes/Skills/pattern.tscn" id="2_txjy0"]
 
 [node name="Item" type="Node"]
 script = ExtResource("1_jrdpl")
+
+[node name="Around" parent="." instance=ExtResource("2_txjy0")]
