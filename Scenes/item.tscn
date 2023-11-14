@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cewgw4y4rf720"]
 
-[ext_resource type="Script" path="res://Scripts/skill.gd" id="1_jrdpl"]
+[ext_resource type="Script" path="res://Scripts/skill.gd" id="1_n7s7m"]
 [ext_resource type="PackedScene" uid="uid://dk7iqxoxraa8e" path="res://Scenes/Skills/pattern.tscn" id="2_txjy0"]
 
 [node name="Item" type="Node"]
-script = ExtResource("1_jrdpl")
+script = ExtResource("1_n7s7m")
 
 [node name="Around" parent="." instance=ExtResource("2_txjy0")]
 layer_0/tile_data = PackedInt32Array(-65538, 131072, 2, -2, 131072, 2, 65534, 131072, 2, 131070, 131072, 2, 196607, 131072, 2, 65536, 131072, 2, 0, 131072, 2, -65536, 131072, 2, -131072, 131072, 2, 131073, 131072, 2, 65538, 131072, 2, 2, 131072, 2, -65534, 131072, 2, -131070, 131072, 2)
