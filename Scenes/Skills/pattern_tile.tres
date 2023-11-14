@@ -1,0 +1,45 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bfsfdi3na5gdo"]
+
+[ext_resource type="Texture2D" uid="uid://bt41wutuvdgr1" path="res://Assets/Sprites/Skills/pattern_tile.png" id="1_2tp2h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh37t"]
+texture = ExtResource("1_2tp2h")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/custom_data_0 = &"nw"
+2:2/0 = 0
+2:2/0/custom_data_0 = &"mid"
+3:3/0 = 0
+3:3/0/custom_data_0 = &"se"
+3:4/0 = 0
+4:4/0 = 0
+4:3/0 = 0
+4:2/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:1/0/custom_data_0 = &"ne"
+3:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:1/0/custom_data_0 = &"n"
+2:3/0 = 0
+2:3/0/custom_data_0 = &"s"
+2:4/0 = 0
+1:4/0 = 0
+0:3/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:3/0/custom_data_0 = &"sw"
+0:4/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+
+[resource]
+custom_data_layer_0/name = "type"
+custom_data_layer_0/type = 21
+custom_data_layer_1/name = ""
+custom_data_layer_1/type = 0
+sources/0 = SubResource("TileSetAtlasSource_oh37t")

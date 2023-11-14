@@ -24,7 +24,7 @@ func spawn_skill(_skill: String, _params = null) -> void:
 	var skill_dir
 	var spawn_position = player.global_position + \
 		( get_spawn_location(spawn_loc)  * (spawn_dist + 1) )
-	skill.scale = (skill_scale * Global.scale)
+	skill.scale = skill_scale * Global.scale
 	skill.global_position = spawn_position
 	$"..".add_child(skill)
 	
