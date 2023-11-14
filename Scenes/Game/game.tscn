@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=16 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="6_fb4tr"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
+[ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="10_n5rpe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2b54e"]
 shader = ExtResource("6_2pcim")
@@ -119,3 +120,19 @@ theme_override_font_sizes/normal_font_size = 70
 text = " TEMPO: 100"
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextBox - DEBUG" parent="DialogCanvasLayer" instance=ExtResource("10_n5rpe")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -196.0
+offset_right = 416.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
