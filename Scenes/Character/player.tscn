@@ -46,3 +46,4 @@ stream = ExtResource("5_usvig")
 stream = ExtResource("5_usvig")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)

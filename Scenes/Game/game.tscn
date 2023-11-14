@@ -37,13 +37,13 @@ noise = SubResource("FastNoiseLite_sk8hx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ijqf"]
 shader = ExtResource("6_fb4tr")
-shader_parameter/strength = 0.2
+shader_parameter/strength = 1.4
 shader_parameter/uv_scaling = 1.0
 shader_parameter/movement_direction = Vector2(1, 0)
 shader_parameter/movement_speed = 0.5
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" node_paths=PackedStringArray("hudLabel", "paletteShader")]
 editor_description = "ตัวควบคุมเกม"
 layout_mode = 3
 anchors_preset = 15
@@ -52,6 +52,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dv3o6")
+hudLabel = NodePath("RichTextLabel")
+paletteShader = NodePath("PaletteShader")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
 
@@ -59,33 +70,33 @@ script = ExtResource("1_dv3o6")
 script = ExtResource("6_3wppi")
 musicH = NodePath("../MusicHandler")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="PaletteShader" type="SubViewportContainer" parent="."]
 material = ExtResource("3_ut7rk")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 182.0
-offset_top = 5.0
-offset_right = -181.0
+offset_left = 215.0
+offset_top = 43.0
+offset_right = -215.0
 offset_bottom = -199.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="PaletteShader"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(1237, 696)
+size = Vector2i(1170, 658)
 render_target_update_mode = 4
 
-[node name="Map" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_yipeh")]
+[node name="Map" parent="PaletteShader/SubViewport" instance=ExtResource("1_yipeh")]
 script = ExtResource("2_x5epm")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="SubViewportContainer"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="PaletteShader"]
 visible = false
 
-[node name="Rain" type="ColorRect" parent="SubViewportContainer/CanvasLayer2"]
+[node name="Rain" type="ColorRect" parent="PaletteShader/CanvasLayer2"]
 material = SubResource("ShaderMaterial_2b54e")
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +107,6 @@ color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8ijqf")
@@ -115,6 +125,7 @@ offset_top = -125.0
 offset_right = 1920.0
 grow_vertical = 0
 theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 70
 text = " TEMPO: 100"
 scroll_active = false
