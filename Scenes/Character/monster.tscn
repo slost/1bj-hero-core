@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=13 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="4_b3buw"]
 [ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="4_yf73r"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
+[ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="7_mhop7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
@@ -102,3 +103,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Inventory" type="Node" parent="."]
+
+[node name="Item" parent="Inventory" instance=ExtResource("7_mhop7")]

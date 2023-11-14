@@ -5,7 +5,6 @@ var timer: float
 
 func _init():
 	scale = Global.scale
-	add_collision_exception_with(Global.player)
 	
 
 func _process(_delta) -> void:

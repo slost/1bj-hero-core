@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/skill.gd" id="1_n7s7m"]
 [ext_resource type="PackedScene" uid="uid://dk7iqxoxraa8e" path="res://Scenes/Skills/pattern.tscn" id="2_txjy0"]
 
-[node name="Item" type="Node"]
+[node name="Item" type="Node" node_paths=PackedStringArray("pattern")]
 script = ExtResource("1_n7s7m")
+pattern = NodePath("Around")
 
 [node name="Around" parent="." instance=ExtResource("2_txjy0")]
-layer_0/tile_data = PackedInt32Array(-65538, 131072, 2, -2, 131072, 2, 65534, 131072, 2, 131070, 131072, 2, 196607, 131072, 2, 65536, 131072, 2, 0, 131072, 2, -65536, 131072, 2, -131072, 131072, 2, 131073, 131072, 2, 65538, 131072, 2, 2, 131072, 2, -65534, 131072, 2, -131070, 131072, 2)
+layer_0/tile_data = PackedInt32Array(-2, 131072, 2, 65534, 131072, 2, 131070, 131072, 2, 65538, 131072, 2, 2, 131072, 2, -65534, 131072, 2, -65537, 131072, 2, -131072, 131072, 2, -131071, 131072, 2, 131073, 131072, 2, 131072, 131072, 2, 196607, 131072, 2)

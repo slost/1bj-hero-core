@@ -45,6 +45,7 @@ var rate_close_player = 20 # อัตราการเดินเข้าใ
 
 
 func _ready():
+	z_index = 2
 	current_state = STATE.CHASE
 	radius = speed
 
