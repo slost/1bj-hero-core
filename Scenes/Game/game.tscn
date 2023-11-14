@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=11 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -8,6 +8,15 @@
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 [ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="10_n5rpe"]
+
+[sub_resource type="Gradient" id="Gradient_7mgti"]
+offsets = PackedFloat32Array(0.825397, 0.94709)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g0gsc"]
+gradient = SubResource("Gradient_7mgti")
+fill = 2
+fill_from = Vector2(0.5, 0.521368)
 
 [node name="Game" type="Control" node_paths=PackedStringArray("hudLabel", "paletteShader")]
 editor_description = "ตัวควบคุมเกม"
@@ -58,6 +67,11 @@ render_target_update_mode = 4
 
 [node name="Map" parent="PaletteShader/SubViewport" instance=ExtResource("1_yipeh")]
 script = ExtResource("2_x5epm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(796, 399)
+scale = Vector2(18.9375, 12.2187)
+texture = SubResource("GradientTexture2D_g0gsc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
