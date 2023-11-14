@@ -1,19 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=14 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
-[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="3_j62s3"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="4_b3buw"]
 [ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="4_yf73r"]
+[ext_resource type="Texture2D" uid="uid://wpjwa4jthm70" path="res://Assets/Sprites/sheet.png" id="5_pvr1l"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
-[ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="7_mhop7"]
+[ext_resource type="Material" uid="uid://bf4nvbmh55gr8" path="res://Materials/ดึ๋งๆ.tres" id="6_tgagv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_egwot"]
-shader = ExtResource("4_b3buw")
-shader_parameter/blur_amount = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_imyw7"]
 shader = ExtResource("6_n02me")
@@ -23,13 +19,30 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ppyf"]
-shader = ExtResource("3_j62s3")
-shader_parameter/amplitude = 0.826
-shader_parameter/frequency = 8.0
-shader_parameter/speed = 1.665
-shader_parameter/enable_sway_x = false
-shader_parameter/sway_x_amplitude = 0.1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0twg8"]
+shader = ExtResource("6_n02me")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.5
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gd17"]
+texture = ExtResource("5_pvr1l")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rk3al"]
+sources/0 = SubResource("TileSetAtlasSource_2gd17")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twxiu"]
 shader = ExtResource("4_b3buw")
@@ -54,6 +67,8 @@ offset_right = 304.0
 offset_bottom = 95.0
 scale = Vector2(0.25, 0.25)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "[center]line 1
@@ -68,11 +83,6 @@ scroll_active = false
 [node name="Stats" type="Node2D" parent="."]
 script = ExtResource("2_747x5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_egwot")
-texture = ExtResource("4_yf73r")
-
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_imyw7")
@@ -81,8 +91,16 @@ texture = ExtResource("4_yf73r")
 
 [node name="Sprite" type="Node2D" parent="."]
 
+[node name="TileMap" type="TileMap" parent="Sprite"]
+material = SubResource("ShaderMaterial_0twg8")
+position = Vector2(-8, -8)
+tile_set = SubResource("TileSet_rk3al")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 3)
+
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_8ppyf")
+visible = false
+material = ExtResource("6_tgagv")
 texture = ExtResource("4_yf73r")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Sprite"]
@@ -105,5 +123,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Inventory" type="Node" parent="."]
-
-[node name="Item" parent="Inventory" instance=ExtResource("7_mhop7")]

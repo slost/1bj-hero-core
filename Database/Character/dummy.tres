@@ -6,5 +6,5 @@
 script = ExtResource("1_oar1x")
 stats = {
 "base_speed": 10,
-"size_scale": 4
+"size_scale": 8
 }

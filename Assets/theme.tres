@@ -4,7 +4,6 @@
 [ext_resource type="FontFile" uid="uid://d0apuuqa3qtek" path="res://Assets/squealer embossed.ttf" id="2_p1uur"]
 
 [resource]
-Label/colors/font_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/fonts/bold_font = ExtResource("2_p1uur")
 RichTextLabel/fonts/bold_italics_font = ExtResource("1_660oj")

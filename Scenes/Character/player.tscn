@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=9 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="2_eela0"]
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
-[ext_resource type="AudioStream" uid="uid://c4q4751fn0oss" path="res://Assets/Sound/hihats.wav" id="5_usvig"]
+[ext_resource type="Material" uid="uid://bf4nvbmh55gr8" path="res://Materials/ดึ๋งๆ.tres" id="5_7s05k"]
+[ext_resource type="TileSet" uid="uid://bm2408x5858np" path="res://Scenes/Character/character_sprites.tres" id="6_ai2j0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
 shader = ExtResource("3_iilgi")
@@ -32,6 +33,7 @@ inv = NodePath("Inventory")
 [node name="Item" parent="Inventory" instance=ExtResource("2_fg3uk")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_oh2ir")
 texture = ExtResource("2_eela0")
 
@@ -39,11 +41,12 @@ texture = ExtResource("2_eela0")
 visible = false
 shape = SubResource("CircleShape2D_bpa3k")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_usvig")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_usvig")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
+
+[node name="Sprite" type="TileMap" parent="."]
+material = ExtResource("5_7s05k")
+position = Vector2(-8, -8)
+tile_set = ExtResource("6_ai2j0")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131072, 0)

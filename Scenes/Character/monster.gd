@@ -45,6 +45,9 @@ var rate_close_player = 20 # อัตราการเดินเข้าใ
 
 
 func _ready():
+	scale = Vector2(8, 8)
+	if Global.is_alpha_mode:
+		$Line2D.default_color.a = 0.5
 	z_index = 2
 	current_state = STATE.CHASE
 	radius = speed

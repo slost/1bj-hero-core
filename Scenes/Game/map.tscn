@@ -1,23 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=12 format=3 uid="uid://bq64ij7kka531"]
 
-[ext_resource type="Shader" path="res://Shaders/palette.gdshader" id="1_qg2ia"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
+[ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="3_md047"]
+[ext_resource type="Shader" path="res://Shaders/crt_fisheye.gdshader" id="3_p1svi"]
+[ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="3_pvm06"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_js8ha"]
-shader = ExtResource("1_qg2ia")
-shader_parameter/pal_source_1 = Color(0, 0, 0, 1)
-shader_parameter/pal_swap_1 = Color(0, 0, 0, 1)
-shader_parameter/pal_source_2 = Color(1, 1, 1, 1)
-shader_parameter/pal_swap_2 = Color(128, 0, 128, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65i8m"]
+shader = ExtResource("3_md047")
+shader_parameter/rain_amount = 1600.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.89
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0, 0, 0, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.329
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kj8ct"]
+shader = ExtResource("3_p1svi")
+shader_parameter/fisheye_strength = 1.0
+
+[sub_resource type="Gradient" id="Gradient_h8tes"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t33ww"]
+seed = 3
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4h1xw"]
+seamless = true
+color_ramp = SubResource("Gradient_h8tes")
+noise = SubResource("FastNoiseLite_t33ww")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3ar7"]
+shader = ExtResource("3_pvm06")
+shader_parameter/strength = 1.4
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.5
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
 
 [node name="Map" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_js8ha")
-offset_right = 1155.0
-offset_bottom = 645.0
+offset_left = -1640.0
+offset_top = -916.0
+offset_right = 2796.0
+offset_bottom = 1561.0
 
 [node name="MonsterDummy" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(271, 311)
@@ -32,3 +64,34 @@ is_look_at_player = true
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"
 position = Vector2(766, 367)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Rain" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_65i8m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="CRT" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kj8ct")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
+
+[node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_h3ar7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

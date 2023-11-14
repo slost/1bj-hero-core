@@ -1,19 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs0q123k0y7c3"]
+[gd_scene load_steps=8 format=3 uid="uid://bs0q123k0y7c3"]
 
 [ext_resource type="Script" path="res://Scenes/Skills/projectile.gd" id="1_4xik7"]
-[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="2_edglo"]
+[ext_resource type="Material" uid="uid://dge607unynrkh" path="res://Scenes/Skills/บึ้มๆ.tres" id="2_ddexa"]
 [ext_resource type="Texture2D" uid="uid://dte7rla2oikpo" path="res://Assets/Sprites/Skills/skill_kick.png" id="3_gts76"]
+[ext_resource type="Texture2D" uid="uid://wpjwa4jthm70" path="res://Assets/Sprites/sheet.png" id="4_hc506"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qbqd"]
 radius = 8.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tglxy"]
-shader = ExtResource("2_edglo")
-shader_parameter/amplitude = 1.0
-shader_parameter/frequency = 10.0
-shader_parameter/speed = 10.0
-shader_parameter/enable_sway_x = true
-shader_parameter/sway_x_amplitude = 1.0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hrhuq"]
+texture = ExtResource("4_hc506")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_phh86"]
+sources/0 = SubResource("TileSetAtlasSource_hrhuq")
 
 [node name="Projectile" type="StaticBody2D"]
 script = ExtResource("1_4xik7")
@@ -22,5 +32,13 @@ script = ExtResource("1_4xik7")
 shape = SubResource("CircleShape2D_2qbqd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_tglxy")
+visible = false
+material = ExtResource("2_ddexa")
 texture = ExtResource("3_gts76")
+
+[node name="TileMap" type="TileMap" parent="."]
+material = ExtResource("2_ddexa")
+position = Vector2(-8, -8)
+tile_set = SubResource("TileSet_phh86")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 1)

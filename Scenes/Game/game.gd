@@ -5,7 +5,8 @@ extends Control
 
 func _process(_delta):
 	paletteShader.material.set_shader_parameter("pal_swap_1", Global.palette[0])
-	paletteShader.material.set_shader_parameter("pal_swap_2", Global.palette[1])
+	# paletteShader.material.set_shader_parameter("pal_swap_2", Global.palette[1])
+	paletteShader.material.set_shader_parameter("pal_swap_2", Color.WHITE)
 	set_hud_text()
 	
 	

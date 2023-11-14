@@ -9,8 +9,8 @@ func _init():
 
 func _process(_delta) -> void:
 	# scale -= scale * ( 60 / Global.tempo ) * 0.1
-	#if Global.is_alpha_mode:
-	#	$Sprite2D.modulate.a = 0.5
+	if Global.is_alpha_mode:
+		modulate.a = 0.75
 	
 	timer += 1
 	

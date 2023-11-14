@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dge607unynrkh"]
+
+[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="1_0dvix"]
+
+[resource]
+shader = ExtResource("1_0dvix")
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 10.0
+shader_parameter/enable_sway_x = true
+shader_parameter/sway_x_amplitude = 1.0
