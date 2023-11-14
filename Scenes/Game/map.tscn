@@ -27,6 +27,7 @@ scale = Vector2(4, 4)
 position = Vector2(845, 186)
 scale = Vector2(4, 4)
 move_behavior = 3
+is_look_at_player = true
 
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"
