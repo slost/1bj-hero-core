@@ -97,9 +97,6 @@ func move_round():
 	
 	# เช็คว่าเดินเป็นวงกลมแล้วยัง แล้วจะอัเดตสถานะการเดินเป็นเดินเข้าใกล้
 	if move_behavior == MOVE_TYPE.ROUNDED_TO_PLYER:
-		DialogManger.start_dialog(global_position,
-		["Lorem Ipsum is simply dummy text", "Lorem Ipsum is simply dummy text2", "Text text text 3"],
-		true )
 		if round_move_timer > 0:
 			if distance >= ( radius - error_distance ) && distance <= ( radius + error_distance ):
 				round_move_timer -= delta
