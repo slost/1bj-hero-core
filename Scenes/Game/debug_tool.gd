@@ -23,9 +23,11 @@ func _process(_delta):
 		
 		add_text("\nGAME")
 		
-		var turn = Global.turn_queue[0]
-		add_text("Turn: %s" % turn.data.number)
-		add_text("# %s" % turn.data.character)
+		if Global.turn_queue:
+			var turn = Global.turn_queue[0]
+			add_text("Turn: %s" % turn.data.number)
+			add_text("# %s" % turn.data.character)
+			add_text("Time left %ss" % round(turn.data.time))
 		
 		add_text("\nMUSIC")
 		debugger.text +=  "Tempo: %s bpm\n" % musicH.tempo  + \

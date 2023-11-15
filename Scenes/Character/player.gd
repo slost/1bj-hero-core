@@ -16,6 +16,7 @@ func _ready() -> void:
 	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self
+	TurnManager.add_turn(self)
 
 
 # การควบคุม
