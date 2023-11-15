@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqyblf30ytusv"]
+[gd_scene load_steps=5 format=3 uid="uid://bqyblf30ytusv"]
 
 [ext_resource type="Script" path="res://Scripts/Autoload/global.gd" id="1_iiwb7"]
 [ext_resource type="Script" path="res://Scripts/Autoload/direction.gd" id="2_8tipn"]
 [ext_resource type="Script" path="res://Scripts/Autoload/lib.gd" id="3_u8x2s"]
+[ext_resource type="Script" path="res://Scripts/Autoload/turn_manager.gd" id="4_nt1p5"]
 
 [node name="Autoload" type="Node"]
 editor_description = "ไว้ใช้รวม Autoload script สำหรับใช้เขียนสคริปต์ใน editor ให้ง่ายขึ้นเฉย ๆ"
@@ -15,3 +16,6 @@ script = ExtResource("2_8tipn")
 
 [node name="Library" type="Node" parent="."]
 script = ExtResource("3_u8x2s")
+
+[node name="TurnManager" type="Node" parent="."]
+script = ExtResource("4_nt1p5")

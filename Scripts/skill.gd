@@ -11,7 +11,8 @@ var bars: int = 1
 
 
 func _process(_delta) -> void:
-	if Global.turn != caster:
+	var current_turn = Global.turn_queue[0]
+	if current_turn.data.character == caster:
 		if Global.bars >= bars:
 			spawn_projectile("kick", {spawn_loc = Dir.MID, proj_scale = 4})
 			if Global.bars % 2 == 0:

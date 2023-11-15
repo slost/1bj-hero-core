@@ -188,7 +188,6 @@ animSpr = NodePath("AnimatedSprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_oh2ir")
-scale = Vector2(1, 1)
 texture = ExtResource("4_5e7dc")
 
 [node name="Camera2D" type="Camera2D" parent="."]

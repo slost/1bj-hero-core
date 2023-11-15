@@ -19,6 +19,15 @@ func _process(_delta):
 		add_text("Shortkey")
 		add_text("F1: RESTART")
 		add_text("NUMPAD +/-: change tempo")
+		
+		
+		add_text("\nGAME")
+		
+		var turn = Global.turn_queue[0]
+		add_text("Turn: %s" % turn.data.number)
+		add_text("# %s" % turn.data.character)
+		
+		add_text("\nMUSIC")
 		debugger.text +=  "Tempo: %s bpm\n" % musicH.tempo  + \
 		"Time: " + str(round(musicH.time)) + "s" + "\nBeats: "+ str(musicH.beats) + "." + str(musicH.bars) 
 		

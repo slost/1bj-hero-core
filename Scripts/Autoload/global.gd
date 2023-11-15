@@ -15,16 +15,19 @@ const TILE_RES = Vector2(TILE_SIZE, TILE_SIZE)
 const SCALE = 4
 const SCALE_VEC = Vector2(4, 4)
 
-var player: Node
-
 # เพลง
 var tempo: float
 var bars: int = 1
 var seconds_per_bar: float
 
+# Node
+var map: Node
+var player: Node
+
 # Game States
-var turn: Node
+var turn_queue: Array = [] # ใช้เก็บคิวเทิร์น
+var turn: int
+
 
 func _process(_delta):
-	turn = player
 	seconds_per_bar = Lib.get_seconds_per_bar(tempo)

@@ -46,7 +46,6 @@ shader_parameter/fisheye_strength = 1.0
 [node name="Map" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_left = -1640.0
 offset_top = -916.0
 offset_right = 2796.0
@@ -74,7 +73,6 @@ blend_mode = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Rain" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_65i8m")
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +95,6 @@ color = Color(0, 0, 0, 1)
 [node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
 
 [node name="CRT" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_kj8ct")
 anchors_preset = 15
 anchor_right = 1.0

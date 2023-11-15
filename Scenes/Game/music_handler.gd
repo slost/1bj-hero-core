@@ -23,7 +23,6 @@ func _process(_delta) -> void:
 
 	time += _delta
 	bar_timer += _delta
-	print_debug(sec_per_bar)
 	
 	if bar_timer >= sec_per_bar:
 		Global.bars += 1
