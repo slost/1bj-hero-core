@@ -35,7 +35,7 @@ func _show_text_box():
 	text_box.global_position = text_box_position
 	if is_fix_massagebox:
 		text_box.set_fix_massagebox()
-		get_tree().root.get_node('/root/Game/DialogCanvasLayer').add_child(text_box)
+		get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer').add_child(text_box)
 		#text_box.set_anchors_preset(Control.PRESET_CENTER_BOTTOM, true)
 	else:
 		get_tree().root.add_child(text_box)

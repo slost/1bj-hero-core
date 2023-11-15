@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=13 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
+[ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="3_dwnq7"]
 [ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="3_md047"]
 [ext_resource type="Shader" path="res://Shaders/crt_fisheye.gdshader" id="3_p1svi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="3_pvm06"]
@@ -70,9 +71,9 @@ position = Vector2(0, -1)
 energy = 0.5
 blend_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="Rain" type="ColorRect" parent="CanvasLayer"]
+[node name="Rain" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_65i8m")
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,6 +82,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextBox - DEBUG" parent="DialogCanvasLayer" instance=ExtResource("3_dwnq7")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -231.0
+offset_right = 644.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
 visible = false

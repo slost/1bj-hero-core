@@ -19,7 +19,8 @@ func add_turn(_character: Node):
 	var _turn = Turn.new()
 	_turn.data = get_turn_data(_character)
 	turn_number += 1
-	_turn.data.time = 5
+	_turn.data.time = ((600 / 100 ) / 4) + 1
+	print(Global.seconds_per_bar)
 	Global.turn_queue.append(_turn)
 	debug()
 	
@@ -29,7 +30,7 @@ func get_turn_data(_character: Node) -> Dictionary:
 	return {
 	character = _character,
 	number = turn_number,
-	time = 6.0
+	time = Global.seconds_per_bar
 	}
 	
 
