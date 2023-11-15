@@ -10,15 +10,15 @@ extends CharacterBody2D
 var speed: float
 
 
-func _ready():
-	scale = Global.scale
+func _ready() -> void:
+	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self
 
 
 # การควบคุม
 func get_input() -> void:
-	speed = ( stats.base_speed * 100 * stats.size_scale ) * 0.5
+	speed = Lib.get_character_speed(stats.base_speed, scale)
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if not inv.has_node("FreeMovement"):
 		if abs(input_direction.x) > abs(input_direction.y):

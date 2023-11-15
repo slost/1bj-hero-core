@@ -27,8 +27,8 @@ func spawn_projectile(_projectile: String, _params = null) -> void:
 	var proj_scale = _params.get("proj_scale", 1) # ขนาด projectile
 	var skill_dir
 	var spawn_position = caster.global_position \
-	+ ( (spawn_loc * Global.tile_size * caster.scale) ) * (spawn_dist + 1)
-	proj.scale = proj_scale * Global.scale
+	+ ( (spawn_loc * Global.TILE_SIZE  * caster.scale) ) * (spawn_dist + 1)
+	proj.scale = proj_scale * Global.SCALE_VEC
 	proj.global_position = spawn_position
 	proj.add_collision_exception_with(caster)
 	$"..".add_child(proj)

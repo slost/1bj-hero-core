@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Lib="*res://Scripts/Autoload/lib.gd"
 Global="*res://Scripts/Autoload/global.gd"
 DialogManger="*res://Scripts/DialogManger.gd"
 Dir="*res://Scripts/Autoload/direction.gd"

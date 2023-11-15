@@ -19,16 +19,17 @@ func _process(_delta) -> void:
 
 	Global.tempo = tempo
 	
-	var seconds_per_bar: float = 60 / tempo
+	var sec_per_bar = Global.seconds_per_bar
 
 	time += _delta
 	bar_timer += _delta
+	print_debug(sec_per_bar)
 	
-	if bar_timer >= seconds_per_bar:
+	if bar_timer >= sec_per_bar:
 		Global.bars += 1
 		is_played = false
 		bars += 1
-		bar_timer -= seconds_per_bar
+		bar_timer -= sec_per_bar
 		
 	if bars > 4:
 		bars = 1
