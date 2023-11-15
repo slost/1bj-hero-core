@@ -12,39 +12,49 @@ var is_dialog_active = false
 var can_advance_line = false
 
 var is_fix_massagebox = false
-var fix_posistion = Vector2(384, 704)
 
-func start_dialog(posistion: Vector2, lines: Array[String], fix_massagebox:bool = false):
+#@onready var PositionTextBox = get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer/PositionTextBox')
+#var fix_text_box_position = Vector2(384, 640)
+var fix_box
+
+func start_dialog(position: Vector2, lines: Array[String], fix_massagebox:bool = false):
 	if is_dialog_active:
 		return
 	dialog_lines = lines
 	if fix_massagebox:
 		is_fix_massagebox = true
-		text_box_position = fix_posistion
+		var fix_box = get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer/PositionTextBox')
+		text_box_position = fix_box.position
+		print_debug(text_box_position)
 	else:
-		text_box_position = posistion
-	print_debug( text_box_position)
+		text_box_position = position
 	_show_text_box()
 	is_dialog_active = true
 
 func _show_text_box():
+	print_debug("_show_text_box")
 	text_box = text_box_scene.instantiate()
 	text_box.finsished_displaying.connect(_on_text_box_finished_displaying)
 	#get_tree().root.get_node('/root/Game/SubViewportContainer/SubViewport').add_child(text_box)
 	#get_tree().root.add_child(text_box)
-	text_box.global_position = text_box_position
+	#text_box.global_position = text_box_position
 	if is_fix_massagebox:
 		text_box.set_fix_massagebox()
 		get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer').add_child(text_box)
-		#text_box.set_anchors_preset(Control.PRESET_CENTER_BOTTOM, true)
+		text_box.set_anchors_preset(Control.PRESET_CENTER_BOTTOM, true)
+		text_box.set_position(text_box_position)
+		text_box.pivot_offset.x = text_box.size.x / 2
+		text_box.pivot_offset.y = text_box.size.y / 2
 	else:
 		get_tree().root.add_child(text_box)
+	text_box.global_position = text_box_position
 	
 	text_box.display_text(dialog_lines[current_line_index])
 	can_advance_line = false
 
 func _on_text_box_finished_displaying():
 	can_advance_line = true
+	text_box.show_cursor_dialog()
 
 func _unhandled_input(event):
 	if (

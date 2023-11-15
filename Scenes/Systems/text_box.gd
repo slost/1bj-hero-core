@@ -2,6 +2,7 @@ extends MarginContainer
 
 @onready var label = $MarginContainer/Label
 @onready var timer = $LetterDisplayTimer
+@onready var cursor_dialog = $NinePatchRect/ColorRect
 
 const MAX_WIDTH = 256*2.5
 
@@ -13,7 +14,7 @@ var space_time = 0.06
 var punctuation_time = 0.2
 
 var fix_massagebox = false
-var fix_size = Vector2(832, 128)
+var fix_size = Vector2(832, 192)
 
 signal finsished_displaying()
 
@@ -22,8 +23,6 @@ func set_fix_massagebox():
 
 func display_text(text_to_display: String):
 	text = text_to_display
-	
-	print_debug(fix_massagebox)
 	if fix_massagebox:
 		custom_minimum_size = fix_size
 		set_size(fix_size)
@@ -42,7 +41,6 @@ func display_text(text_to_display: String):
 		global_position.x -= size.x / 2
 		global_position.y -= size.y + 24
 	
-	print_debug(size)
 	label.text = ""
 	_display_letter()
 
@@ -61,7 +59,10 @@ func _display_letter():
 			timer.start(space_time)
 		_:
 			timer.start(letter_time)
-	
+
 
 func _on_letter_display_timer_timeout():
 	_display_letter()
+
+func show_cursor_dialog():
+	cursor_dialog.visible = true
