@@ -41,9 +41,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
 
-[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH")]
+[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger")]
 script = ExtResource("6_3wppi")
 musicH = NodePath("../MusicHandler")
+debugger = NodePath("../Debugger")
 
 [node name="PaletteShader" type="SubViewportContainer" parent="."]
 material = ExtResource("3_ut7rk")
@@ -108,3 +109,11 @@ offset_right = 416.0
 offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Debugger" type="Label" parent="."]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 193.0
+theme = ExtResource("9_4jfow")
+text = "qrwqwr
+qweqwe"

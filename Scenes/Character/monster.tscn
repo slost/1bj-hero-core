@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=15 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
+[ext_resource type="Texture2D" uid="uid://7gpmglfkd8ra" path="res://Assets/Sprites/Characters/dummy_enemy_black.png" id="4_2s6df"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="4_b3buw"]
-[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/dummy_enemy.png" id="4_yf73r"]
 [ext_resource type="Texture2D" uid="uid://wpjwa4jthm70" path="res://Assets/Sprites/sheet.png" id="5_pvr1l"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
 [ext_resource type="Material" uid="uid://bf4nvbmh55gr8" path="res://Materials/ดึ๋งๆ.tres" id="6_tgagv"]
+[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/Characters/dummy_enemy.png" id="7_r8pav"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
@@ -48,7 +49,7 @@ sources/0 = SubResource("TileSetAtlasSource_2gd17")
 shader = ExtResource("4_b3buw")
 shader_parameter/blur_amount = 2.0
 
-[node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("debugger", "spr")]
+[node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("debugger", "spr") groups=["character", "monster"]]
 script = ExtResource("1_pmis6")
 debugger = NodePath("Debugger")
 spr = NodePath("Sprite")
@@ -84,12 +85,12 @@ scroll_active = false
 script = ExtResource("2_747x5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_imyw7")
 scale = Vector2(1.125, 1.125)
-texture = ExtResource("4_yf73r")
+texture = ExtResource("4_2s6df")
 
 [node name="Sprite" type="Node2D" parent="."]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="Sprite"]
 material = SubResource("ShaderMaterial_0twg8")
@@ -101,7 +102,7 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 3)
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
 visible = false
 material = ExtResource("6_tgagv")
-texture = ExtResource("4_yf73r")
+texture = ExtResource("7_r8pav")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Sprite"]
 visible = false

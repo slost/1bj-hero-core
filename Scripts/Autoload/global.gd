@@ -22,6 +22,9 @@ var tempo: float
 var bars: int = 1
 var seconds_per_bar: float
 
+# Game States
+var turn: Node
 
 func _process(_delta):
+	turn = player
 	seconds_per_bar = Lib.get_seconds_per_bar(tempo)

@@ -11,12 +11,13 @@ var bars: int = 1
 
 
 func _process(_delta) -> void:
-	if Global.bars >= bars:
-		spawn_projectile("kick", {spawn_loc = Dir.MID, proj_scale = 4})
-		if Global.bars % 2 == 0:
-			spawn_projectile_pattern("kick", "around caster", {spawn_dist = 0})
-		bars += 1
-	
+	if Global.turn != caster:
+		if Global.bars >= bars:
+			spawn_projectile("kick", {spawn_loc = Dir.MID, proj_scale = 4})
+			if Global.bars % 2 == 0:
+				spawn_projectile_pattern("kick", "around caster", {spawn_dist = 0})
+			bars += 1
+
 
 # ใช้สปอนสกิล arg0 = id skill, arg1 = paremeters (จะใส่ไม่ใส่ก็ได้)
 func spawn_projectile(_projectile: String, _params = null) -> void:

@@ -8,4 +8,5 @@ script = ExtResource("1_n7s7m")
 pattern = NodePath("Around")
 
 [node name="Around" parent="." instance=ExtResource("2_txjy0")]
+visible = false
 layer_0/tile_data = PackedInt32Array(196607, 131072, 2, 131072, 131072, 2, 131073, 131072, 2, 65538, 131072, 2, 2, 131072, 2, -65534, 131072, 2, -131071, 131072, 2, -131072, 131072, 2, -65537, 131072, 2, -2, 131072, 2, 65534, 131072, 2, 131070, 131072, 2)

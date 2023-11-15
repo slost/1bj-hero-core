@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_ha03x"]
 [ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="1_kb8qd"]
-[ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/dummy.png" id="3_cnd7g"]
+[ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/Characters/dummy.png" id="3_cnd7g"]
 
 [node name="Pattern" type="TileMap"]
 position = Vector2(-8, -8)

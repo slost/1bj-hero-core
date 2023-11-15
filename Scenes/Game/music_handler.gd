@@ -34,10 +34,7 @@ func _process(_delta) -> void:
 	if bars > 4:
 		bars = 1
 		beats += 1
-	
-	if Global.is_debugging:
-		$Debugger.text =  "Tempo: %s bpm\n" % tempo  + \
-		"Time: " + str(round(time)) + "s" + "\nBeats: "+ str(beats) + "." + str(bars) 
+
 		
 	if !is_played:
 		play_sound(1, $Kick)
