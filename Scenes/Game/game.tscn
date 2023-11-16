@@ -72,6 +72,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
+tempo = 400.0
 listener = NodePath("AudioListener2D")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
