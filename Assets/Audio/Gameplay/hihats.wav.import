@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://3f62s5oe1gpf"
-path="res://.godot/imported/kick.wav-a575e7646a024b0c6ef71ba73793c9df.sample"
+uid="uid://c4q4751fn0oss"
+path="res://.godot/imported/hihats.wav-1a63db6111276cbbc79f741262ea6279.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/kick.wav"
-dest_files=["res://.godot/imported/kick.wav-a575e7646a024b0c6ef71ba73793c9df.sample"]
+source_file="res://Assets/Audio/Gameplay/hihats.wav"
+dest_files=["res://.godot/imported/hihats.wav-1a63db6111276cbbc79f741262ea6279.sample"]
 
 [params]
 

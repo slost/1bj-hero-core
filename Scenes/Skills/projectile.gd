@@ -1,27 +1,44 @@
 ## กระสุนหรือพลังที่เกิดจากสกิล
-extends CharacterBody2D
+extends Area2D
+class_name Projectile
+
+
+const BASE_SPEED: int = 1
+## ระยะทางที่จะพุ่งไป (สามารถกำหนดได้ใน Skill Pattern)
+@export var direction: Vector2
+## เป้าหมายที่จะพุ่งไปหา
+@export var target: Vector2 
+## ล็อคเป้าหมายหรือไม่
+@export var target_lock: bool = false 
+## ขนาดที่จะคูณ
+@export var scale_size: int = 1
 
 var timer: float
-const BASE_SPEED: int = 4
-var direction: Vector2
 var delta: float
+var caster: Node
 
-func _init():
-	add_collision_exception_with(self)
-	scale = Global.SCALE_VEC
-	direction = Dir.N
-	
+
+func _ready() -> void:
+	scale = caster.scale
+
 
 func _physics_process(_delta) -> void:
 	delta = _delta
+	if target_lock:
+		direction = (target - global_position).normalized()
 	var speed = Lib.get_character_speed(BASE_SPEED, scale)
 	# scale -= scale * ( 60 / Global.tempo ) * 0.1
+	# if target:
+		# velocity = target * speed
+	var velocity = direction * speed
+	process_visual()
+	translate(velocity)
+	process_duration() 
+	
+func process_visual() -> void:
 	if Global.is_alpha_mode:
 		modulate.a = 0.75
-	velocity = direction * speed
-	move_and_slide()
-	process_duration() 
-		
+
 
 func process_duration() -> void:
 	timer += delta

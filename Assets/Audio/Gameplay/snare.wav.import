@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dyp7ya0h7gwo"
-path="res://.godot/imported/snare.wav-6570ab4e86b7a510553823c3608550c5.sample"
+path="res://.godot/imported/snare.wav-ff3727e08eb46cf095d3d3c1e6e8d35b.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/snare.wav"
-dest_files=["res://.godot/imported/snare.wav-6570ab4e86b7a510553823c3608550c5.sample"]
+source_file="res://Assets/Audio/Gameplay/snare.wav"
+dest_files=["res://.godot/imported/snare.wav-ff3727e08eb46cf095d3d3c1e6e8d35b.sample"]
 
 [params]
 

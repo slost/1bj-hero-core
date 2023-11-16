@@ -2,15 +2,20 @@ extends Node
 
 @export var musicH: Node
 @export var debugger: Node
+@export var map: Node
+
 
 func _input(_event):
 	if Input.is_action_pressed("debug_restart"):
 		get_tree().reload_current_scene()
+		Global.restart_game()
 	if Input.is_action_pressed("debug_tempo_increase"):
 		musicH.tempo += 2
 	if Input.is_action_pressed("debug_tempo_decrease"):
 		musicH.tempo -= 2
-		
+	if Input.is_action_pressed("debug_toggle_filter"):
+		for i in map.get_node("Filter").get_children():
+			i.visible = false
 
 func _process(_delta):
 	if Global.is_debugging:

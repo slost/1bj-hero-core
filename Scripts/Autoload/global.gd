@@ -28,6 +28,11 @@ var player: Node
 var turn_queue: Array = [] # ใช้เก็บคิวเทิร์น
 var turn: int
 
+func restart_game():
+	turn_queue = []
+	bars = 1
+	print_debug("Restarted")
+
 
 func _process(_delta):
 	seconds_per_bar = Lib.get_seconds_per_bar(tempo)

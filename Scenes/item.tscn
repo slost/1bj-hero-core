@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cewgw4y4rf720"]
 
-[ext_resource type="Script" path="res://Scripts/skill.gd" id="1_n7s7m"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="1_vgxpf"]
 [ext_resource type="PackedScene" uid="uid://dk7iqxoxraa8e" path="res://Scenes/Skills/pattern.tscn" id="2_txjy0"]
 
-[node name="Item" type="Node" node_paths=PackedStringArray("pattern")]
-script = ExtResource("1_n7s7m")
-pattern = NodePath("Around")
+[node name="Item" type="Node"]
+script = ExtResource("1_vgxpf")
 
 [node name="Around" parent="." instance=ExtResource("2_txjy0")]
 visible = false
