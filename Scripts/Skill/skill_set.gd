@@ -35,11 +35,12 @@ func _ready():
 
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
-			current_turn = Global.turn_queue[0]
+		current_turn = Global.turn_queue[0]
 	if current_turn.data.character == caster:
 		if Global.bars >= bars:
-			spawn_skill(0)
-			# if Global.bars % 2 == 0:	
+			
+			if Global.bars % 2 == 0:	
+				spawn_skill(0)
 			bars += 1
 	else:
 		bars = Global.bars
