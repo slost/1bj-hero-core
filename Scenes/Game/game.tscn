@@ -173,9 +173,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen/SubViewport/Filter"]
-position = Vector2(112, 211)
-energy = 5.0
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen"]
+position = Vector2(-336, 183)
+energy = 2.0
 
 [node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
 script = ExtResource("6_3wppi")
