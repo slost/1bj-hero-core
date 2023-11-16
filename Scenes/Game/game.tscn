@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=20 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -10,6 +10,8 @@
 [ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="7_cgjvk"]
 [ext_resource type="Script" path="res://Scenes/Game/TestTextButton.gd" id="8_0d1oi"]
 [ext_resource type="Shader" path="res://Shaders/crt_fisheye.gdshader" id="8_4l0uk"]
+[ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="8_i5irp"]
+[ext_resource type="Script" path="res://Scenes/Game/DialogCanvasLayer.gd" id="8_sb75t"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grg4r"]
@@ -57,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("9_4jfow")
 script = ExtResource("1_dv3o6")
 hudLabel = NodePath("RichTextLabel")
 paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
@@ -136,6 +139,33 @@ render_target_update_mode = 4
 
 [node name="Map" parent="Control/Screen/SubViewport/PaletteShader/SubViewport" instance=ExtResource("1_yipeh")]
 script = ExtResource("2_x5epm")
+
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport"]
+script = ExtResource("8_sb75t")
+
+[node name="PositionTextBox" type="Control" parent="Control/Screen/SubViewport/DialogCanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 96)
+
+[node name="TextBox - DEBUG" parent="Control/Screen/SubViewport/DialogCanvasLayer" instance=ExtResource("8_i5irp")]
+visible = false
+offset_left = -320.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 320.0
+pivot_offset = Vector2(320, 96)
 
 [node name="Filter" type="CanvasLayer" parent="Control/Screen/SubViewport"]
 

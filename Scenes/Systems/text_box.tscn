@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://3ber51fa5fh7"]
+[gd_scene load_steps=7 format=3 uid="uid://3ber51fa5fh7"]
 
 [ext_resource type="Texture2D" uid="uid://djrrvckrl3jnw" path="res://Assets/Systems/window.png" id="1_dp1qx"]
 [ext_resource type="Script" path="res://Scenes/Systems/text_box.gd" id="1_n5obs"]
+[ext_resource type="FontFile" uid="uid://bgi60ucq16uu" path="res://Assets/squealer.ttf" id="3_tw6xl"]
 
 [sub_resource type="Animation" id="Animation_xcsk4"]
 length = 0.001
@@ -56,7 +57,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.5, 2.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(810, 160), Vector2(810, 40), Vector2(810, 40), Vector2(810, 140)]
+"values": [Vector2(610, 160), Vector2(610, 40), Vector2(610, 40), Vector2(610, 140)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,8 +91,18 @@ _data = {
 }
 
 [node name="TextBox" type="MarginContainer"]
-offset_right = 64.0
-offset_bottom = 64.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -32.0
+offset_right = -51.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 29)
 script = ExtResource("1_n5obs")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -104,25 +115,25 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
-visible = false
 layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
 offset_right = 56.0001
-offset_bottom = 56.0
+offset_bottom = 55.9997
 pivot_offset = Vector2(4, 4)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("3_tw6xl")
+theme_override_font_sizes/font_size = 35
 vertical_alignment = 1
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]
