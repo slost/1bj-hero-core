@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ep33c6tw3as"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_1n6v4"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_qyg4o"]
+
+[node name="รอบตัว" type="TileMap"]
+tile_set = ExtResource("1_1n6v4")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 131072, 2, 65535, 131072, 2, 131071, 131072, 2, 65536, 131072, 2, 65537, 131072, 2, 1, 131072, 2, -65535, 131072, 2, -65536, 131072, 2)
+script = ExtResource("2_qyg4o")

@@ -1,6 +1,7 @@
 extends Node
 
 @export var tempo: float = 300
+@export var listener: Node
 
 var time: float = 0.0
 var beats: int = 1
@@ -16,6 +17,13 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
+	
+	Global.musicH = self
+	
+	var is_music_on = true
+	if is_music_on:
+		listener.global_position = Global.player.global_position
+		listener.scale = Global.player.scale
 
 	Global.tempo = tempo
 	
@@ -34,17 +42,12 @@ func _process(_delta) -> void:
 		bars = 1
 		beats += 1
 
-		
+	
+func test_sound():	
 	if !is_played:
 		play_sound(1, $Kick)
-		play_sound(2, $Kick)
-		play_sound(4, $Kick)
-		play_sound(3, $Kick)
-		
 		play_sound(2, $Snare)
-		play_sound(4, $Snare)
 		is_played = true
-	
 
 func play_sound(_bar, _sound) -> void:
 	if bars == _bar:

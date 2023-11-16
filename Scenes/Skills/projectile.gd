@@ -7,7 +7,7 @@ const BASE_SPEED: int = 1
 ## ระยะทางที่จะพุ่งไป (สามารถกำหนดได้ใน Skill Pattern)
 @export var direction: Vector2
 ## เป้าหมายที่จะพุ่งไปหา
-@export var target: Vector2 
+@export var target: Vector2
 ## ล็อคเป้าหมายหรือไม่
 @export var target_lock: bool = false 
 ## ขนาดที่จะคูณ
@@ -16,13 +16,30 @@ const BASE_SPEED: int = 1
 var timer: float
 var delta: float
 var caster: Node
+var sound_file: String
+var soundNode: Node
 
 
 func _ready() -> void:
-	scale = caster.scale
+	if caster:
+		scale = caster.scale
+	scale *= scale_size
+	var id = Global.musicH.get_child_count() + 1
+	var sound = AudioStreamPlayer2D.new()
+	sound.stream = load("res://Assets/Audio/Gameplay/kick.tres")
+	sound.autoplay = true
+	sound.max_distance = 6000
+	Global.musicH.add_child(sound)
+	soundNode = Global.musicH.get_child(id)
+	# print_debug(soundNode)
 
-
+	
 func _physics_process(_delta) -> void:
+	if soundNode:
+		soundNode.global_position = self.global_position
+		soundNode.scale = self.scale
+		if not soundNode.playing:
+			soundNode.queue_free()
 	delta = _delta
 	if target_lock:
 		direction = (target - global_position).normalized()
@@ -33,7 +50,7 @@ func _physics_process(_delta) -> void:
 	var velocity = direction * speed
 	process_visual()
 	translate(velocity)
-	process_duration() 
+	# process_duration() 
 	
 func process_visual() -> void:
 	if Global.is_alpha_mode:

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnavjkvod7pfa"]
+
+[ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/Characters/dummy.png" id="1_sxyea"]
+
+[node name="Sprite2D" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.196078)
+texture = ExtResource("1_sxyea")
+offset = Vector2(8, 8)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs0q123k0y7c3"]
+[gd_scene load_steps=11 format=3 uid="uid://bs0q123k0y7c3"]
 
 [ext_resource type="Script" path="res://Scenes/Skills/projectile.gd" id="1_4xik7"]
 [ext_resource type="Material" uid="uid://dge607unynrkh" path="res://Scenes/Skills/บึ้มๆ.tres" id="2_ddexa"]
 [ext_resource type="Texture2D" uid="uid://dte7rla2oikpo" path="res://Assets/Sprites/Skills/skill_kick.png" id="3_gts76"]
 [ext_resource type="Texture2D" uid="uid://wpjwa4jthm70" path="res://Assets/Sprites/sheet.png" id="4_hc506"]
+[ext_resource type="AudioStream" uid="uid://bntahn0p7aac7" path="res://Assets/Audio/Gameplay/kick.tres" id="5_bn1v8"]
 
 [sub_resource type="Gradient" id="Gradient_nv31d"]
 offsets = PackedFloat32Array(0, 0.015873, 0.031746, 0.608466)
@@ -38,6 +39,7 @@ sources/0 = SubResource("TileSetAtlasSource_hrhuq")
 
 [node name="Projectile" type="Area2D" groups=["projectile"]]
 script = ExtResource("1_4xik7")
+scale_size = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.5
@@ -57,3 +59,7 @@ position = Vector2(-8, -8)
 tile_set = SubResource("TileSet_phh86")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 1)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bn1v8")
+autoplay = true

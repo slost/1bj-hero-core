@@ -1,3 +1,4 @@
+@tool
 extends TileMap
 class_name SkillPattern
 
@@ -5,9 +6,11 @@ var layer: int = 0
 var type = "type"
 
 
+
 func _init():
-	visible = false
 	get_pattern_tiles()
+	set("tile_set", load("res://Scenes/Skills/pattern_tile.tres"))
+	# add_child(load("res://Database/Patterns/dummy_caster.tscn").instantiate())
 
 
 func get_pattern_tiles() -> Array:

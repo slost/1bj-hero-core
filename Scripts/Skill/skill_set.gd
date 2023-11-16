@@ -3,7 +3,7 @@ extends Node
 class_name SkillSet
 
 ## สกิลที่จะมีในสกิลเซ็ตนี้
-@export var skills: Array[Skill] = [preload("res://Database/Skills/Kicking.tres")]
+@export var skills: Array[Skill] = []
 """
 Skill: resource = {
 	projectile = กระสุนที่จะสปอน
@@ -46,20 +46,27 @@ func _process(_delta) -> void:
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
 func spawn_skill(_id: int) -> void:
-	for skill in skills:
-		var pattern = skill.pattern.instantiate()
-		var pattern_tiles = pattern.get_pattern_tiles()
-		for tile in pattern_tiles:
-			print(tile)
-			spawn_projectile(skill.projectile, tile[0])
+	var skill = skills[_id]
+	print(skill)
+	var proj = skill.projectile
+	var pattern = skill.pattern.instantiate()
+	var pattern_tiles = pattern.get_pattern_tiles()
+	print(pattern_tiles)
+	print(skill.pattern)
+	print(pattern.name)
+	print_debug(pattern_tiles)
+	for tile in pattern_tiles:
+		print(tile)
+		spawn_projectile(proj, tile[0])
 	
 
 # สปอนกระสุนจากซีนกระสุน
-func spawn_projectile(_projectile: PackedScene,_tile) -> void:
+func spawn_projectile(_projectile: PackedScene,_tile: Vector2) -> void:
 	var proj = _projectile.instantiate()
 	proj.global_position = caster.global_position + _tile
 	proj.caster = caster
 	$"..".add_child(proj)
+	print_debug("spawnned " + str(proj))
 	
 
 # ใช้สปอนสกิล arg0 = id skill, arg1 = paremeters (จะใส่ไม่ใส่ก็ได้)

@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_ha03x"]
 [ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="1_kb8qd"]
-[ext_resource type="Texture2D" uid="uid://8autg0sxkmyo" path="res://Assets/Sprites/Characters/dummy.png" id="3_cnd7g"]
+[ext_resource type="PackedScene" uid="uid://cnavjkvod7pfa" path="res://Database/Patterns/dummy_caster.tscn" id="3_sk7do"]
 
 [node name="Pattern" type="TileMap"]
 position = Vector2(-8, -8)
 tile_set = ExtResource("1_ha03x")
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 131072, 2, 65536, 131072, 2, 65537, 131072, 2, 1, 131072, 2, -65535, 131072, 2, -65536, 131072, 2, -1, 131072, 2, 65535, 131072, 2)
+layer_0/tile_data = PackedInt32Array(-65535, 196608, 1, 131071, 65536, 3, 196606, 65536, 3, -131070, 196608, 1)
 script = ExtResource("1_kb8qd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -18,7 +18,4 @@ offset_right = 176.0
 offset_bottom = 176.0
 color = Color(0.596078, 0.596078, 0.596078, 0.352941)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.196078)
-texture = ExtResource("3_cnd7g")
-offset = Vector2(8, 8)
+[node name="Sprite2D2" parent="." instance=ExtResource("3_sk7do")]

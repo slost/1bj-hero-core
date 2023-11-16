@@ -71,7 +71,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
+[node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
+listener = NodePath("AudioListener2D")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
+current = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

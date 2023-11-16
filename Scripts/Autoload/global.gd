@@ -23,6 +23,7 @@ var seconds_per_bar: float
 # Node
 var map: Node
 var player: Node
+var musicH: Node
 
 # Game States
 var turn_queue: Array = [] # ใช้เก็บคิวเทิร์น
