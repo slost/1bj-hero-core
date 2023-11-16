@@ -23,7 +23,7 @@ func start_dialog(position: Vector2, lines: Array[String], fix_massagebox:bool =
 	dialog_lines = lines
 	if fix_massagebox:
 		is_fix_massagebox = true
-		var fix_box = get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer/PositionTextBox')
+		var fix_box = Global.map.get_node("DialogCanvasLayer/PositionTextBox")
 		text_box_position = fix_box.position
 		print_debug(text_box_position)
 	else:
@@ -40,7 +40,7 @@ func _show_text_box():
 	#text_box.global_position = text_box_position
 	if is_fix_massagebox:
 		text_box.set_fix_massagebox()
-		get_tree().root.get_node('/root/Game/PaletteShader/SubViewport/Map/DialogCanvasLayer').add_child(text_box)
+		Global.map.get_node('DialogCanvasLayer').add_child(text_box)
 		text_box.set_anchors_preset(Control.PRESET_CENTER_BOTTOM, true)
 		text_box.set_position(text_box_position)
 		text_box.pivot_offset.x = text_box.size.x / 2

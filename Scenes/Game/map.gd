@@ -7,10 +7,10 @@ func _draw():
 	
 
 func draw_background(color: Color) -> void:
-	var viewport_size = get_viewport().get_visible_rect().size
+	var viewport_size = $"../../..".get_viewport().get_visible_rect().size
 	var width = viewport_size.x
 	var hieght = viewport_size.y
-	draw_rect(Rect2(0, 0, width, hieght), color)
+	draw_rect(Rect2(-width, -hieght, width, hieght), color)
 
 func _ready():
 	Global.map = self

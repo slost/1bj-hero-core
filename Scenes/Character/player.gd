@@ -13,6 +13,7 @@ var speed: float
 
 func _ready() -> void:
 	animSpr.play("move_down")
+	# scale = Vector2(data.stats.size_scale, data.stats.size_scale)
 	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self

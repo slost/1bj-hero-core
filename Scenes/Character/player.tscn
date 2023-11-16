@@ -191,7 +191,6 @@ material = SubResource("ShaderMaterial_oh2ir")
 texture = ExtResource("4_5e7dc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_23hfq")
