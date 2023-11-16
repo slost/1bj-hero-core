@@ -41,10 +41,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="MusicHandler" parent="." instance=ExtResource("5_ewm0u")]
 
-[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger")]
+[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "map")]
 script = ExtResource("6_3wppi")
 musicH = NodePath("../MusicHandler")
 debugger = NodePath("../Debugger")
+map = NodePath("../PaletteShader/SubViewport/Map")
 
 [node name="PaletteShader" type="SubViewportContainer" parent="."]
 material = ExtResource("3_ut7rk")
@@ -70,7 +71,8 @@ render_target_update_mode = 4
 script = ExtResource("2_x5epm")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(796, 399)
+visible = false
+position = Vector2(793, 457)
 scale = Vector2(18.9375, 12.2187)
 texture = SubResource("GradientTexture2D_g0gsc")
 

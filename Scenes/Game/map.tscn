@@ -1,24 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=13 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
+[ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="3_dwnq7"]
 [ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="3_md047"]
 [ext_resource type="Shader" path="res://Shaders/crt_fisheye.gdshader" id="3_p1svi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="3_pvm06"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65i8m"]
-shader = ExtResource("3_md047")
-shader_parameter/rain_amount = 1600.0
-shader_parameter/near_rain_length = 0.01
-shader_parameter/far_rain_length = 0.1
-shader_parameter/near_rain_width = 0.89
-shader_parameter/far_rain_width = 0.5
-shader_parameter/near_rain_transparency = 1.0
-shader_parameter/far_rain_transparency = 0.5
-shader_parameter/rain_color = Color(0, 0, 0, 1)
-shader_parameter/base_rain_speed = 0.5
-shader_parameter/additional_rain_speed = 0.5
-shader_parameter/slant = 0.329
 
 [sub_resource type="Gradient" id="Gradient_h8tes"]
 
@@ -43,6 +30,20 @@ shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
 shader = ExtResource("3_p1svi")
 shader_parameter/fisheye_strength = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65i8m"]
+shader = ExtResource("3_md047")
+shader_parameter/rain_amount = 1600.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.89
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0, 0, 0, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.329
+
 [node name="Map" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -59,7 +60,6 @@ scale = Vector2(4, 4)
 position = Vector2(845, 186)
 scale = Vector2(4, 4)
 move_behavior = 3
-is_look_at_player = true
 
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"
@@ -67,22 +67,30 @@ position = Vector2(766, 367)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -1)
-energy = 0.5
+energy = 0.1
 blend_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Rain" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_65i8m")
-anchors_preset = 15
-anchor_right = 1.0
+[node name="TextBox - DEBUG" parent="DialogCanvasLayer" instance=ExtResource("3_dwnq7")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -231.0
+offset_right = 644.0
+offset_bottom = -33.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-metadata/_edit_use_anchors_ = true
+grow_vertical = 0
 
-[node name="NoiseOffset" type="ColorRect" parent="CanvasLayer"]
+[node name="Filter" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Filter"]
+
+[node name="NoiseOffset" type="ColorRect" parent="Filter/CanvasLayer"]
 visible = false
 material = SubResource("ShaderMaterial_h3ar7")
 anchors_preset = 15
@@ -92,12 +100,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="CanvasLayer"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Filter/CanvasLayer"]
 
-[node name="CRT" type="ColorRect" parent="CanvasLayer"]
+[node name="CRT" type="ColorRect" parent="Filter/CanvasLayer"]
 material = SubResource("ShaderMaterial_kj8ct")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Filter"]
+
+[node name="Rain" type="ColorRect" parent="Filter/CanvasLayer2"]
+material = SubResource("ShaderMaterial_65i8m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
