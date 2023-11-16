@@ -1,9 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=31 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
 [ext_resource type="Texture2D" uid="uid://081ttsje2npp" path="res://Assets/Sprites/Characters/knight_2.png" id="4_5e7dc"]
+[ext_resource type="PackedScene" uid="uid://cs7kym5pr3w6s" path="res://Database/Patterns/กลางตัว.tscn" id="4_h6x6q"]
+[ext_resource type="PackedScene" uid="uid://bs0q123k0y7c3" path="res://Scenes/Skills/projectile.tscn" id="5_d3egg"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="6_fnou0"]
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="7_0p6ad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydo62"]
@@ -13,6 +16,12 @@ shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
+
+[sub_resource type="Resource" id="Resource_de6h5"]
+script = ExtResource("6_fnou0")
+projectile = ExtResource("5_d3egg")
+pattern = ExtResource("4_h6x6q")
+sound = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
 shader = ExtResource("3_iilgi")
@@ -184,6 +193,7 @@ animSpr = NodePath("AnimatedSprite2D")
 [node name="HolyShield" type="Node" parent="Inventory"]
 
 [node name="Item" parent="Inventory" instance=ExtResource("2_fg3uk")]
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_de6h5")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

@@ -28,6 +28,10 @@ shader_parameter/base_rain_speed = 0.5
 shader_parameter/additional_rain_speed = 0.5
 shader_parameter/slant = 0.329
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnx4q"]
+shader = ExtResource("8_4l0uk")
+shader_parameter/fisheye_strength = 1.0
+
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_p122c"]
@@ -43,13 +47,9 @@ noise = SubResource("FastNoiseLite_p122c")
 shader = ExtResource("7_8lpkb")
 shader_parameter/strength = 4.2
 shader_parameter/uv_scaling = 1.0
-shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_direction = Vector2(1, 1)
 shader_parameter/movement_speed = 0.5
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnx4q"]
-shader = ExtResource("8_4l0uk")
-shader_parameter/fisheye_strength = 1.0
 
 [node name="Game" type="Control" node_paths=PackedStringArray("hudLabel", "paletteShader", "background")]
 editor_description = "ตัวควบคุมเกม"
@@ -170,6 +170,7 @@ pivot_offset = Vector2(320, 96)
 [node name="Filter" type="CanvasLayer" parent="Control/Screen/SubViewport"]
 
 [node name="Rain" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
+visible = false
 material = SubResource("ShaderMaterial_grg4r")
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,15 +184,6 @@ grow_vertical = 2
 color = Color(0.658824, 0.658824, 0.658824, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="NoiseOffset" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
-material = SubResource("ShaderMaterial_s0gxm")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Control/Screen/SubViewport/Filter"]
 
 [node name="CRT" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
@@ -202,9 +194,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen/SubViewport/Filter"]
-position = Vector2(112, 211)
-energy = 5.0
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen"]
+position = Vector2(-336, 183)
+energy = 1.5
 
 [node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
 script = ExtResource("6_3wppi")
@@ -260,5 +252,14 @@ pivot_offset = Vector2(128, 0)
 size_flags_horizontal = 0
 text = "ทดสอบข้อความ"
 script = ExtResource("8_0d1oi")
+
+[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
+material = SubResource("ShaderMaterial_s0gxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

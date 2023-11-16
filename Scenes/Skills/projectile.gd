@@ -46,7 +46,7 @@ func _physics_process(_delta) -> void:
 	# if target:
 		# velocity = target * speed
 	var velocity = direction * speed
-	process_visual()
+	# process_visual()
 	# translate(velocity)
 	process_duration() 
 	
