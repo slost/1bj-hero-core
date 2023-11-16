@@ -19,7 +19,7 @@ func add_turn(_character: Node):
 	var _turn = Turn.new()
 	_turn.data = get_turn_data(_character)
 	turn_number += 1
-	_turn.data.time = ((600.0 / 100.0 ) / 4.0) + 1.0
+	_turn.data.time = Global.seconds_per_bar * 4
 	print(Global.seconds_per_bar)
 	Global.turn_queue.append(_turn)
 	debug()

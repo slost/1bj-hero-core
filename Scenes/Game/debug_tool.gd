@@ -34,7 +34,7 @@ func _process(_delta):
 			var turn = Global.turn_queue[0]
 			add_text("Turn: %s" % turn.data.number)
 			add_text("# %s" % turn.data.character)
-			add_text("Time left %ss" % round(turn.data.time))
+			add_text("Time left %ss" % (turn.data.time))
 		
 		add_text("\nMUSIC")
 		debugger.text +=  "Tempo: %s bpm\n" % musicH.tempo  + \
