@@ -17,7 +17,7 @@ Skill: resource = {
 @onready var caster: Node = $"../.."
 
 
-var bars: int = 1
+var sub_bar: int = 1
 var hostile: Node
 var patterns: Array = []
 var current_turn: Turn
@@ -37,13 +37,11 @@ func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
 	if current_turn.data.character == caster:
-		if Global.bars >= bars:
+		if Global.sub_bar >= sub_bar:
 			spawn_skill(0)
-			#if Global.bars % 2 == 0:
-				#spawn_skill(0)
-			bars += 1
+			sub_bar += 1
 	else:
-		bars = Global.bars
+		sub_bar = Global.sub_bar
 		
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills

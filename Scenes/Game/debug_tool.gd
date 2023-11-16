@@ -8,8 +8,8 @@ extends Node
 
 func _input(_event):
 	if Input.is_action_pressed("debug_restart"):
-		get_tree().reload_current_scene()
 		Global.restart_game()
+		get_tree().reload_current_scene()
 	if Input.is_action_pressed("debug_tempo_increase"):
 		musicH.tempo += 2
 	if Input.is_action_pressed("debug_tempo_decrease"):
@@ -37,8 +37,15 @@ func _process(_delta):
 			add_text("Time left %ss" % (turn.data.time))
 		
 		add_text("\nMUSIC")
+		add_text("Bars: %s" % str(Global.bars))
+		add_text("musicH.bars %s" % str(musicH.bars))
+		add_text("player.bars: %s" % str(Global.player.bars))
+		add_text("player.bar_counter: %s" % str(Global.player.bar_counter))
+		add_text("Bar Timer: %s" % str(musicH.timer))
+		
+		
 		debugger.text +=  "Tempo: %s bpm\n" % musicH.tempo  + \
-		"Time: " + str(round(musicH.time)) + "s" + "\nBeats: "+ str(musicH.beats) + "." + str(musicH.bars) 
+		"Time: " + str(round(musicH.time)) + "s" + "\ncurrent_bar: "+ str(musicH.current_bar) + "." + str(musicH.sub_bar) 
 		
 		
 func add_text(_text: String) -> void:

@@ -4,18 +4,22 @@ extends Node
 @export var listener: Node
 
 var time: float = 0.0
-var beats: int = 1
-var bars: int = 1
+var current_bar: int = 1
+var sub_bar: int = 1
 var bar_timer: float = 0.0
-var beats_timer: float = 0.0
+
+var verse: int = 0
+var timer: float = 0.0
 
 var is_played = false
 
+var bars: Array = Global.bars
 
-func _ready() -> void:
-	Global.bars = 1
-
-
+func _init():
+	bars[0] = 1
+	bars[1] = 1
+	
+	
 func _process(_delta) -> void:
 	
 	Global.musicH = self
@@ -26,21 +30,39 @@ func _process(_delta) -> void:
 		listener.scale = Global.player.scale
 
 	Global.tempo = tempo
+	Global.bars = bars
 	
 	var sec_per_bar = Global.seconds_per_bar
-
+	
+	
+	var i = sec_per_bar * 0.1
+	
 	time += _delta
-	bar_timer += _delta
+	timer += _delta
+	
+	
+	if timer >= sec_per_bar * i:
+		bars[2] += 1
+		timer -= sec_per_bar * i
+	
+	bars = Lib.process_bars(bars)
+	
 	
 	if bar_timer >= sec_per_bar:
-		Global.bars += 1
+		Global.sub_bar += 1
 		is_played = false
-		bars += 1
+		sub_bar += 1
 		bar_timer -= sec_per_bar
 		
-	if bars > 4:
-		bars = 1
-		beats += 1
+	if sub_bar > 4:
+		sub_bar = 1
+		current_bar += 1
+		
+	play_metronome()
+	
+func play_metronome():
+	if bars[1] == 1:
+		$Kick.play()
 
 	
 func test_sound():	
@@ -50,5 +72,5 @@ func test_sound():
 		is_played = true
 
 func play_sound(_bar, _sound) -> void:
-	if bars == _bar:
+	if sub_bar == _bar:
 		_sound.play()
