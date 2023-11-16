@@ -20,6 +20,8 @@ func add_turn(_character: Node):
 	_turn.data = get_turn_data(_character)
 	turn_number += 1
 	_turn.data.time = 5
+	_turn.data.time = ((600.0 / 100.0 ) / 4.0) + 1.0
+	print(Global.seconds_per_bar)
 	Global.turn_queue.append(_turn)
 	debug()
 	
@@ -46,16 +48,16 @@ func on_end_turn():
 		create_turn_queue()
 		print_debug(Global.turn_queue[0].data)
 
+var turn
 
 func _process(_delta):
 	
-	var turn = Global.turn_queue[0]
-	turn.data.time -= _delta
-	if turn.data.time <= 0.0:
-		on_end_turn()
-	
-
-
-
+	if Global.turn_queue.size() > 0:
+		turn = Global.turn_queue[0]
+		turn.data.time -= _delta
+		if turn.data.time <= 0.0:
+			on_end_turn()
+	else:
+		turn_number = 0
 
 			

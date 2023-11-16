@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://dpjsta3ow2gvu"]
+
+[ext_resource type="PackedScene" uid="uid://dk7iqxoxraa8e" path="res://Scenes/Skills/pattern.tscn" id="1_7h3rf"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="1_cmc7a"]
+[ext_resource type="PackedScene" uid="uid://bs0q123k0y7c3" path="res://Scenes/Skills/projectile.tscn" id="1_qvj0a"]
+
+[resource]
+script = ExtResource("1_cmc7a")
+projectile = ExtResource("1_qvj0a")
+pattern = ExtResource("1_7h3rf")
+sound = "res://Assets/Audio/Gameplay/kick.wav"

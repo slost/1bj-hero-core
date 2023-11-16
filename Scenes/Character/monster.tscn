@@ -1,13 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=9 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
 [ext_resource type="Texture2D" uid="uid://7gpmglfkd8ra" path="res://Assets/Sprites/Characters/dummy_enemy_black.png" id="4_2s6df"]
-[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="4_b3buw"]
-[ext_resource type="Texture2D" uid="uid://wpjwa4jthm70" path="res://Assets/Sprites/sheet.png" id="5_pvr1l"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
 [ext_resource type="Material" uid="uid://bf4nvbmh55gr8" path="res://Materials/ดึ๋งๆ.tres" id="6_tgagv"]
-[ext_resource type="Texture2D" uid="uid://uadk8k2nefm7" path="res://Assets/Sprites/Characters/dummy_enemy.png" id="7_r8pav"]
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="9_6tb0y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
@@ -21,37 +18,9 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0twg8"]
-shader = ExtResource("6_n02me")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 0.5
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gd17"]
-texture = ExtResource("5_pvr1l")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_rk3al"]
-sources/0 = SubResource("TileSetAtlasSource_2gd17")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_twxiu"]
-shader = ExtResource("4_b3buw")
-shader_parameter/blur_amount = 2.0
-
 [node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("debugger", "spr") groups=["character", "monster"]]
 script = ExtResource("1_pmis6")
+is_look_at_player = true
 debugger = NodePath("Debugger")
 spr = NodePath("Sprite")
 
@@ -86,43 +55,16 @@ scroll_active = false
 script = ExtResource("2_747x5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_imyw7")
 scale = Vector2(1.125, 1.125)
 texture = ExtResource("4_2s6df")
 
 [node name="Sprite" type="Node2D" parent="."]
-visible = false
-
-[node name="TileMap" type="TileMap" parent="Sprite"]
-material = SubResource("ShaderMaterial_0twg8")
-position = Vector2(-8, -8)
-tile_set = SubResource("TileSet_rk3al")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 65536, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
-visible = false
 material = ExtResource("6_tgagv")
-texture = ExtResource("7_r8pav")
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Sprite"]
-visible = false
-copy_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="Sprite"]
-visible = false
-material = SubResource("ShaderMaterial_twxiu")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
+texture = ExtResource("4_2s6df")
 
 [node name="Inventory" type="Node" parent="."]
 
