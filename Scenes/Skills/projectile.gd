@@ -38,8 +38,6 @@ func _physics_process(_delta) -> void:
 	if soundNode:
 		soundNode.global_position = self.global_position
 		soundNode.scale = self.scale
-		if not soundNode.playing:
-			soundNode.queue_free()
 	delta = _delta
 	if target_lock:
 		direction = (target - global_position).normalized()
@@ -49,8 +47,8 @@ func _physics_process(_delta) -> void:
 		# velocity = target * speed
 	var velocity = direction * speed
 	process_visual()
-	translate(velocity)
-	# process_duration() 
+	# translate(velocity)
+	process_duration() 
 	
 func process_visual() -> void:
 	if Global.is_alpha_mode:
@@ -60,4 +58,6 @@ func process_visual() -> void:
 func process_duration() -> void:
 	timer += delta
 	if timer >= Global.seconds_per_bar:
+		if soundNode:
+			soundNode.queue_free()
 		queue_free()

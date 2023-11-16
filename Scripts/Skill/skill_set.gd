@@ -29,6 +29,7 @@ func set_hostile() -> void:
 		hostile = Global.player # เดี๋ยวจะเปลี่ยนเป็น enemy
 
 func _ready():
+	caster = $"../.."
 	set_hostile()
 
 
@@ -63,10 +64,12 @@ func spawn_skill(_id: int) -> void:
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_projectile: PackedScene,_tile: Vector2) -> void:
 	var proj = _projectile.instantiate()
-	proj.global_position = caster.global_position + _tile
+	proj.global_position = caster.global_position + \
+		(caster.scale * _tile * Global.TILE_RES)
 	proj.caster = caster
 	$"..".add_child(proj)
-	print_debug("spawnned " + str(proj))
+	print(caster.global_position)
+	print_debug("spawnned "  + str(proj.name) + str(proj.global_position))
 	
 
 # ใช้สปอนสกิล arg0 = id skill, arg1 = paremeters (จะใส่ไม่ใส่ก็ได้)
