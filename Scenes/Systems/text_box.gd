@@ -14,7 +14,7 @@ var space_time = 0.06
 var punctuation_time = 0.2
 
 var fix_massagebox = false
-var fix_size = Vector2(832, 192)
+var fix_size
 
 signal finsished_displaying()
 
@@ -24,9 +24,17 @@ func set_fix_massagebox():
 func display_text(text_to_display: String):
 	text = text_to_display
 	if fix_massagebox:
+		fix_size = Global.dialogCanvas.get_node("PositionTextBox").size
 		custom_minimum_size = fix_size
-		set_size(fix_size)
-		reset_size()
+		pivot_offset.x = fix_size.x / 2
+		pivot_offset.x = fix_size.y / 2
+		
+		#set_size(fix_size)
+		#reset_size()
+		scale = Vector2()
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "scale", Vector2(1,1), 0.5).set_trans(Tween.TRANS_BOUNCE)
+		
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	else:

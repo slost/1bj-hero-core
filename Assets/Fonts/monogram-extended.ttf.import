@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bgi60ucq16uu"
-path="res://.godot/imported/squealer.ttf-825cf0b7937b6f872a4dcca68169557b.fontdata"
+uid="uid://dhpdtnasofto8"
+path="res://.godot/imported/monogram-extended.ttf-bc1a225ec21e4494a163ed17d538c2a5.fontdata"
 
 [deps]
 
-source_file="res://Assets/squealer.ttf"
-dest_files=["res://.godot/imported/squealer.ttf-825cf0b7937b6f872a4dcca68169557b.fontdata"]
+source_file="res://Assets/Fonts/monogram-extended.ttf"
+dest_files=["res://.godot/imported/monogram-extended.ttf-bc1a225ec21e4494a163ed17d538c2a5.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -31,7 +31,8 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
 }]
 language_support={}
 script_support={}
