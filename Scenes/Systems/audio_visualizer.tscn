@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccj62greqfy2y"]
+
+[ext_resource type="Script" path="res://Scenes/Systems/audio_visualizer.gd" id="1_3yuax"]
+[ext_resource type="AudioStream" uid="uid://3f62s5oe1gpf" path="res://Assets/Audio/Gameplay/kick.wav" id="2_k3cpp"]
+
+[node name="AudioVisualizer" type="Node2D"]
+script = ExtResource("1_3yuax")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k3cpp")
+autoplay = true
