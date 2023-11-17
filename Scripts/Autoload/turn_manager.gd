@@ -8,8 +8,8 @@ var turn_number: int = 0
 
 
 # สร้างลำดับเทิร์น
-func create_turn_queue():
-	for i in Global.map.get_children():
+func create_turn_queue(_root: Node):
+	for i in _root.get_children():
 		if i is CharacterBody2D:
 			add_turn(i)
 
@@ -45,20 +45,24 @@ func debug():
 
 func on_end_turn():
 	Global.turn_queue.pop_front()
-	if Global.turn_queue.size() == 0:
-		create_turn_queue()
+	if Global.turn_queue.size() == 0: # ถ้าคิวเทิร์นหมดจะสร้างคิวเทิร์นใหม่
+		create_turn_queue(Global.map)
 		print_debug(Global.turn_queue[0].data)
 
-var turn
+var turn = 0.0
+
 
 func _process(_delta):
-	
-	if Global.turn_queue.size() > 0:
+	if Global.turn_queue:
 		turn = Global.turn_queue[0]
 		turn.data.time -= _delta
 		if turn.data.time <= 0.0:
 			on_end_turn()
+			turn.data.time = 0
+			if Global.turn_queue.size() > 0:
+				turn.data.time = Global.turn_queue[0].data.time
 	else:
 		turn_number = 0
+		
 
 			

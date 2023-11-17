@@ -24,7 +24,6 @@ const SCALE_VEC = Vector2(4, 4)
 var tempo: float
 var bars_init: Array = [1, 1, 1, 0.0]
 var bars: Array = bars_init
-var sub_bar: int = 1
 var seconds_per_bar: float
 
 # Node
@@ -41,7 +40,6 @@ var turn: int
 func restart_game():
 	turn_queue = []
 	bars = bars_init
-	sub_bar = 1
 	print_debug("Restarted")
 
 

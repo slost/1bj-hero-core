@@ -70,11 +70,9 @@ func spawn_skill_from_id(_id: int) -> void:
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_projectile: PackedScene,_data: Dictionary) -> void:
 	var proj = _projectile.instantiate()
-	print(_data)
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = Lib.get_direction(_data.direction)
-	print(proj.direction)
 	proj.caster = caster
 	$"..".add_child(proj)
 	

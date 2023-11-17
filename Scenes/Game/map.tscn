@@ -17,6 +17,10 @@ sources/0 = SubResource("TileSetAtlasSource_peoo2")
 
 [node name="Map" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("2_ljpgr")]
+editor_description = "ผู้เล่นไง"
+position = Vector2(766, 367)
+
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_53ayf")
@@ -31,10 +35,6 @@ scale = Vector2(4, 4)
 position = Vector2(800, 160)
 scale = Vector2(4, 4)
 move_behavior = 3
-
-[node name="Player" parent="." instance=ExtResource("2_ljpgr")]
-editor_description = "ผู้เล่นไง"
-position = Vector2(766, 367)
 
 [node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
 
