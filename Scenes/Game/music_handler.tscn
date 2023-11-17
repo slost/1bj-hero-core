@@ -6,7 +6,6 @@
 
 [node name="MusicHandler" type="Node"]
 script = ExtResource("1_lu2mf")
-tempo = 100.0
 
 [node name="Kick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_bvbym")

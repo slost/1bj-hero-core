@@ -6,6 +6,11 @@ var palette: Array = [Color.html("#000000"), Color(128.0, 0.0, 128.0, 1.0)]
 var palettes: Array = [palette] # อาเรย์ถาดสี (เผื่อทำระบบเปลี่ยนถาดสี)
 
 # Gamemode
+var options: Dictionary = {
+	"crt" = true,
+	"noise" = true
+}
+
 var is_alpha_mode: bool = true # โหมดแสดงผลความโปร่งใส
 var is_debugging: bool = true
 
@@ -27,6 +32,7 @@ var map: Node
 var player: Node
 var musicH: Node
 var dialogCanvas: Node
+var debugTool: Node
 
 # Game States
 var turn_queue: Array = [] # ใช้เก็บคิวเทิร์น
@@ -40,4 +46,8 @@ func restart_game():
 
 
 func _process(_delta):
+	if options["crt"] == true:
+		debugTool.filter.visible = true
+	else:
+		debugTool.filter.visible = false
 	seconds_per_bar = Lib.get_seconds_per_bar(tempo)

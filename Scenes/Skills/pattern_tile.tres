@@ -38,8 +38,6 @@ texture = ExtResource("1_2tp2h")
 4:0/0 = 0
 
 [resource]
-custom_data_layer_0/name = "type"
+custom_data_layer_0/name = "direction"
 custom_data_layer_0/type = 21
-custom_data_layer_1/name = ""
-custom_data_layer_1/type = 0
 sources/0 = SubResource("TileSetAtlasSource_oh37t")

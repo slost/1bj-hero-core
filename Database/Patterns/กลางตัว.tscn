@@ -6,5 +6,6 @@
 [node name="กลางตัว" type="TileMap"]
 tile_set = ExtResource("1_4alxr")
 format = 2
+layer_0/name = "direction"
 layer_0/tile_data = PackedInt32Array(0, 131072, 2)
 script = ExtResource("2_ua0ym")

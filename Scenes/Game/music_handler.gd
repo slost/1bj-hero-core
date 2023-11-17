@@ -2,6 +2,7 @@ extends Node
 
 @export var tempo: float = 300
 @export var listener: Node
+@export var is_metronome_enabled: bool
 
 var time: float = 0.0
 var current_bar: int = 1
@@ -58,7 +59,8 @@ func _process(_delta) -> void:
 		sub_bar = 1
 		current_bar += 1
 		
-	play_metronome()
+	if is_metronome_enabled:
+		play_metronome()
 	
 func play_metronome():
 	if bars[1] == 1:

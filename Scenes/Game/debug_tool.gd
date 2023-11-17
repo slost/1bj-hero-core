@@ -5,6 +5,8 @@ extends Node
 @export var map: Node
 @export var filter: Node
 
+func _init():
+	Global.debugTool = self
 
 func _input(_event):
 	if Input.is_action_pressed("debug_restart"):
@@ -16,7 +18,12 @@ func _input(_event):
 		musicH.tempo -= 2
 	if Input.is_action_pressed("debug_toggle_filter"):
 		for i in filter.get_children():
-			i.visible = false
+			if Global.options["crt"] == false:
+				Global.options["crt"] = true
+				i.visible = true
+			else:
+				Global.options["crt"] = false	
+				i.visible = false
 
 func _process(_delta):
 	if Global.is_debugging:

@@ -17,7 +17,7 @@ Skill: resource = {
 @onready var caster: Node = $"../.."
 
 
-var sub_bar: int = 1
+var bar_counter: int = 1
 var hostile: Node
 var patterns: Array = []
 var current_turn: Turn
@@ -32,65 +32,51 @@ func _ready():
 	caster = $"../.."
 	set_hostile()
 
+var bar_to_spawn: int = 3
+
+var beat: Array = ["1","1", "1", "2"]
 
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
 	if current_turn.data.character == caster:
-		if Global.sub_bar >= sub_bar:
-			spawn_skill(0)
-			sub_bar += 1
+		if Global.bars[0] >= bar_counter:
+			process_beat()
+			bar_counter += 1
 	else:
-		sub_bar = Global.sub_bar
+		bar_counter = Global.bars[0]
+
+
+# ประมวลผลการสปอนจากบีท
+func process_beat():
+	for i in beat:
+		if beat != null:
+			if Global.bars[0] % beat.find(beat) == 0:
+				spawn_skill_from_id(0)
 		
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
-func spawn_skill(_id: int) -> void:
+func spawn_skill_from_id(_id: int) -> void:
 	var skill = skills[_id]
-	print(skill)
 	var proj = skill.projectile
 	var pattern = skill.pattern.instantiate()
-	var pattern_tiles = pattern.get_pattern_tiles()
-	print(pattern_tiles)
-	print(skill.pattern)
-	print(pattern.name)
-	print_debug(pattern_tiles)
-	for tile in pattern_tiles:
-		print(tile)
-		spawn_projectile(proj, tile[0])
+	var pattern_data = Lib.get_pattern_data(pattern)
+	print_debug(pattern_data)
+	for tile in pattern_data["direction"]:
+		spawn_projectile(proj, tile)
 	
 
 # สปอนกระสุนจากซีนกระสุน
-func spawn_projectile(_projectile: PackedScene,_tile: Vector2) -> void:
+func spawn_projectile(_projectile: PackedScene,_data: Dictionary) -> void:
 	var proj = _projectile.instantiate()
 	proj.global_position = caster.global_position + \
-		(caster.scale * _tile * Global.TILE_RES)
+		(caster.scale * _data.position * Global.TILE_RES)
 	proj.caster = caster
 	$"..".add_child(proj)
-	print(caster.global_position)
-	print_debug("spawnned "  + str(proj.name) + str(proj.global_position))
+	# print_debug("spawnned "  + str(proj.name) + str(proj.global_position))
 	
-
-# ใช้สปอนสกิล arg0 = id skill, arg1 = paremeters (จะใส่ไม่ใส่ก็ได้)
 """
 func spawn_projectile(_projectile: String, _params = null) -> void:
-	var spawn_loc = _params.get("spawn_loc", Vector2(0, 0)) # ตำแหน่งสปอน
 	var spawn_dist = _params.get("spawn_dist", 0) # ระยะห่างจากตำแหน่งสปอน
-	var proj_scale = _params.get("proj_scale", 1) # ขนาด projectile
-	var proj_dir = _params.get("proj_dir", Vector2(0, 0)) 
-	var spawn_position = caster.global_position \
-	+ ( (spawn_loc * Global.TILE_SIZE  * caster.scale) ) * (spawn_dist + 1)
-	proj.scale = proj_scale * Global.SCALE_VEC
-	proj.global_position = spawn_position
-	proj.target = (proj_dir - proj.global_position).normalized()
-	$"..".add_child(proj)
-"""
-	
-"""
-func spawn_projectile_pattern(_skill: String, _pattern: String, _params = null) -> void:
-	var spawn_dist = _params.get("spawn_dist", 0)
-	# var pattern_tiles = pattern.get_pattern_tiles()
-	# print_debug(pattern_tiles)
-	
 """
 		

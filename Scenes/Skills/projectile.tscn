@@ -39,7 +39,7 @@ sources/0 = SubResource("TileSetAtlasSource_hrhuq")
 
 [node name="Projectile" type="Area2D" groups=["projectile"]]
 script = ExtResource("1_4xik7")
-scale_size = 2
+size_scale = 8
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.5
