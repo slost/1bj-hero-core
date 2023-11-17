@@ -18,5 +18,5 @@ func _process(delta):
 
 
 func _on_pressed():
-	DialogManger.start_dialog( Global.map.get_node("Player").global_position, text_dialog)
-	#DialogManger.start_dialog(Vector2(), text_dialog, true)
+	#DialogManger.start_dialog( Global.map.get_node("Player").position, text_dialog)
+	DialogManger.start_dialog(Vector2(), text_dialog, true)

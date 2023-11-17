@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ber51fa5fh7"]
+[gd_scene load_steps=9 format=3 uid="uid://3ber51fa5fh7"]
 
 [ext_resource type="Texture2D" uid="uid://djrrvckrl3jnw" path="res://Assets/Systems/window.png" id="1_dp1qx"]
 [ext_resource type="Script" path="res://Scenes/Systems/text_box.gd" id="1_n5obs"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="3_rlchv"]
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="4_casql"]
+[ext_resource type="AudioStream" uid="uid://bn32embqsfjfd" path="res://Assets/Audio/SE/beep.wav" id="5_gyyld"]
 
 [sub_resource type="Animation" id="Animation_xcsk4"]
 length = 0.001
@@ -138,5 +139,8 @@ libraries = {
 "": SubResource("AnimationLibrary_t68qf")
 }
 autoplay = "cursor_dialog"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gyyld")
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

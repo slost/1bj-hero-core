@@ -45,9 +45,6 @@ func _show_text_box():
 		var fix_box = Global.dialogCanvas.get_node("PositionTextBox")#Global.map.get_node("DialogCanvasLayer/PositionTextBox")
 		text_box_position = fix_box.position
 		
-		print_debug(Global.dialogCanvas.get_node("PositionTextBox").position)
-		print_debug(Global.dialogCanvas.get_node("TextBox - DEBUG").position)
-		
 		#text_box.set_position(text_box_position)
 		#text_box.set_anchors_preset(Control.PRESET_CENTER)
 		#text_box.position.x = text_box_position.x + text_box_position.x / 2
@@ -57,7 +54,10 @@ func _show_text_box():
 		#text_box.set_anchors_preset(Control.PRESET_CENTER, true)
 		
 	else:
-		get_tree().root.add_child(text_box)
+		#get_tree().root.add_child(text_box)
+		Global.dialogCanvas.add_child(text_box)
+		text_box.pivot_offset.x = text_box.size.x / 2
+		text_box.pivot_offset.y = text_box.size.y / 2
 	text_box.global_position = text_box_position
 	
 	text_box.display_text(dialog_lines[current_line_index])
@@ -65,7 +65,8 @@ func _show_text_box():
 
 func _on_text_box_finished_displaying():
 	can_advance_line = true
-	text_box.show_cursor_dialog()
+	if is_fix_massagebox:
+		text_box.show_cursor_dialog()
 
 func _unhandled_input(event):
 	if (

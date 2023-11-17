@@ -25,7 +25,11 @@ enum MOVE_TYPE {
 	DIRECT,
 	ROUNDED, # เดินแบบวงกลมล้อมผู้เล่น
 	ROUNDED_TO_PLYER, # เดินแบบวงกลมล้อมผู้เล่นก่อน จากนั้นจะค่อย ๆ ขยับเข้าใกล้ผู้เล่นแบบวงกลม
-	ROUNDED_CLOSE_PLYER  # ค่อย ๆ ขยับเข้าใกล้ผู้เล่นแบบวงกลม
+	ROUNDED_CLOSE_PLYER,  # ค่อย ๆ ขยับเข้าใกล้ผู้เล่นแบบวงกลม
+	
+	ROUNDED_THEN_RUSH,
+	WALK_THEN_STOP,
+	
 }
 
 var delta : float
@@ -43,6 +47,11 @@ var round_move_timer = round_move_timer_init
 var error_distance = 5 # ค่าความคลาดเคลื่อนที่ยอมรับได้ (สำหรับการเช็คว่าวิ่งอยู่ในระยะวงกลม)
 var rate_close_player = 20 # อัตราการเดินเข้าใกล้ผู้เล่น (สำหรับการเช็คเดินเข้าใกล้แบบวงกลม)
 
+# ใช้จับเวลาว่าเดินแล้วหยุด เพื่อเปลี่ยนสถานะ
+var move_timer_init = 3
+var move_timer = move_timer_init 
+var stop_timer_init = 3
+var stop_timer = stop_timer_init 
 
 func _ready():
 	scale = Vector2(8, 8)
@@ -70,14 +79,34 @@ func _process(_delta) -> void:
 func process_state():
 	match current_state:
 		STATE.IDLE:
-			pass
+			update_idle_state()
 		STATE.CHASE:
 			match move_behavior:
-				MOVE_TYPE.DIRECT:
-					var direction = (player.global_position - global_position).normalized()
-					velocity = direction * stats.base_speed * 10
-				MOVE_TYPE.ROUNDED, MOVE_TYPE.ROUNDED_TO_PLYER, MOVE_TYPE.ROUNDED_CLOSE_PLYER:
+				MOVE_TYPE.DIRECT, MOVE_TYPE.WALK_THEN_STOP:
+					move_direct()
+				MOVE_TYPE.ROUNDED, MOVE_TYPE.ROUNDED_TO_PLYER, MOVE_TYPE.ROUNDED_CLOSE_PLYER, MOVE_TYPE.ROUNDED_THEN_RUSH:
 					move_round()
+
+func update_idle_state():
+	velocity = Vector2.ZERO
+	if move_behavior == MOVE_TYPE.WALK_THEN_STOP:
+		if stop_timer > 0:
+			stop_timer -= delta
+		else:
+			stop_timer = stop_timer_init
+			current_state = STATE.CHASE
+
+func move_direct():
+	var direction = (player.global_position - global_position).normalized()
+	velocity = direction * stats.base_speed * 10
+	
+	if move_behavior == MOVE_TYPE.WALK_THEN_STOP:
+		if move_timer > 0:
+			move_timer -= delta
+		else:
+			move_timer = move_timer_init
+			current_state = STATE.IDLE
+			return
 
 func move_round():
 	# ทำให้เดินเข้าไปใกล้ ๆ ผู้เล่น สำหรับ ROUNDED_CLOSE_PLYER
@@ -96,16 +125,22 @@ func move_round():
 	velocity = direction * speed
 	
 	# เช็คว่าเดินเป็นวงกลมแล้วยัง แล้วจะอัเดตสถานะการเดินเป็นเดินเข้าใกล้
-	if move_behavior == MOVE_TYPE.ROUNDED_TO_PLYER:
+	if move_behavior == MOVE_TYPE.ROUNDED_TO_PLYER || move_behavior == MOVE_TYPE.ROUNDED_THEN_RUSH:
 		if round_move_timer > 0:
 			if distance >= ( radius - error_distance ) && distance <= ( radius + error_distance ):
 				round_move_timer -= delta
 			else:
 				round_move_timer = round_move_timer_init
 		else:
-			move_behavior = MOVE_TYPE.ROUNDED_CLOSE_PLYER
+			match move_behavior:
+				MOVE_TYPE.ROUNDED_TO_PLYER:
+					move_behavior = MOVE_TYPE.ROUNDED_CLOSE_PLYER
+				MOVE_TYPE.ROUNDED_THEN_RUSH:
+					velocity = Vector2.ZERO
+					move_behavior = MOVE_TYPE.DIRECT
+					return
 	# เช็คว่าผู้เล่นเดินหนีออกจากระยะ ให้กลับไปสถานะเดินวงกลมล้อมใหม่
-	if move_behavior == MOVE_TYPE.ROUNDED_CLOSE_PLYER:
+	if move_behavior == MOVE_TYPE.ROUNDED_CLOSE_PLYER || move_behavior == MOVE_TYPE.ROUNDED_THEN_RUSH:
 		if distance >= ( radius + error_distance ):
 			# ผู้เล่นวิ่งหนีไปไกลแล้ว รีเซ็ตสถานะ + ตัวแปร
 			move_behavior = MOVE_TYPE.ROUNDED_TO_PLYER
