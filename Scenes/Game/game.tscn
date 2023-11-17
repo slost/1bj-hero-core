@@ -239,23 +239,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_4jfow")
 script = ExtResource("1_dv3o6")
-hudLabel = NodePath("RichTextLabel")
+hudLabel = NodePath("Interface/RichTextLabel")
 paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
 background = NodePath("Control/Screen/SubViewport/Background")
+
+[node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
+listener = NodePath("AudioListener2D")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
+current = true
+
+[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
+script = ExtResource("6_3wppi")
+musicH = NodePath("../MusicHandler")
+debugger = NodePath("Debugger")
+filter = NodePath("../Control/Screen/SubViewport/Filter")
+
+[node name="Debugger" type="Label" parent="DebugTool"]
+offset_right = 478.0
+offset_bottom = 193.0
+theme = ExtResource("9_4jfow")
+text = "qrwqwr
+qweqwe"
 
 [node name="Frame" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Interface" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interface"]
 position = Vector2(232, 952)
@@ -271,7 +295,23 @@ skew = -0.280998
 sprite_frames = SubResource("SpriteFrames_u0fh7")
 frame = 14
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Interface"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -126.0
+offset_right = 1920.0
+offset_bottom = -1.0
+grow_vertical = 0
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 70
+text = " TEMPO: 100"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Shader" type="ColorRect" parent="Interface"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -279,12 +319,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
-listener = NodePath("AudioListener2D")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
-current = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -414,35 +448,6 @@ grow_vertical = 2
 position = Vector2(-336, 183)
 color = Color(1, 1, 1, 0.509804)
 energy = 5.0
-
-[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
-script = ExtResource("6_3wppi")
-musicH = NodePath("../MusicHandler")
-debugger = NodePath("../Debugger")
-filter = NodePath("../Control/Screen/SubViewport/Filter")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -125.0
-offset_right = 1920.0
-grow_vertical = 0
-theme = ExtResource("9_4jfow")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 70
-text = " TEMPO: 100"
-scroll_active = false
-shortcut_keys_enabled = false
-
-[node name="Debugger" type="Label" parent="."]
-layout_mode = 0
-offset_right = 478.0
-offset_bottom = 193.0
-theme = ExtResource("9_4jfow")
-text = "qrwqwr
-qweqwe"
 
 [node name="ColorTint" type="ColorRect" parent="."]
 visible = false
