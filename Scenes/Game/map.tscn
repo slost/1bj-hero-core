@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
-[ext_resource type="Resource" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
+[ext_resource type="Resource" uid="uid://kmlh5p17thfg" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_peoo2"]
 texture = ExtResource("1_mynbq")
@@ -43,7 +43,6 @@ skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")
 [node name="MonsterDummy2" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(800, 160)
 scale = Vector2(4, 4)
-move_behavior = 3
 
 [node name="Node" type="Node" parent="MonsterDummy2"]
 
@@ -51,14 +50,19 @@ move_behavior = 3
 script = ExtResource("4_wq5wf")
 skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
 
-[node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
+[node name="MonsterDummy3" parent="." instance=ExtResource("3_qrfdy")]
+position = Vector2(1004, 367)
+scale = Vector2(4, 4)
+move_behavior = 5
 
-[node name="PositionTextBox" type="Control" parent="DialogCanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MonsterDummy4" parent="." instance=ExtResource("3_qrfdy")]
+position = Vector2(840, 568)
+scale = Vector2(4, 4)
+move_behavior = 6
+speed = 200
+
+[node name="Node" type="Node" parent="MonsterDummy4"]
+
+[node name="SkillSet2" type="Node" parent="MonsterDummy4/Node"]
+script = ExtResource("4_wq5wf")
+skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])

@@ -19,7 +19,7 @@ var delta: float
 var caster: Node
 var sound_file: String
 var soundNode: Node
-
+var velocity: Vector2
 
 func _ready() -> void:
 	if caster:
@@ -47,7 +47,7 @@ func _physics_process(_delta) -> void:
 	# scale -= scale * ( 60 / Global.tempo ) * 0.1
 	# if target:
 		# velocity = target * speed
-	var velocity = direction * speed
+	velocity = direction * speed
 	# process_visual()
 	translate(velocity)
 	process_duration() 

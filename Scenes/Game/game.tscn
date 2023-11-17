@@ -386,10 +386,10 @@ script = ExtResource("2_x5epm")
 offset_right = -314.752
 offset_bottom = -257.408
 
-[node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport"]
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
 script = ExtResource("8_sb75t")
 
-[node name="PositionTextBox" type="Control" parent="Control/Screen/SubViewport/DialogCanvasLayer"]
+[node name="PositionTextBox" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -405,15 +405,15 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(320, 96)
 
-[node name="TextBox - DEBUG" parent="Control/Screen/SubViewport/DialogCanvasLayer" instance=ExtResource("8_i5irp")]
+[node name="TextBox - DEBUG" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer" instance=ExtResource("8_i5irp")]
 visible = false
-offset_left = -320.0
-offset_top = 128.0
-offset_right = 320.0
-offset_bottom = 320.0
+offset_left = 632.0
+offset_top = 576.0
+offset_right = 1272.0
+offset_bottom = 768.0
 pivot_offset = Vector2(320, 96)
 
-[node name="Control" type="Control" parent="Control/Screen/SubViewport/DialogCanvasLayer"]
+[node name="Control" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 

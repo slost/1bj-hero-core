@@ -62,3 +62,8 @@ layer_0/tile_data = PackedInt32Array(0, 0, 1)
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_bn1v8")
 autoplay = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_2qbqd")

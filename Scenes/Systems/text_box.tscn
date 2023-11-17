@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ber51fa5fh7"]
+[gd_scene load_steps=9 format=3 uid="uid://3ber51fa5fh7"]
 
 [ext_resource type="Texture2D" uid="uid://djrrvckrl3jnw" path="res://Assets/Systems/window.png" id="1_dp1qx"]
 [ext_resource type="Script" path="res://Scenes/Systems/text_box.gd" id="1_n5obs"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="3_rlchv"]
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="4_casql"]
+[ext_resource type="AudioStream" uid="uid://bn32embqsfjfd" path="res://Assets/Audio/SE/beep.wav" id="5_gyyld"]
 
 [sub_resource type="Animation" id="Animation_xcsk4"]
 length = 0.001
@@ -92,18 +93,8 @@ _data = {
 }
 
 [node name="TextBox" type="MarginContainer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = -32.0
-offset_right = -51.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 29)
+offset_right = 41.0
+offset_bottom = 59.0
 script = ExtResource("1_n5obs")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -148,5 +139,8 @@ libraries = {
 "": SubResource("AnimationLibrary_t68qf")
 }
 autoplay = "cursor_dialog"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gyyld")
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
