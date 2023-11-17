@@ -461,6 +461,15 @@ color = Color(1, 0, 1, 0.172549)
 
 [node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
 
+[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
+material = SubResource("ShaderMaterial_s0gxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TestTextButton" type="Button" parent="UIOutScreenCanvas"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -474,14 +483,5 @@ pivot_offset = Vector2(128, 0)
 size_flags_horizontal = 0
 text = "ทดสอบข้อความ"
 script = ExtResource("8_0d1oi")
-
-[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
-material = SubResource("ShaderMaterial_s0gxm")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

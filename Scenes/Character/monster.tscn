@@ -65,3 +65,8 @@ texture = ExtResource("4_2s6df")
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
 material = ExtResource("6_tgagv")
 texture = ExtResource("4_2s6df")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_ta6hd")
