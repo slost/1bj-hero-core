@@ -56,3 +56,6 @@ func _physics_process(_delta) -> void:
 		get_input()
 		bar_counter += 1
 	move_and_slide()
+
+func knockback():
+	var knockbackDirection = -velocity

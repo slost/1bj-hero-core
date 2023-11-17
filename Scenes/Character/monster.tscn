@@ -19,6 +19,8 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("debugger", "spr") groups=["character", "monster"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_pmis6")
 is_look_at_player = true
 debugger = NodePath("Debugger")
