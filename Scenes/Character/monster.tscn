@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://caox48g08q8j4"]
+[gd_scene load_steps=8 format=3 uid="uid://caox48g08q8j4"]
 
 [ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_pmis6"]
 [ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_747x5"]
 [ext_resource type="Texture2D" uid="uid://7gpmglfkd8ra" path="res://Assets/Sprites/Characters/dummy_enemy_black.png" id="4_2s6df"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="6_n02me"]
 [ext_resource type="Material" uid="uid://bf4nvbmh55gr8" path="res://Materials/ดึ๋งๆ.tres" id="6_tgagv"]
-[ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="9_6tb0y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
 radius = 8.0
@@ -64,7 +63,3 @@ texture = ExtResource("4_2s6df")
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
 material = ExtResource("6_tgagv")
 texture = ExtResource("4_2s6df")
-
-[node name="Inventory" type="Node" parent="."]
-
-[node name="Item" parent="Inventory" instance=ExtResource("9_6tb0y")]

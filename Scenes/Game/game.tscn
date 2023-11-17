@@ -282,15 +282,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interface"]
-position = Vector2(232, 952)
-scale = Vector2(8, 8)
+position = Vector2(280, 999)
+scale = Vector2(16, 16)
 skew = -0.280998
 sprite_frames = SubResource("SpriteFrames_u0fh7")
 frame = 18
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interface"]
-position = Vector2(169, 712)
-scale = Vector2(8, 8)
+position = Vector2(149, 495)
+scale = Vector2(16, 16)
 skew = -0.280998
 sprite_frames = SubResource("SpriteFrames_u0fh7")
 frame = 14
