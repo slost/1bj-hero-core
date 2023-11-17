@@ -87,7 +87,6 @@ func get_projectile_direction(_direction: String):
 		return Lib.get_direction(_direction)
 	match _direction:
 		"nearest_enemy":
-			print("NEAREST ENEMY")
 			return (hostile.global_position - caster.global_position).normalized()
 	return Vector2.ZERO	
 	

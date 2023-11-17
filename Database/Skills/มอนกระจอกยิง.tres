@@ -11,6 +11,7 @@ sprite = ExtResource("4_3kc54")
 projectile = ExtResource("2_y8arg")
 pattern = ExtResource("1_4mb2t")
 sound_when_spawn = ""
+base_damage = 0
 scale_multiply = 2
 base_speed = 1
 duration = [1, 0, 0]
