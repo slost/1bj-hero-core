@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://3ber51fa5fh7"]
+[gd_scene load_steps=8 format=3 uid="uid://3ber51fa5fh7"]
 
 [ext_resource type="Texture2D" uid="uid://djrrvckrl3jnw" path="res://Assets/Systems/window.png" id="1_dp1qx"]
 [ext_resource type="Script" path="res://Scenes/Systems/text_box.gd" id="1_n5obs"]
-[ext_resource type="FontFile" uid="uid://bgi60ucq16uu" path="res://Assets/squealer.ttf" id="3_tw6xl"]
+[ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="3_rlchv"]
+[ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="4_casql"]
 
 [sub_resource type="Animation" id="Animation_xcsk4"]
 length = 0.001
@@ -131,9 +132,12 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme = ExtResource("3_rlchv")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_tw6xl")
-theme_override_font_sizes/font_size = 35
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_casql")
+theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]

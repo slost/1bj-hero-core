@@ -11,7 +11,8 @@ extends CharacterBody2D
 var move_speed: float
 var sub_bar: int = 1
 @onready var bars = Global.bars_init
-	
+
+@export var knockbackPower: int = 500
 
 func _ready() -> void:
 	animSpr.play("move_down")
@@ -56,3 +57,14 @@ func _physics_process(_delta) -> void:
 		get_input()
 		bar_counter += 1
 	move_and_slide()
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "HitBox":
+		# ลดเลือด
+		knockback(area.get_parent().velocity)
+
+func knockback(enemyVelocity: Vector2):
+	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
+	velocity = knockbackDirection
+	move_and_slide()
+	
