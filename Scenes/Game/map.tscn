@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=8 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
+[ext_resource type="Resource" uid="uid://br6clo88gttl5" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_peoo2"]
 texture = ExtResource("1_mynbq")
@@ -31,10 +33,22 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 131072, 0, 1, 65536, 0, 655
 position = Vector2(224, 160)
 scale = Vector2(4, 4)
 
+[node name="Node" type="Node" parent="MonsterDummy"]
+
+[node name="SkillSet" type="Node" parent="MonsterDummy/Node"]
+script = ExtResource("4_wq5wf")
+skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
+
 [node name="MonsterDummy2" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(800, 160)
 scale = Vector2(4, 4)
 move_behavior = 3
+
+[node name="Node" type="Node" parent="MonsterDummy2"]
+
+[node name="SkillSet2" type="Node" parent="MonsterDummy2/Node"]
+script = ExtResource("4_wq5wf")
+skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
 
 [node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
 

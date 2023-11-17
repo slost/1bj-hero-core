@@ -5,7 +5,8 @@ extends Node
 func get_character_speed(_base_speed: int, _scale:Vector2 ) -> float:
 	return (_base_speed * _scale.x) * (Global.tempo / 160) * (Global.TILE_SIZE  * Global.SCALE)
 	
-func get_direction(_direction: String) -> Vector2:
+
+func get_direction(_direction: String):
 	var direction: Vector2
 	match _direction:
 		"nw":
@@ -26,6 +27,8 @@ func get_direction(_direction: String) -> Vector2:
 			direction = Vector2.DOWN
 		"se":
 			direction = Vector2.ONE
+		_:
+			return null	
 	return direction
 			
 func get_seconds_per_bar(_tempo: float) -> float:

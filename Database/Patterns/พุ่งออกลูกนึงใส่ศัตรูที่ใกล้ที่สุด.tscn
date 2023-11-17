@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://demguegs83uqv"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_lc3yf"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_tfvw2"]
+
+[node name="กลางตัว" type="TileMap"]
+tile_set = ExtResource("1_lc3yf")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(0, 0, 5)
+script = ExtResource("2_tfvw2")

@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cewgw4y4rf720"]
+[gd_scene load_steps=2 format=3 uid="uid://cewgw4y4rf720"]
 
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="1_vgxpf"]
-[ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="2_1mkfq"]
 
 [node name="Item" type="Node"]
 script = ExtResource("1_vgxpf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("2_1mkfq")])

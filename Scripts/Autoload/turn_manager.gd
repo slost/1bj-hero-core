@@ -21,10 +21,9 @@ func add_turn(_character: Node):
 	turn_number += 1
 	_turn.data.time = Global.seconds_per_bar * 4
 	if _character == Global.player:
-		_turn.data.time *= 4
-	print(Global.seconds_per_bar)
+		pass
+		# _turn.data.time *= 4
 	Global.turn_queue.append(_turn)
-	debug()
 	
 
 # ใช้รีเทิร์นข้อมูลข้อมูลของเทิร์นนั้น ๆ
@@ -47,7 +46,6 @@ func on_end_turn():
 	Global.turn_queue.pop_front()
 	if Global.turn_queue.size() == 0: # ถ้าคิวเทิร์นหมดจะสร้างคิวเทิร์นใหม่
 		create_turn_queue(Global.map)
-		print_debug(Global.turn_queue[0].data)
 
 var turn = 0.0
 

@@ -11,7 +11,7 @@ const BASE_SPEED: int = 1
 ## ล็อคเป้าหมายหรือไม่
 @export var target_lock: bool = false 
 ## ขนาดที่จะคูณ
-@export var size_scale: int = 1
+@export var scale_multiply: int = 1
 
 var timer: float
 var delta: float
@@ -23,7 +23,7 @@ var soundNode: Node
 func _ready() -> void:
 	if caster:
 		scale = caster.scale
-	scale *= size_scale
+	scale *= scale_multiply
 	var id = Global.musicH.get_child_count() + 1
 	var sound = AudioStreamPlayer2D.new()
 	sound.stream = load("res://Assets/Audio/Gameplay/kick.tres")

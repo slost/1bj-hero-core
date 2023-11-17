@@ -4,6 +4,7 @@ class_name SkillSet
 
 ## สกิลที่จะมีในสกิลเซ็ตนี้
 @export var skills: Array[Skill] = []
+
 """
 Skill: resource = {
 	projectile = กระสุนที่จะสปอน
@@ -16,11 +17,21 @@ Skill: resource = {
 @onready var player: Node = $"../.."
 @onready var caster: Node = $"../.."
 
-
 var bar_counter: int = 1
 var hostile: Node
 var patterns: Array = []
 var current_turn: Turn
+
+
+var bar_to_spawn: int = 3
+
+var beat: Array = ["1","1", "1", "2"]
+
+
+func _ready():
+	# caster = $".."
+	set_hostile()
+
 
 func set_hostile() -> void:
 	if not caster == Global.player:
@@ -28,13 +39,6 @@ func set_hostile() -> void:
 	else:
 		hostile = Global.player # เดี๋ยวจะเปลี่ยนเป็น enemy
 
-func _ready():
-	caster = $"../.."
-	set_hostile()
-
-var bar_to_spawn: int = 3
-
-var beat: Array = ["1","1", "1", "2"]
 
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
@@ -72,9 +76,20 @@ func spawn_projectile(_projectile: PackedScene,_data: Dictionary) -> void:
 	var proj = _projectile.instantiate()
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
-	proj.direction = Lib.get_direction(_data.direction)
+	proj.direction = get_projectile_direction(_data.direction)
 	proj.caster = caster
 	$"..".add_child(proj)
+	
+
+# หาทิศทางที่กระสุนจะไป
+func get_projectile_direction(_direction: String):
+	if Lib.get_direction(_direction) is Vector2:
+		return Lib.get_direction(_direction)
+	match _direction:
+		"nearest_enemy":
+			print("NEAREST ENEMY")
+			return (hostile.global_position - caster.global_position).normalized()
+	return Vector2.ZERO	
 	
 """
 func spawn_projectile(_projectile: String, _params = null) -> void:
