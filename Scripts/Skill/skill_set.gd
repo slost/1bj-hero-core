@@ -51,7 +51,8 @@ func _process(_delta) -> void:
 func process_beat():
 	for i in beat:
 		if beat != null:
-			if Global.bars[0] % beat.find(beat) == 0:
+			#if Global.bars[0] % beat.find(beat) == 0:
+			if Global.bars[0] % 4 == 0:
 				spawn_skill_from_id(0)
 		
 		
@@ -61,7 +62,7 @@ func spawn_skill_from_id(_id: int) -> void:
 	var proj = skill.projectile
 	var pattern = skill.pattern.instantiate()
 	var pattern_data = Lib.get_pattern_data(pattern)
-	print_debug(pattern_data)
+	# print_debug(pattern_data)
 	for tile in pattern_data["direction"]:
 		spawn_projectile(proj, tile)
 	
@@ -69,11 +70,13 @@ func spawn_skill_from_id(_id: int) -> void:
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_projectile: PackedScene,_data: Dictionary) -> void:
 	var proj = _projectile.instantiate()
+	print(_data)
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
+	proj.direction = Lib.get_direction(_data.direction)
+	print(proj.direction)
 	proj.caster = caster
 	$"..".add_child(proj)
-	# print_debug("spawnned "  + str(proj.name) + str(proj.global_position))
 	
 """
 func spawn_projectile(_projectile: String, _params = null) -> void:

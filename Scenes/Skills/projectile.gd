@@ -41,23 +41,28 @@ func _physics_process(_delta) -> void:
 	delta = _delta
 	if target_lock:
 		direction = (target - global_position).normalized()
-	var speed = Lib.get_character_speed(BASE_SPEED, scale)
+	var speed = Lib.get_character_speed(BASE_SPEED, scale) \
+		* Global.seconds_per_bar * 0.25
 	# scale -= scale * ( 60 / Global.tempo ) * 0.1
 	# if target:
 		# velocity = target * speed
 	var velocity = direction * speed
 	# process_visual()
-	# translate(velocity)
+	translate(velocity)
 	process_duration() 
 	
-func process_visual() -> void:
-	if Global.is_alpha_mode:
-		modulate.a = 0.75
-
-
+	
 func process_duration() -> void:
 	timer += delta
 	if timer >= Global.seconds_per_bar:
 		if soundNode:
 			soundNode.queue_free()
 		queue_free()
+
+	
+func process_visual() -> void:
+	if Global.is_alpha_mode:
+		modulate.a = 0.75
+
+
+

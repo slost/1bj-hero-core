@@ -5,7 +5,29 @@ extends Node
 func get_character_speed(_base_speed: int, _scale:Vector2 ) -> float:
 	return (_base_speed * _scale.x) * (Global.tempo / 160) * (Global.TILE_SIZE  * Global.SCALE)
 	
-
+func get_direction(_direction: String) -> Vector2:
+	var direction: Vector2
+	match _direction:
+		"nw":
+			direction = -Vector2.ONE 
+		"n":
+			direction = Vector2.UP
+		"ne":
+			direction = Vector2(1,-1)
+		"w":
+			direction = Vector2.LEFT
+		"mid":
+			direction = Vector2.ZERO
+		"e":
+			direction = Vector2.RIGHT
+		"sw":
+			direction = Vector2(-1,1)
+		"s":
+			direction = Vector2.DOWN
+		"se":
+			direction = Vector2.ONE
+	return direction
+			
 func get_seconds_per_bar(_tempo: float) -> float:
 	return 60.0 / _tempo
 
@@ -33,10 +55,11 @@ func get_pattern_data(_pattern) -> Dictionary:
 		for cell in _pattern.get_used_cells(layer):
 			var tile: Dictionary = {}
 			tile["position"] = Vector2(cell.x, cell.y)
-			var cell_data = _pattern.get_cell_tile_data(layer, cell)
-			var data = cell_data.get_custom_data_by_layer_id(layer)
-			if data:
-				tile[data] = data
+			var cell_data: TileData = _pattern.get_cell_tile_data(layer, cell)
+			if cell_data:
+				var direction = cell_data.get_custom_data("direction")
+				if direction:
+					tile["direction"] = direction
 			layer_data.append(tile)
 		pattern_data[layer_name] = layer_data
 	return pattern_data

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
 [ext_resource type="Texture2D" uid="uid://081ttsje2npp" path="res://Assets/Sprites/Characters/knight_2.png" id="4_5e7dc"]
-[ext_resource type="PackedScene" uid="uid://b2ep33c6tw3as" path="res://Database/Patterns/รอบตัว.tscn" id="4_drg1l"]
+[ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="4_myo6y"]
 [ext_resource type="PackedScene" uid="uid://bs0q123k0y7c3" path="res://Scenes/Skills/projectile.tscn" id="5_d3egg"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="6_fnou0"]
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="7_0p6ad"]
@@ -20,7 +20,7 @@ shader_parameter/add_margins = true
 [sub_resource type="Resource" id="Resource_de6h5"]
 script = ExtResource("6_fnou0")
 projectile = ExtResource("5_d3egg")
-pattern = ExtResource("4_drg1l")
+pattern = ExtResource("4_myo6y")
 sound = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
