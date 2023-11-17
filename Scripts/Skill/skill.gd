@@ -1,8 +1,8 @@
 extends Resource
 class_name Skill
 
+## สไปรต์กระสุน
 @export var sprite: PackedScene
-@export var projectile: PackedScene
 ## รูปแบบของกลุ่มกระสุน เช่น ไปซ้าย อยู่เฉย ๆ และตำแหน่งของกระสุนทั้งหมด
 @export var pattern: PackedScene
 ## จังหวะเพลงที่จะสปอนแพทเทิร์นกระสุน

@@ -14,8 +14,8 @@ Skill: resource = {
 	}
 """
 
-@onready var player: Node = $"../.."
 @onready var caster: Node = $"../.."
+@onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
 
 var bar_counter: int = 1
 var hostile: Node
@@ -63,17 +63,16 @@ func process_beat():
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
 func spawn_skill_from_id(_id: int) -> void:
 	var skill = skills[_id]
-	var proj = skill.projectile
 	var pattern = skill.pattern.instantiate()
 	var pattern_data = Lib.get_pattern_data(pattern)
 	# print_debug(pattern_data)
 	for tile in pattern_data["direction"]:
-		spawn_projectile(proj, tile)
+		spawn_projectile(tile)
 	
 
 # สปอนกระสุนจากซีนกระสุน
-func spawn_projectile(_projectile: PackedScene,_data: Dictionary) -> void:
-	var proj = _projectile.instantiate()
+func spawn_projectile(_data: Dictionary) -> void:
+	var proj = projectile_scene.instantiate()
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)

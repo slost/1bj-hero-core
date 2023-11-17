@@ -1,214 +1,20 @@
-[gd_scene load_steps=47 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=21 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="Material" uid="uid://bv5dllnmwrgm7" path="res://Shaders/palette.tres" id="3_ut7rk"]
+[ext_resource type="PackedScene" uid="uid://dont532024t5y" path="res://Scenes/Systems/interface.tscn" id="5_71hrn"]
 [ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="7_8lpkb"]
 [ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="7_cgjvk"]
 [ext_resource type="Script" path="res://Scenes/Game/TestTextButton.gd" id="8_0d1oi"]
-[ext_resource type="Shader" path="res://Shaders/crt_fisheye.gdshader" id="8_4l0uk"]
 [ext_resource type="PackedScene" uid="uid://3ber51fa5fh7" path="res://Scenes/Systems/text_box.tscn" id="8_i5irp"]
 [ext_resource type="Script" path="res://Scenes/Game/DialogCanvasLayer.gd" id="8_sb75t"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 [ext_resource type="PackedScene" uid="uid://clylb38wvo4hh" path="res://Scenes/Systems/hud_player.tscn" id="9_rb7qm"]
-[ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="15_nf0p2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrvtr"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_es85t"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlatq"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ytu0r"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3cvs"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_at58e"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6kmwo"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3hdi"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ouoy"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(160, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4edb"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbra1"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6g3ja"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfvhb"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4mxe"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2oaa"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7c8i"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6h1ym"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4psj6"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wr3it"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(160, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gg2og"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77rgb"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnu1i"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcesb"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1e3io"]
-atlas = ExtResource("15_nf0p2")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u0fh7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xrvtr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_es85t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nlatq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ytu0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3cvs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_at58e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6kmwo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3hdi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ouoy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w4edb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbra1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6g3ja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rfvhb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m4mxe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2oaa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s7c8i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6h1ym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4psj6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wr3it")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gg2og")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77rgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnu1i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hcesb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1e3io")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_grg4r"]
-shader = ExtResource("7_cgjvk")
-shader_parameter/rain_amount = 1600.0
-shader_parameter/near_rain_length = 0.01
-shader_parameter/far_rain_length = 0.1
-shader_parameter/near_rain_width = 0.89
-shader_parameter/far_rain_width = 0.5
-shader_parameter/near_rain_transparency = 1.0
-shader_parameter/far_rain_transparency = 0.5
-shader_parameter/rain_color = Color(0, 0, 0, 1)
-shader_parameter/base_rain_speed = 0.5
-shader_parameter/additional_rain_speed = 0.5
-shader_parameter/slant = 0.329
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnx4q"]
-shader = ExtResource("8_4l0uk")
-shader_parameter/fisheye_strength = 1.0
+[ext_resource type="Material" uid="uid://c3qhteu5oxjsq" path="res://Materials/crt.tres" id="12_y8pnv"]
 
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
@@ -229,7 +35,21 @@ shader_parameter/movement_direction = Vector2(1, 1)
 shader_parameter/movement_speed = 0.5
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
 
-[node name="Game" type="Control" node_paths=PackedStringArray("hudLabel", "paletteShader", "background")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grg4r"]
+shader = ExtResource("7_cgjvk")
+shader_parameter/rain_amount = 1600.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.89
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0, 0, 0, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.329
+
+[node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background")]
 editor_description = "ตัวควบคุมเกม"
 layout_mode = 3
 anchors_preset = 15
@@ -239,14 +59,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_4jfow")
 script = ExtResource("1_dv3o6")
-hudLabel = NodePath("Interface/RichTextLabel")
 paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
 background = NodePath("Control/Screen/SubViewport/Background")
+
+[node name="HudLeft" type="Node2D" parent="."]
+position = Vector2(0, 800.65)
+rotation = -0.15708
+skew = 0.246091
+
+[node name="Interface" parent="HudLeft" instance=ExtResource("5_71hrn")]
 
 [node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
 listener = NodePath("AudioListener2D")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
+position = Vector2(60, 383)
 current = true
 
 [node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
@@ -256,6 +83,7 @@ debugger = NodePath("Debugger")
 filter = NodePath("../Control/Screen/SubViewport/Filter")
 
 [node name="Debugger" type="Label" parent="DebugTool"]
+visible = false
 offset_right = 478.0
 offset_bottom = 193.0
 theme = ExtResource("9_4jfow")
@@ -272,53 +100,6 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Interface" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interface"]
-position = Vector2(280, 999)
-scale = Vector2(16, 16)
-skew = -0.280998
-sprite_frames = SubResource("SpriteFrames_u0fh7")
-frame = 18
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interface"]
-position = Vector2(149, 495)
-scale = Vector2(16, 16)
-skew = -0.280998
-sprite_frames = SubResource("SpriteFrames_u0fh7")
-frame = 14
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Interface"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -126.0
-offset_right = 1920.0
-offset_bottom = -1.0
-grow_vertical = 0
-theme = ExtResource("9_4jfow")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 70
-text = " TEMPO: 100"
-scroll_active = false
-shortcut_keys_enabled = false
-
-[node name="Shader" type="ColorRect" parent="Interface"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -381,6 +162,7 @@ render_target_update_mode = 4
 script = ExtResource("2_x5epm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
+visible = false
 
 [node name="HudPlayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/CanvasLayer" instance=ExtResource("9_rb7qm")]
 offset_right = -314.752
@@ -419,25 +201,8 @@ anchors_preset = 0
 
 [node name="Filter" type="CanvasLayer" parent="Control/Screen/SubViewport"]
 
-[node name="Rain" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
-visible = false
-material = SubResource("ShaderMaterial_grg4r")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -643.0
-offset_top = -231.0
-offset_right = 644.0
-offset_bottom = -33.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.658824, 0.658824, 0.658824, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Control/Screen/SubViewport/Filter"]
-
 [node name="CRT" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
-material = SubResource("ShaderMaterial_gnx4q")
+material = ExtResource("12_y8pnv")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -483,5 +248,21 @@ pivot_offset = Vector2(128, 0)
 size_flags_horizontal = 0
 text = "ทดสอบข้อความ"
 script = ExtResource("8_0d1oi")
+
+[node name="Rain" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_grg4r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -231.0
+offset_right = 644.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658824, 0.658824, 0.658824, 0)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

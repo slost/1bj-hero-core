@@ -44,8 +44,9 @@ func restart_game():
 
 
 func _process(_delta):
-	if options["crt"] == true:
-		debugTool.filter.visible = true
-	else:
-		debugTool.filter.visible = false
-	seconds_per_bar = Lib.get_seconds_per_bar(tempo)
+	if debugTool:
+		if options["crt"] == true:
+			debugTool.filter.visible = true
+		else:
+			debugTool.filter.visible = false
+		seconds_per_bar = Lib.get_seconds_per_bar(tempo)

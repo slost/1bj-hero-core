@@ -37,6 +37,8 @@ layer_0/tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 2, 1, 0, 2, 65537, 0, 2,
 [node name="MonsterDummy" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(224, 160)
 scale = Vector2(4, 4)
+move_behavior = 1
+speed = 500
 
 [node name="Node" type="Node" parent="MonsterDummy"]
 
