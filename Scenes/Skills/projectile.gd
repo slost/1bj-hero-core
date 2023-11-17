@@ -13,6 +13,7 @@ const BASE_SPEED: int = 1
 ## ขนาดที่จะคูณ
 @export var scale_multiply: int = 1
 
+
 var timer: float
 var delta: float
 var caster: Node

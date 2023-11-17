@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://x3wv7hlvrgrw"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_3tcqj"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_nw7hf"]
+
+[node name="Lighting" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_3tcqj")
+frame = 10
+script = ExtResource("2_nw7hf")
