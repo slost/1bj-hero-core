@@ -441,7 +441,6 @@ playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/Te
 [node name="LeftSide" type="Node2D" parent="Interface"]
 position = Vector2(0, 800.65)
 rotation = -0.15708
-scale = Vector2(1, 1)
 skew = 0.254818
 
 [node name="Palette" type="SubViewportContainer" parent="Interface/LeftSide"]

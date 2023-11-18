@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://baexcn2yppls5"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_ojrlv"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_v8kwj"]
+
+[node name="ซ้ายขวา" type="TileMap"]
+tile_set = ExtResource("1_ojrlv")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(65535, 65536, 2, 1, 196608, 2)
+script = ExtResource("2_v8kwj")

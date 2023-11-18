@@ -14,6 +14,7 @@ var direction: Vector2
 @export var scale_multiply: int = 1
 
 
+var sound_path: String = "res://Assets/Audio/Gameplay/kick.tres"
 var timer: float
 var delta: float
 var caster: Node
@@ -31,7 +32,7 @@ func _ready() -> void:
 class Sound:
 	extends AudioStreamPlayer2D
 	func _init():
-		stream = load("res://Assets/Audio/Gameplay/kick.tres")
+		# stream = load(sound)
 		autoplay = true
 		max_distance = 6000
 	func _process(_delta):
@@ -48,6 +49,7 @@ func spawn_sound():
 		sound.bus = "Monster"
 	sound.global_position = self.global_position
 	sound.scale = self.scale
+	sound.stream = load(sound_path) 
 	Global.musicH.add_child(sound)
 
 	

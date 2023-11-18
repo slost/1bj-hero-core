@@ -11,7 +11,7 @@ class_name Monster
 @export var debugger: Node
 @export var spr: Node
 
-@onready var player = $"..".get_node("Player")
+@onready var player = Global.player
 @onready var stats: Dictionary = data.stats
 
 enum STATE {

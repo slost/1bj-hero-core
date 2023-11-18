@@ -53,11 +53,24 @@ func _process(_delta) -> void:
 
 # ประมวลผลการสปอนจากบีท
 func process_beat():
-	for i in beat:
-		if beat != null:
-			#if Global.bars[0] % beat.find(beat) == 0:
-			if Global.bars[0] % beat.find(beat) == 0:
-				spawn_skill_from_id(0)
+	var id = 0
+	for skill in skills:
+		print(skill)
+		print(id)
+		match skill.beat_test:
+			"1" : 
+				if Global.bars[1] % 1 == 0:
+					spawn_skill_from_id(id)
+			"2":
+				if Global.bars[0] % 2 == 0:
+					print(Global.bars[1] % 2)
+					spawn_skill_from_id(id)
+		id += 1
+				
+			# if beat != null:
+				#if Global.bars[0] % beat.find(beat) == 0:
+				# if Global.bars[0] % beat.find(beat) == 0:
+					# spawn_skill_from_id(0)
 		
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
@@ -67,8 +80,10 @@ func spawn_skill_from_id(_id: int) -> void:
 	var pattern_data = Lib.get_pattern_data(pattern)
 	# print_debug(pattern_data)
 	for tile in pattern_data["direction"]:
+		if skill.sound_when_spawn:
+			tile["sound"] = skill.sound_when_spawn
 		spawn_projectile(tile)
-	
+		print(tile)
 
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_data: Dictionary) -> void:
@@ -76,6 +91,7 @@ func spawn_projectile(_data: Dictionary) -> void:
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
+	proj.sound_path = _data.sound
 	proj.caster = caster
 	$"..".add_child(proj)
 	

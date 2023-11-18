@@ -40,7 +40,7 @@ func _process(_delta):
 		if Global.turn_queue:
 			var turn = Global.turn_queue[0]
 			add_text("Turn: %s" % turn.data.number)
-			add_text("# %s" % turn.data.character)
+			add_text("# %s" % turn.data.character.name)
 			add_text("Time left %ss" % (turn.data.time))
 		
 		add_text("\nMUSIC")

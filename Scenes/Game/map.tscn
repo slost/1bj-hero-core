@@ -52,23 +52,19 @@ scale = Vector2(4, 4)
 
 [node name="Node" type="Node" parent="MonsterDummy2"]
 
-[node name="SkillSet2" type="Node" parent="MonsterDummy2/Node"]
-script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
+[node name="Node" type="Node" parent="."]
 
-[node name="MonsterDummy3" parent="." instance=ExtResource("3_qrfdy")]
+[node name="MonsterDummy3" parent="Node" instance=ExtResource("3_qrfdy")]
+visible = false
 position = Vector2(1004, 367)
 scale = Vector2(4, 4)
 move_behavior = 5
 
-[node name="MonsterDummy4" parent="." instance=ExtResource("3_qrfdy")]
+[node name="MonsterDummy4" parent="Node" instance=ExtResource("3_qrfdy")]
+visible = false
 position = Vector2(840, 568)
 scale = Vector2(4, 4)
 move_behavior = 6
 speed = 200
 
-[node name="Node" type="Node" parent="MonsterDummy4"]
-
-[node name="SkillSet2" type="Node" parent="MonsterDummy4/Node"]
-script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
+[node name="Node" type="Node" parent="Node/MonsterDummy4"]

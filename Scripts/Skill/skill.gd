@@ -7,6 +7,7 @@ class_name Skill
 @export var pattern: PackedScene
 ## จังหวะเพลงที่จะสปอนแพทเทิร์นกระสุน
 @export var beat: PackedScene
+@export var beat_test: String = "1"
 ## เสียงที่จะปล่อยตอนปล่อยกระสุน
 @export_file() var sound_when_spawn: String
 
