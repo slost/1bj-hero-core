@@ -1,0 +1,131 @@
+[gd_scene load_steps=13 format=3 uid="uid://delfu1kfis7i0"]
+
+[ext_resource type="Script" path="res://Scenes/Character/monster.gd" id="1_eu4ni"]
+[ext_resource type="Script" path="res://Scenes/Character/stats.gd" id="2_hoqin"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_vb03d"]
+[ext_resource type="Texture2D" uid="uid://7gpmglfkd8ra" path="res://Assets/Sprites/Characters/dummy_enemy_black.png" id="4_odxrt"]
+[ext_resource type="Texture2D" uid="uid://bhvnpfkx5opg6" path="res://Assets/Sprites/Characters/monster.png" id="5_ore2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta6hd"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imyw7"]
+shader = ExtResource("3_vb03d")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akgdd"]
+atlas = ExtResource("5_ore2d")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qiu5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akgdd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 120.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0d48"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_w52f3"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rq6cj"]
+_data = {
+"idle": SubResource("Animation_w52f3")
+}
+
+[node name="Monster_Bat" type="CharacterBody2D" node_paths=PackedStringArray("debugger", "spr") groups=["character", "monster"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_eu4ni")
+move_behavior = 3
+speed = 350
+is_look_at_player = true
+debugger = NodePath("Debugger")
+spr = NodePath("Sprite")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 19.7639, -21.3313)
+width = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_ta6hd")
+
+[node name="Debugger" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+offset_top = -53.0
+offset_right = 304.0
+offset_bottom = 95.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[center]line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+[/center]"
+scroll_active = false
+
+[node name="Stats" type="Node2D" parent="."]
+script = ExtResource("2_hoqin")
+size_scale = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_imyw7")
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("4_odxrt")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+sprite_frames = SubResource("SpriteFrames_qiu5w")
+offset = Vector2(0, -8)
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_ta6hd")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_i0d48")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite/AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rq6cj")
+}
+autoplay = "idle"
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
