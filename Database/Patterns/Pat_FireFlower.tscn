@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://h4cbnectriv2"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_fuhin"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_esbq1"]
+
+[node name="PatFireFlower" type="TileMap"]
+tile_set = ExtResource("1_fuhin")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(-65536, 131072, 1, 65535, 65536, 2, 65536, 131072, 3, 1, 196608, 2, -65535, 131072, 2, -1, 131072, 2, 131071, 131072, 2, 65537, 131072, 2, -131070, 196608, 1, -65538, 65536, 1, 196606, 65536, 3, 131074, 196608, 3, 2, 196608, 2, 3, 196608, 2, 65534, 65536, 2, 65533, 65536, 2, -131072, 131072, 1, -196608, 131072, 1, 131072, 131072, 3, 196608, 131072, 3, 196605, 131072, 3, 131075, 131072, 3, -65539, 131072, 1, -131069, 131072, 1, -131074, 65536, 2, 262142, 65536, 2, 196610, 196608, 2, -196606, 196608, 2)
+script = ExtResource("2_esbq1")
