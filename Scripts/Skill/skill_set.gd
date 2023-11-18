@@ -82,17 +82,19 @@ func spawn_skill_from_id(_id: int) -> void:
 	for tile in pattern_data["direction"]:
 		if skill.sound_when_spawn:
 			tile["sound"] = skill.sound_when_spawn
+			tile["scale_multiplier"] = skill.scale_multiplier
 		spawn_projectile(tile)
 		# print(tile)
 
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_data: Dictionary) -> void:
 	var proj = projectile_scene.instantiate()
+	proj.caster = caster
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
 	proj.sound_path = _data.sound
-	proj.caster = caster
+	proj.scale_multiplier = _data.scale_multiplier
 	$"..".add_child(proj)
 	
 

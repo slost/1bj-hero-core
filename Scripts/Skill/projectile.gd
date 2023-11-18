@@ -3,16 +3,18 @@ extends Area2D
 class_name Projectile
 
 
-const BASE_SPEED: int = 1
+### Stats
 ## ระยะทางที่จะพุ่งไป (สามารถกำหนดได้ใน Skill Pattern)
+var base_speed: int = 1
 var direction: Vector2
-## เป้าหมายที่จะพุ่งไปหา
-@export var target: Node
+var target
 ## ล็อคเป้าหมายหรือไม่
-@export var target_lock: bool = false 
+var is_target_lock: bool = false 
 ## ขนาดที่จะคูณ
-@export var scale_multiply: int = 1
-
+var scale_multiplier: float = 1.0
+var knockback_power: float = 1.0
+var acceleration_rate: float = 1
+var damage:int = 10
 
 var sound_path: String
 var timer: float
@@ -25,16 +27,43 @@ var velocity: Vector2
 func _ready() -> void:
 	if caster:
 		scale = caster.scale
-	scale *= scale_multiply
+	scale *= scale_multiplier
 	spawn_sound()
+
+	
+func _physics_process(_delta) -> void:
+	delta = _delta
+	if is_target_lock: # ล็อคเป้าอ๊ะเปล่า
+		direction = (target.global_position - global_position).normalized()
+	var speed = Lib.get_character_speed(base_speed, scale) \
+		* Global.seconds_per_bar * 0.25
+	speed -= (acceleration_rate * 1000) * _delta
+	#scale -= scale * ( 60 / Global.tempo ) * 0.1
+	# if target:
+		# velocity = target * speed
+	velocity = (direction) * (speed)
+	translate(velocity)
+	process_duration() 
+	# process_visual()
+	
+	
+func process_duration() -> void:
+	timer += delta
+	if timer >= Global.seconds_per_bar:
+		queue_free()
+	
+func process_visual() -> void:
+	if Global.is_alpha_mode:
+		modulate.a = 0.75
 
 
 class Sound:
 	extends AudioStreamPlayer2D
 	func _init():
-		# stream = load(sound)
 		autoplay = true
 		max_distance = 6000
+	func _ready():
+		volume_db += 0.16 * scale.x
 	func _process(_delta):
 		if not playing:
 			queue_free()
@@ -52,31 +81,5 @@ func spawn_sound():
 	if sound_path:
 		sound.stream = load(sound_path) 
 	Global.musicH.add_child(sound)
-
-	
-func _physics_process(_delta) -> void:
-	delta = _delta
-	if target_lock: # ล็อคเป้าอ๊ะเปล่า
-		direction = (target.global_position - global_position).normalized()
-	var speed = Lib.get_character_speed(BASE_SPEED, scale) \
-		* Global.seconds_per_bar * 0.25
-	# scale -= scale * ( 60 / Global.tempo ) * 0.1
-	# if target:
-		# velocity = target * speed
-	velocity = direction * speed
-	# process_visual()
-	translate(velocity)
-	process_duration() 
-	
-	
-func process_duration() -> void:
-	timer += delta
-	if timer >= Global.seconds_per_bar:
-		queue_free()
-	
-func process_visual() -> void:
-	if Global.is_alpha_mode:
-		modulate.a = 0.75
-
 
 

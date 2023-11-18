@@ -15,17 +15,14 @@ class_name Skill
 ## ความเสียหายฐาน
 @export var base_damage: int
 ## ค่าที่จะนำไปคูณกับขนาด
-@export var scale_multiply: int = 1
+@export var scale_multiplier: int = 1
+@export var knockback_power: float = 1
 ## ความเร็ว
 @export var base_speed: int = 1
 ## ระยะเวลา (หน่วยเป็นบาร์ตามจังหวะเพลง)
 @export var duration: Array = [1, 0, 0]
 ## อัตราเร่ง
 @export var acceleration_rate: float
+@export var is_target_lock: bool
+@export var is_rotation_to_direction: bool
 
-
-
-func get_projectile_data() -> Dictionary:	
-	return {
-		"scale_multiply" = scale_multiply,
-	}
