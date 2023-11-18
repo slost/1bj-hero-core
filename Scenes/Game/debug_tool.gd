@@ -59,9 +59,7 @@ func _process(_delta):
 		add_text("Bar Timer: %s" % str(musicH.timer))
 		
 		
-		debugger.text +=  "Tempo: %s bpm\n" % musicH.tempo  + \
-		"Time: " + str(round(musicH.time)) + "s" + "\ncurrent_bar: "+ str(musicH.current_bar) + "." + str(musicH.sub_bar) 
-		
+		debugger.text +=  "Tempo: %s bpm" % musicH.tempo
 		
 func add_text(_text: String) -> void:
 	debugger.text += _text

@@ -58,6 +58,13 @@ func on_death():
 	print("YOU DIED")
 	# เข้าฉากเกมโอเวอร์
 	
+func get_item_amount() -> int:
+	var amount = 0
+	for i in get_children():
+		if i is Item:
+			amount += 1
+	return amount
+			
 
 func lose_all_items():
 	for i in get_children():

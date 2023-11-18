@@ -249,7 +249,6 @@ listener = NodePath("AudioListener2D")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
 position = Vector2(60, 383)
-current = true
 
 [node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
 script = ExtResource("6_3wppi")
