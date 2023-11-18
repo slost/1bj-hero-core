@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://bpyral4ksiesr"]
+
+[ext_resource type="PackedScene" uid="uid://dbbulxuetx4gt" path="res://Database/Patterns/Pat_Zegz.tscn" id="1_8hik1"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="1_jcndc"]
+[ext_resource type="PackedScene" uid="uid://b6e3hpa0ypnvu" path="res://Database/ProjectileSprites/ProjectileSprite.tscn" id="3_v4ukb"]
+
+[resource]
+script = ExtResource("1_jcndc")
+sprite = ExtResource("3_v4ukb")
+pattern = ExtResource("1_8hik1")
+beat_test = "1"
+sound_when_spawn = "res://Assets/Audio/Gameplay/snare.wav"
+base_damage = 2
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
