@@ -24,7 +24,11 @@ func _input(_event):
 			else:
 				Global.options["crt"] = false	
 				i.visible = false
-
+	if Input.is_action_just_pressed("debug_lose_all_items"):
+		Global.player.lose_all_items()
+	if Input.is_action_just_pressed("debug_lose_a_items"):
+		Global.player.lose_random_item()
+		
 func _process(_delta):
 	if Global.is_debugging:
 		debugger.text = ""
@@ -32,6 +36,8 @@ func _process(_delta):
 		add_text("Shortkey")
 		add_text("F1: RESTART")
 		add_text("F2: Toggle Filter")
+		add_text("F3: Lose ALL ITEMS")
+		add_text("F4: Lose a random ITEM")
 		add_text("NUMPAD +/-: change tempo")
 		
 		
