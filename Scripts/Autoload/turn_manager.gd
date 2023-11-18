@@ -21,7 +21,7 @@ func add_turn(_character: Node):
 	turn_number += 1
 	_turn.data.time = Global.seconds_per_bar * 3
 	if _character == Global.player:
-		_turn.data.time *= 2
+		_turn.data.time *= 4
 	Global.turn_queue.append(_turn)
 	
 
