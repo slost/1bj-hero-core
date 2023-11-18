@@ -63,8 +63,9 @@ class Sound:
 		autoplay = true
 		max_distance = 6000
 	func _ready():
-		volume_db += 0.16 * scale.x
+		volume_db += 0.005 * scale.x
 	func _process(_delta):
+		pitch_scale = (60 / 100) / Global.seconds_per_bar
 		if not playing:
 			queue_free()
 	

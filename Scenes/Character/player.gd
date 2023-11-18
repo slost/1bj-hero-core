@@ -48,7 +48,7 @@ func process_player():
 
 func process_item_power():
 	if $Heal:
-		hp+=99999
+		hp+= round(max_hp * 0.01)
 
 func on_bar_change():
 	get_input()

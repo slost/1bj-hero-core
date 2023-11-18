@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=42 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="6_2s4sa"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="6_fnou0"]
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="7_0p6ad"]
+[ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="11_6hayk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydo62"]
 shader = ExtResource("3_iilgi")
@@ -22,7 +23,7 @@ shader_parameter/add_margins = true
 [sub_resource type="Resource" id="Resource_de6h5"]
 script = ExtResource("6_fnou0")
 pattern = ExtResource("4_k7uqy")
-beat_test = "1"
+beat_test = ".1"
 sound_when_spawn = "res://Assets/Audio/Gameplay/kick.tres"
 base_damage = 0
 scale_multiplier = 16
@@ -36,10 +37,10 @@ is_rotation_to_direction = false
 [sub_resource type="Resource" id="Resource_8i6a4"]
 script = ExtResource("6_fnou0")
 pattern = ExtResource("4_myo6y")
-beat_test = "2"
+beat_test = ".2"
 sound_when_spawn = "res://Assets/Audio/Gameplay/snare.wav"
 base_damage = 0
-scale_multiplier = 1
+scale_multiplier = 0
 knockback_power = 1.0
 base_speed = 1
 duration = [1, 0, 0]
@@ -221,6 +222,81 @@ _data = {
 "blink": SubResource("Animation_f00ps")
 }
 
+[sub_resource type="Resource" id="Resource_hgl4j"]
+script = ExtResource("6_fnou0")
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/godspell.wav"
+base_damage = 5
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
+
+[sub_resource type="Resource" id="Resource_0ll04"]
+script = ExtResource("6_fnou0")
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/8b-ah.wav"
+base_damage = 5
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
+
+[sub_resource type="Resource" id="Resource_u45pj"]
+script = ExtResource("6_fnou0")
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/something.wav"
+base_damage = 5
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
+
+[sub_resource type="Resource" id="Resource_thdol"]
+script = ExtResource("6_fnou0")
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/1b_lute.wav"
+base_damage = 5
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
+
+[sub_resource type="Resource" id="Resource_8fju0"]
+script = ExtResource("6_fnou0")
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/vox_vg.wav"
+base_damage = 5
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animSpr") groups=["character", "player"]]
 material = SubResource("ShaderMaterial_ydo62")
 use_parent_material = true
@@ -269,11 +345,37 @@ libraries = {
 [node name="Wings" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
 
-[node name="FreeMovement" type="Node" parent="Wings"]
-script = ExtResource("3_g4w8r")
+[node name="SkillSet3" type="Node" parent="Wings"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_hgl4j")])
 
 [node name="Heal" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
+
+[node name="SkillSet2" type="Node" parent="Heal"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_0ll04")])
+
+[node name="Item" type="Node" parent="."]
+script = ExtResource("3_g4w8r")
+
+[node name="SkillSet3" type="Node" parent="Item"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_u45pj")])
+
+[node name="Lute" type="Node" parent="."]
+script = ExtResource("3_g4w8r")
+
+[node name="SkillSet4" type="Node" parent="Lute"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_thdol")])
+
+[node name="Lute2" type="Node" parent="."]
+script = ExtResource("3_g4w8r")
+
+[node name="SkillSet4" type="Node" parent="Lute2"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_8fju0")])
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

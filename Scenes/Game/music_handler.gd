@@ -21,6 +21,8 @@ func _init():
 	bars[1] = 1
 	
 	
+var current_turn: Turn
+	
 func _process(_delta) -> void:
 	
 	Global.musicH = self
@@ -59,8 +61,18 @@ func _process(_delta) -> void:
 		sub_bar = 1
 		current_bar += 1
 		
-	if is_metronome_enabled:
-		play_metronome()
+	# if is_metronome_enabled:
+	 # play_metronome()
+	
+	if Global.turn_queue.size() > 0:
+		current_turn = Global.turn_queue[0]
+		if current_turn.data.character == Global.player:
+			AudioServer.set_bus_mute(2, true)
+			
+			AudioServer.set_bus_mute(1, false)
+		else:
+			AudioServer.set_bus_mute(2, false)
+			AudioServer.set_bus_mute(1, true)
 	
 func play_metronome():
 	if bars[1] == 1:

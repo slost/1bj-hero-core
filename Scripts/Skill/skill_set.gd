@@ -55,15 +55,30 @@ func _process(_delta) -> void:
 func process_beat():
 	var id = 0
 	for skill in skills:
-		print(skill)
-		print(id)
 		match skill.beat_test:
 			"1" : 
-				if Global.bars[1] % 1 == 0:
+				if Global.bars[0] % 1 == 0:
 					spawn_skill_from_id(id)
 			"2":
 				if Global.bars[0] % 2 == 0:
-					print(Global.bars[1] % 2)
+					spawn_skill_from_id(id)
+			"3":
+				if Global.bars[0] % 3 == 0:
+					spawn_skill_from_id(id)	
+			"4":
+				if Global.bars[0] % 3 == 0:
+					spawn_skill_from_id(id)
+			"1b":
+				if (Global.bars[0] - 1) % 8 == 0:
+					spawn_skill_from_id(id)
+			"8b":
+				if (Global.bars[0] -1) % 16 == 0:
+					spawn_skill_from_id(id)
+			".1":
+				if Global.bars[1] % 1 == 0:
+					spawn_skill_from_id(id)	
+			".1":
+				if Global.bars[2] % 1 == 0:
 					spawn_skill_from_id(id)
 		id += 1
 				
