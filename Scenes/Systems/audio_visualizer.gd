@@ -1,7 +1,9 @@
 extends Node2D
 
+@export var bus: String = "Master"
 
 const VU_COUNT = 16
+
 const FREQ_MAX = 11050.0
 
 const WIDTH = 400
@@ -13,7 +15,15 @@ var spectrum
 
 
 func _ready():
-	spectrum = AudioServer.get_bus_effect_instance(0,0)
+	var bus_id: int
+	match bus:
+		"Master":
+			bus_id = 0
+		"Player":
+			bus_id = 1
+		"Monster":
+			bus_id = 2
+	spectrum = AudioServer.get_bus_effect_instance( bus_id,0)
 
 
 func _process(_delta):

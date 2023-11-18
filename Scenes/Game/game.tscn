@@ -478,6 +478,7 @@ position = Vector2(11, 121)
 [node name="AudioVisualizer" parent="Interface/LeftSide/Palette/SubViewport/HUD" instance=ExtResource("15_jpn56")]
 position = Vector2(28.445, 281.81)
 scale = Vector2(0.74, 1)
+bus = "Player"
 
 [node name="TempoPlayer" type="RichTextLabel" parent="Interface/LeftSide/Palette/SubViewport/HUD/AudioVisualizer"]
 anchors_preset = 2

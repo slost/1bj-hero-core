@@ -56,7 +56,7 @@ func process_beat():
 	for i in beat:
 		if beat != null:
 			#if Global.bars[0] % beat.find(beat) == 0:
-			if Global.bars[0] % 4 == 0:
+			if Global.bars[0] % beat.find(beat) == 0:
 				spawn_skill_from_id(0)
 		
 		
