@@ -7,7 +7,7 @@ class_name Character
 @export var animSpr: Node
 
 var is_blink = false
-@export var knockbackPower: int = 1600
+@export var knockback_power: int = 10
 
 # onready
 @onready var stats: Dictionary = data.stats
@@ -16,39 +16,56 @@ var move_speed: float
 var sub_bar: int = 1
 @onready var bars = Global.bars_init
 
+var max_hp = 9999
+var strength = 9999
+
+@onready var hp = max_hp
+
 
 func _ready() -> void:
 	animSpr.play("move_down")
-	# scale = Vector2(data.stats.size_scale, data.stats.size_scale)
-	scale = Global.SCALE_VEC
+	scale = Global.SCALE_VEC * stats.scale_multiplier
 	z_index = 2
 		
+func init_stat() -> void:
+	pass
+
 var bar_counter = 1
 	
 func _physics_process(_delta) -> void:
 	move_speed = Lib.get_character_speed(stats.base_speed, scale)
 	bars = Lib.process_bars(bars)
-	var bars_id = 0
+	var bars_id = 1
+	if bar_counter > 4:
+		bar_counter = 0
 	if bar_counter <= Global.bars[bars_id]:
-		pass
+		on_bar_change()
 		bar_counter += 1
 	move_and_slide()
 	process_player()
+	if hp <= 0:
+		on_death()
+	
+func on_death():
+	visible = false
+	
+func on_bar_change():
+	pass
 	
 func process_player():
 	pass	
 	
-		
 func hurt(_source) -> void:
 	# ลดเลือด
-	knockback(_source.velocity)
+	hp -= _source.damage * _source.caster.strength
+	knockback(_source)
 	
-func knockback(enemyVelocity: Vector2):
+func knockback(_source: Node):
 	print(is_blink)
 	if is_blink:
 		return
-	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
-	velocity = knockbackDirection
+	# knockbac kDirection
+	velocity = (_source.velocity - velocity).normalized() * (knockback_power) * Global.tempo
 	move_and_slide()
 	# animationPlayer.play("blink")
 	# is_blink = true # ฝากแก้ด้วย

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=9 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
+[ext_resource type="Resource" uid="uid://brmrjogk2rdpr" path="res://Database/Character/dummy.tres" id="4_gmtff"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
 [ext_resource type="Resource" uid="uid://br6clo88gttl5" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
 
@@ -35,9 +36,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 2, 1, 0, 2, 65537, 0, 2,
 
 [node name="MonsterDummy" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(224, 160)
-scale = Vector2(8, 8)
 move_behavior = 1
 speed = 500
+data = ExtResource("4_gmtff")
 
 [node name="Node" type="Node" parent="MonsterDummy"]
 

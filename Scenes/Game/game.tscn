@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=51 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
 [ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
 [ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="16_nnwlv"]
+[ext_resource type="Script" path="res://Scenes/Systems/hud_player.gd" id="18_5e34q"]
 [ext_resource type="PackedScene" uid="uid://b0qeriq1u0jqr" path="res://Scenes/Systems/playlist_label.tscn" id="18_7m1ic"]
+[ext_resource type="Script" path="res://Scenes/Systems/playlist_label.gd" id="20_04gik"]
 
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
@@ -343,6 +345,7 @@ script = ExtResource("2_x5epm")
 offset_left = 64.0
 offset_right = -266.752
 offset_bottom = -257.408
+script = ExtResource("18_5e34q")
 
 [node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
 script = ExtResource("8_sb75t")
@@ -515,9 +518,11 @@ offset_left = 2.0
 offset_top = -90.0
 offset_right = 2.0
 offset_bottom = -90.0
+script = ExtResource("18_5e34q")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlaylistLabel" parent="Interface/LeftSide/Palette/SubViewport" instance=ExtResource("18_7m1ic")]
 scale = Vector2(0.715, 0.715)
+script = ExtResource("20_04gik")
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

@@ -150,6 +150,7 @@ func update_debugger_text() -> void:
 	debugger.clear()
 	debugger.append_text("[center]")
 	debugger.append_text("[b]%s[/b]" % name)
+	debugger.append_text("[b]%s/%s[/b]" % [hp, max_hp])
 	debugger.append_text("\nState: " + str(current_state))
 	debugger.append_text("\nDistance: " + str(round(distance)))
 	debugger.append_text("\nround_move_timer: " + str(round(round_move_timer)))

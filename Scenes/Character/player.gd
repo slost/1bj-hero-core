@@ -5,7 +5,6 @@ class_name Player
 
 
 # onready
-
 @onready var animationPlayer = $AnimationPlayer
 
 
@@ -43,12 +42,14 @@ func play_animation():
 		
 func process_player():
 	var bars_id = 0
-	#if bar_counter <= Global.bars[bars_id]:
-	get_input()
 	play_animation()
-		#bar_counter += 1
 		
+func on_bar_change():
+	get_input()
 	
+func on_death():
+	print("YOU DIED")
+	# เข้าฉากเกมโอเวอร์
 		
 """func _physics_process(_delta) -> void:
 	bars = Lib.process_bars(bars)
