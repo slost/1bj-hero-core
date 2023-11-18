@@ -32,7 +32,7 @@ func _process(_delta) -> void:
 		listener.global_position = Global.player.global_position
 		listener.scale = Global.player.scale
 
-	Global.tempo = tempo
+	Global.tempo = (Global.player.get_item_amount() + 1) * 25
 	Global.bars = bars
 	
 	var sec_per_bar = Global.seconds_per_bar

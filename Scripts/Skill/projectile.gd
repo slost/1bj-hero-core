@@ -68,6 +68,8 @@ class Sound:
 		pitch_scale = (60 / 100) / Global.seconds_per_bar
 		if not playing:
 			queue_free()
+		if _delta >= Global.seconds_per_bar:
+			queue_free()
 	
 
 # สร้าง AudioStreamPlayer2D ในโหนด MusicHanlder
