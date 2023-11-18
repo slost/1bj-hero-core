@@ -62,6 +62,8 @@ func _ready():
 
 
 func _process(_delta) -> void:
+	if DialogManger.is_dialog_active:
+		return
 	delta = _delta
 	distance = global_transform.origin.distance_to(player.global_transform.origin)
 	var offset_x = cos(angle) * radius
