@@ -1,21 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://clylb38wvo4hh"]
 
+[ext_resource type="StyleBox" uid="uid://qgj3wt1wwy87" path="res://Assets/Systems/text_box_theme.tres" id="1_6ncgv"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="1_feikj"]
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="2_mtef5"]
 
 [sub_resource type="Theme" id="Theme_4m0q1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk156"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,7 +22,7 @@ offset_right = 167.0
 offset_bottom = 120.0
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_4m0q1")
-theme_override_styles/panel = SubResource("StyleBoxFlat_pk156")
+theme_override_styles/panel = ExtResource("1_6ncgv")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 clip_contents = false

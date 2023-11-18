@@ -1,8 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://dont532024t5y"]
+[gd_scene load_steps=27 format=3 uid="uid://dont532024t5y"]
 
 [ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="1_xy5ew"]
-[ext_resource type="Material" uid="uid://bv5dllnmwrgm7" path="res://Shaders/palette.tres" id="2_jos4y"]
-[ext_resource type="PackedScene" uid="uid://b6lhcsdhhknyf" path="res://Scenes/Systems/interface_side.tscn" id="3_yqug0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrvtr"]
 atlas = ExtResource("1_xy5ew")
@@ -189,41 +187,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(280, 999)
 scale = Vector2(16, 16)
 skew = -0.280998
 sprite_frames = SubResource("SpriteFrames_u0fh7")
 frame = 18
-
-[node name="Palette" type="SubViewportContainer" parent="."]
-z_index = 10
-material = ExtResource("2_jos4y")
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.233
-anchor_bottom = 1.0
-offset_top = -540.0
-offset_right = 0.639984
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="Palette"]
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-positional_shadow_atlas_16_bits = false
-size = Vector2i(448, 1080)
-render_target_update_mode = 4
-
-[node name="Black" type="ColorRect" parent="Palette/SubViewport"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Palette/SubViewport"]
-visible = false
-
-[node name="Side" parent="Palette/SubViewport" instance=ExtResource("3_yqug0")]

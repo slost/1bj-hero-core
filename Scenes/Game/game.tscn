@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=48 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="2_x5epm"]
 [ext_resource type="Material" uid="uid://bv5dllnmwrgm7" path="res://Shaders/palette.tres" id="3_ut7rk"]
-[ext_resource type="PackedScene" uid="uid://dont532024t5y" path="res://Scenes/Systems/interface.tscn" id="5_71hrn"]
 [ext_resource type="PackedScene" uid="uid://c837xeovaxpfe" path="res://Scenes/Game/music_handler.tscn" id="5_ewm0u"]
 [ext_resource type="Script" path="res://Scenes/Game/debug_tool.gd" id="6_3wppi"]
 [ext_resource type="Shader" path="res://Shaders/noise_offest_wiggle.gdshader" id="7_8lpkb"]
@@ -15,6 +14,9 @@
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 [ext_resource type="PackedScene" uid="uid://clylb38wvo4hh" path="res://Scenes/Systems/hud_player.tscn" id="9_rb7qm"]
 [ext_resource type="Material" uid="uid://c3qhteu5oxjsq" path="res://Materials/crt.tres" id="12_y8pnv"]
+[ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
+[ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
+[ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="16_nnwlv"]
 
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
@@ -49,6 +51,182 @@ shader_parameter/base_rain_speed = 0.5
 shader_parameter/additional_rain_speed = 0.5
 shader_parameter/slant = 0.329
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrvtr"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es85t"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlatq"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytu0r"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3cvs"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at58e"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kmwo"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3hdi"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ouoy"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4edb"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbra1"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g3ja"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfvhb"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4mxe"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2oaa"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7c8i"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h1ym"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4psj6"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr3it"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg2og"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77rgb"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnu1i"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcesb"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e3io"]
+atlas = ExtResource("16_nnwlv")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icvdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrvtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es85t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlatq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytu0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3cvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at58e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kmwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3hdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ouoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4edb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbra1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g3ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfvhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4mxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2oaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7c8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h1ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4psj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr3it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg2og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77rgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnu1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcesb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e3io")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background")]
 editor_description = "ตัวควบคุมเกม"
 layout_mode = 3
@@ -61,13 +239,6 @@ theme = ExtResource("9_4jfow")
 script = ExtResource("1_dv3o6")
 paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
 background = NodePath("Control/Screen/SubViewport/Background")
-
-[node name="HudLeft" type="Node2D" parent="."]
-position = Vector2(0, 800.65)
-rotation = -0.15708
-skew = 0.246091
-
-[node name="Interface" parent="HudLeft" instance=ExtResource("5_71hrn")]
 
 [node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
 listener = NodePath("AudioListener2D")
@@ -83,9 +254,12 @@ debugger = NodePath("Debugger")
 filter = NodePath("../Control/Screen/SubViewport/Filter")
 
 [node name="Debugger" type="Label" parent="DebugTool"]
-visible = false
-offset_right = 478.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -478.0
 offset_bottom = 193.0
+grow_horizontal = 0
 theme = ExtResource("9_4jfow")
 text = "qrwqwr
 qweqwe"
@@ -214,16 +388,6 @@ position = Vector2(-336, 183)
 color = Color(1, 1, 1, 0.509804)
 energy = 5.0
 
-[node name="ColorTint" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0, 1, 0.172549)
-
 [node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
 
 [node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
@@ -263,6 +427,91 @@ offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.658824, 0.658824, 0.658824, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Interface" type="Control" parent="." node_paths=PackedStringArray("playerTempoLabel")]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1077.0
+script = ExtResource("15_tblgl")
+playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/TempoPlayer")
+
+[node name="LeftSide" type="Node2D" parent="Interface"]
+position = Vector2(0, 800.65)
+rotation = -0.15708
+scale = Vector2(1, 1)
+skew = 0.254818
+
+[node name="Palette" type="SubViewportContainer" parent="Interface/LeftSide"]
+z_index = 10
+material = ExtResource("3_ut7rk")
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.233
+anchor_bottom = 1.0
+offset_left = 53.6829
+offset_top = -685.968
+offset_right = 501.683
+offset_bottom = 394.032
+grow_vertical = 2
+scale = Vector2(0.865, 0.865)
+
+[node name="SubViewport" type="SubViewport" parent="Interface/LeftSide/Palette"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+positional_shadow_atlas_16_bits = false
+size = Vector2i(448, 1080)
+render_target_update_mode = 4
+
+[node name="BG" type="ColorRect" parent="Interface/LeftSide/Palette/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" type="Node2D" parent="Interface/LeftSide/Palette/SubViewport"]
+position = Vector2(11, 121)
+
+[node name="AudioVisualizer" parent="Interface/LeftSide/Palette/SubViewport/HUD" instance=ExtResource("15_jpn56")]
+position = Vector2(28.445, 281.81)
+scale = Vector2(0.74, 1)
+
+[node name="TempoPlayer" type="RichTextLabel" parent="Interface/LeftSide/Palette/SubViewport/HUD/AudioVisualizer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -100.0
+offset_right = 376.0
+offset_bottom = 25.0
+grow_vertical = 0
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 70
+text = " TEMPO: 100"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interface/LeftSide/Palette/SubViewport/HUD"]
+position = Vector2(132.042, 721)
+rotation = -1.5708
+scale = Vector2(8, 8)
+skew = 0.279253
+sprite_frames = SubResource("SpriteFrames_icvdv")
+frame = 23
+
+[node name="HudPlayer" parent="Interface/LeftSide/Palette/SubViewport/HUD" instance=ExtResource("9_rb7qm")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2.0
+offset_top = -90.0
+offset_right = 2.0
+offset_bottom = -90.0
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

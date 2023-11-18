@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccj62greqfy2y"]
+[gd_scene load_steps=4 format=3 uid="uid://ccj62greqfy2y"]
 
 [ext_resource type="Script" path="res://Scenes/Systems/audio_visualizer.gd" id="1_3yuax"]
 [ext_resource type="AudioStream" uid="uid://3f62s5oe1gpf" path="res://Assets/Audio/Gameplay/kick.wav" id="2_k3cpp"]
+[ext_resource type="StyleBox" uid="uid://qgj3wt1wwy87" path="res://Assets/Systems/text_box_theme.tres" id="3_q4bd5"]
 
 [node name="AudioVisualizer" type="Node2D"]
-script = ExtResource("1_3yuax")
+z_index = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_k3cpp")
 autoplay = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_top = -8.0
+offset_right = 450.0
+offset_bottom = 128.0
+theme_override_styles/panel = ExtResource("3_q4bd5")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_3yuax")
