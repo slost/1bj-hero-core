@@ -227,6 +227,7 @@ texture = ExtResource("4_5e7dc")
 zoom = Vector2(0.75, 0.75)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_23hfq")
 sprite_frames = SubResource("SpriteFrames_7bkr4")
 animation = &"move_down"

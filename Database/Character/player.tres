@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_s3j02")
 stats = {
-"base_speed": 2,
+"base_speed": 4,
 "size_scale": 1
 }

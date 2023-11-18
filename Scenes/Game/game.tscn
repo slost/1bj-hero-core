@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=49 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
 [ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
 [ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="16_nnwlv"]
+[ext_resource type="PackedScene" uid="uid://b0qeriq1u0jqr" path="res://Scenes/Systems/playlist_label.tscn" id="18_7m1ic"]
 
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
@@ -241,6 +242,7 @@ paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
 background = NodePath("Control/Screen/SubViewport/Background")
 
 [node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
+tempo = 100.0
 listener = NodePath("AudioListener2D")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
@@ -336,10 +338,10 @@ render_target_update_mode = 4
 script = ExtResource("2_x5epm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
-visible = false
 
 [node name="HudPlayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/CanvasLayer" instance=ExtResource("9_rb7qm")]
-offset_right = -314.752
+offset_left = 64.0
+offset_right = -266.752
 offset_bottom = -257.408
 
 [node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
@@ -434,7 +436,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1077.0
 script = ExtResource("15_tblgl")
-playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/TempoPlayer")
+playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/TempoPlayerLabel")
 
 [node name="LeftSide" type="Node2D" parent="Interface"]
 position = Vector2(0, 800.65)
@@ -449,10 +451,10 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.233
 anchor_bottom = 1.0
-offset_left = 53.6829
-offset_top = -685.968
-offset_right = 501.683
-offset_bottom = 394.032
+offset_left = 34.6825
+offset_top = -754.12
+offset_right = 482.683
+offset_bottom = 520.88
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
 
@@ -476,11 +478,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(11, 121)
 
 [node name="AudioVisualizer" parent="Interface/LeftSide/Palette/SubViewport/HUD" instance=ExtResource("15_jpn56")]
-position = Vector2(28.445, 281.81)
+position = Vector2(0, 400)
 scale = Vector2(0.74, 1)
 bus = "Player"
 
-[node name="TempoPlayer" type="RichTextLabel" parent="Interface/LeftSide/Palette/SubViewport/HUD/AudioVisualizer"]
+[node name="TempoPlayerLabel" type="RichTextLabel" parent="Interface/LeftSide/Palette/SubViewport/HUD/AudioVisualizer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -506,6 +508,7 @@ sprite_frames = SubResource("SpriteFrames_icvdv")
 frame = 23
 
 [node name="HudPlayer" parent="Interface/LeftSide/Palette/SubViewport/HUD" instance=ExtResource("9_rb7qm")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -514,5 +517,8 @@ offset_top = -90.0
 offset_right = 2.0
 offset_bottom = -90.0
 metadata/_edit_use_anchors_ = true
+
+[node name="PlaylistLabel" parent="Interface/LeftSide/Palette/SubViewport" instance=ExtResource("18_7m1ic")]
+scale = Vector2(0.715, 0.715)
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0qeriq1u0jqr"]
+
+[ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="1_5y1n7"]
+
+[node name="PlaylistLabel" type="RichTextLabel"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.288021
+anchor_bottom = 1.46667
+offset_top = -1080.0
+offset_right = 326.0
+offset_bottom = -955.0
+grow_vertical = 0
+theme = ExtResource("1_5y1n7")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Playlist: HEROCORE
+[font_size={48}]Plaing: Knight.mp3
+Next:
+- Rogue.mp3 
+<File Missing!>
+- Priest.mp3
+<File Missing!>
+- Wizard.mp3
+<File Missing!>
+[/font_size]"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
