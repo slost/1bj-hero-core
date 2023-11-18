@@ -32,6 +32,8 @@ func init_stat() -> void:
 var bar_counter = 1
 	
 func _physics_process(_delta) -> void:
+	if DialogManger.is_dialog_active:
+		return
 	move_speed = Lib.get_character_speed(stats.base_speed, scale)
 	bars = Lib.process_bars(bars)
 	var bars_id = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=16 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
 [ext_resource type="Texture2D" uid="uid://0f6tc6t1b8nk" path="res://Assets/Sprites/Map/tile0.png" id="4_yqt88"]
 [ext_resource type="Resource" uid="uid://br6clo88gttl5" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
+[ext_resource type="PackedScene" uid="uid://bsfbga1rflh72" path="res://Scenes/Character/enemy/monster_wolf.tscn" id="9_35svg"]
+[ext_resource type="PackedScene" uid="uid://hhmu31l3ip3y" path="res://Scenes/Character/enemy/monster_flower.tscn" id="10_tjr3o"]
+[ext_resource type="PackedScene" uid="uid://delfu1kfis7i0" path="res://Scenes/Character/enemy/monster_bat.tscn" id="11_lv6c8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_peoo2"]
 texture = ExtResource("1_mynbq")
@@ -62,7 +65,6 @@ texture = ExtResource("3_gjmot")
 6:0/0 = 0
 6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_0/angular_velocity = 0.0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -84,7 +86,6 @@ texture = ExtResource("3_gjmot")
 6:1/0 = 0
 6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_0/angular_velocity = 0.0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1y5ko"]
 texture = ExtResource("4_yqt88")
@@ -195,3 +196,12 @@ move_behavior = 6
 speed = 200
 
 [node name="Node" type="Node" parent="Node/MonsterDummy4"]
+
+[node name="Monster_Bat" parent="." instance=ExtResource("11_lv6c8")]
+position = Vector2(1586, 101)
+
+[node name="Monster_Flower" parent="." instance=ExtResource("10_tjr3o")]
+position = Vector2(2024, 908)
+
+[node name="Monster_Wolf" parent="." instance=ExtResource("9_35svg")]
+position = Vector2(2883, 411)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=52 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 [ext_resource type="PackedScene" uid="uid://clylb38wvo4hh" path="res://Scenes/Systems/hud_player.tscn" id="9_rb7qm"]
 [ext_resource type="Material" uid="uid://c3qhteu5oxjsq" path="res://Materials/crt.tres" id="12_y8pnv"]
+[ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="14_rbyc1"]
 [ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
 [ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
 [ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="16_nnwlv"]
@@ -414,7 +415,10 @@ offset_bottom = 128.0
 grow_horizontal = 0
 pivot_offset = Vector2(128, 0)
 size_flags_horizontal = 0
-text = "ทดสอบข้อความ"
+focus_mode = 0
+theme_override_fonts/font = ExtResource("14_rbyc1")
+theme_override_font_sizes/font_size = 42
+text = "Pause"
 script = ExtResource("8_0d1oi")
 
 [node name="Rain" type="ColorRect" parent="."]
