@@ -32,6 +32,7 @@ func _input(_event):
 func _process(_delta):
 	if Global.is_debugging:
 		debugger.text = ""
+		add_text("HEROCORE v.1bj.0.0.0.666")
 		add_text("*DEBUGGER*")
 		add_text("Shortkey")
 		add_text("F1: RESTART")

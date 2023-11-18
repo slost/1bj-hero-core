@@ -71,7 +71,16 @@ func lose_all_items():
 		if i is Item:
 			i.queue_free()
 	print_debug("YOU LOSE ALL ITEMS!")
-
+	
+func hurt(_source) -> void:
+	# ลดเลือด
+	hp -= _source.damage * (_source.caster.strength * 0.1)
+	lose_random_item()
+	knockback(_source)
 
 func lose_random_item():
+	for i in get_children():
+		if i is Item:
+			i.queue_free()
+			return
 	print_debug("YOU LOSE A ITEM!")
