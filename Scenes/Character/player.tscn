@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=35 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
 [ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="3_g4w8r"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
 [ext_resource type="Texture2D" uid="uid://081ttsje2npp" path="res://Assets/Sprites/Characters/knight_2.png" id="4_5e7dc"]
 [ext_resource type="PackedScene" uid="uid://cs7kym5pr3w6s" path="res://Database/Patterns/กลางตัว.tscn" id="4_k7uqy"]
@@ -221,22 +220,25 @@ _data = {
 "blink": SubResource("Animation_f00ps")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animSpr") groups=["character", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inv", "animSpr") groups=["character", "player"]]
 material = SubResource("ShaderMaterial_ydo62")
 use_parent_material = true
 script = ExtResource("1_wsl20")
+inv = NodePath("Inventory")
 animSpr = NodePath("AnimatedSprite2D")
 
-[node name="HolyShield" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
+[node name="Inventory" type="Node" parent="."]
 
-[node name="KickingShield" parent="HolyShield" instance=ExtResource("2_fg3uk")]
+[node name="FreeMovement" type="Node" parent="Inventory"]
+
+[node name="SpeedBoot" type="Node" parent="Inventory"]
+
+[node name="HolyShield" type="Node" parent="Inventory"]
+
+[node name="KickingShield" parent="Inventory" instance=ExtResource("2_fg3uk")]
 skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_de6h5")])
 
-[node name="Fireball" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
-
-[node name="Fireball" type="Node" parent="Fireball"]
+[node name="Fireball" type="Node" parent="Inventory"]
 script = ExtResource("6_2s4sa")
 skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_8i6a4")])
 
@@ -265,15 +267,6 @@ shape = SubResource("CircleShape2D_45tkt")
 libraries = {
 "": SubResource("AnimationLibrary_ccj3b")
 }
-
-[node name="Wings" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
-
-[node name="FreeMovement" type="Node" parent="Wings"]
-script = ExtResource("3_g4w8r")
-
-[node name="Heal" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
