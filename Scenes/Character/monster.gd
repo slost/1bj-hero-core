@@ -1,8 +1,8 @@
-extends CharacterBody2D
+extends Character
 class_name Monster
 
 @export_category("Stats")
-@export var data: Resource = preload("res://Database/Character/dummy.tres")
+
 @export var move_behavior:MOVE_TYPE = MOVE_TYPE.NONE
 @export var speed = 300
 @export var is_look_at_player: bool = false
@@ -12,7 +12,6 @@ class_name Monster
 @export var spr: Node
 
 @onready var player = Global.player
-@onready var stats: Dictionary = data.stats
 
 enum STATE {
 	IDLE,

@@ -7,7 +7,7 @@ class_name Character
 @export var animSpr: Node
 
 var is_blink = false
-@export var knockbackPower: int = 5000
+@export var knockbackPower: int = 1600
 
 # onready
 @onready var stats: Dictionary = data.stats
@@ -59,10 +59,10 @@ func _on_hurt_box_area_entered(area):
 		return
 	var source = area.get_parent()
 	if source is Projectile:
-		if source.caster == self:
+		if source.caster == self or not source.caster:
 			return
-	print("GET HURT")	
-	hurt(source)
+		hurt(source)
+	
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "blink":
