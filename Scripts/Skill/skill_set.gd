@@ -83,7 +83,7 @@ func spawn_skill_from_id(_id: int) -> void:
 		if skill.sound_when_spawn:
 			tile["sound"] = skill.sound_when_spawn
 		spawn_projectile(tile)
-		print(tile)
+		# print(tile)
 
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_data: Dictionary) -> void:

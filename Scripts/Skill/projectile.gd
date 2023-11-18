@@ -14,7 +14,7 @@ var direction: Vector2
 @export var scale_multiply: int = 1
 
 
-var sound_path: String = "res://Assets/Audio/Gameplay/kick.tres"
+var sound_path: String
 var timer: float
 var delta: float
 var caster: Node
@@ -49,7 +49,8 @@ func spawn_sound():
 		sound.bus = "Monster"
 	sound.global_position = self.global_position
 	sound.scale = self.scale
-	sound.stream = load(sound_path) 
+	if sound_path:
+		sound.stream = load(sound_path) 
 	Global.musicH.add_child(sound)
 
 	

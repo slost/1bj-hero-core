@@ -1,22 +1,13 @@
-extends CharacterBody2D
+extends Character
+class_name Player
 
 # export
-@export var data: Resource = preload("res://Database/Character/player.tres")
-@export var inv: Node
-@export var animSpr: Node
+
 
 # onready
-@onready var stats: Dictionary = data.stats
-
-var move_speed: float
-var sub_bar: int = 1
-@onready var bars = Global.bars_init
 
 @onready var animationPlayer = $AnimationPlayer
 
-@export var knockbackPower: int = 500
-
-var is_blink = false
 
 func _ready() -> void:
 	animSpr.play("move_down")
@@ -50,33 +41,17 @@ func play_animation():
 		animSpr.set_frame(0)
 		animSpr.stop()
 		
-var bar_counter = 1
+func process_player():
+	var bars_id = 0
+	#if bar_counter <= Global.bars[bars_id]:
+	get_input()
+	play_animation()
+		#bar_counter += 1
+		
 	
-func _physics_process(_delta) -> void:
-	move_speed = Lib.get_character_speed(stats.base_speed, scale)
+		
+"""func _physics_process(_delta) -> void:
 	bars = Lib.process_bars(bars)
 	play_animation()
 	var bars_id = 0
-	if bar_counter <= Global.bars[bars_id]:
-		get_input()
-		bar_counter += 1
-	move_and_slide()
-
-func _on_hurt_box_area_entered(area):
-	if area.name == "HitBox":
-		# ลดเลือด
-		knockback(area.get_parent().velocity)
-
-func knockback(enemyVelocity: Vector2):
-	if is_blink:
-		return
-	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
-	velocity = knockbackDirection
-	move_and_slide()
-	animationPlayer.play("blink")
-	is_blink = true
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "blink":
-		is_blink = false
+	move_and_slide()"""
