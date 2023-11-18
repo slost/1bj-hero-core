@@ -20,7 +20,7 @@ func _ready() -> void:
 # การควบคุม
 func get_input() -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if not inv.has_node("FreeMovement"):
+	if not has_node("Wings"):
 		if abs(input_direction.x) > abs(input_direction.y):
 			input_direction.y = 0
 		else:
@@ -39,20 +39,32 @@ func play_animation():
 	else:
 		animSpr.set_frame(0)
 		animSpr.stop()
-		
+
+
 func process_player():
 	var bars_id = 0
 	play_animation()
-		
+	process_item_power()
+
+func process_item_power():
+	if $Heal:
+		hp+=99999
+
 func on_bar_change():
 	get_input()
+	
 	
 func on_death():
 	print("YOU DIED")
 	# เข้าฉากเกมโอเวอร์
-		
-"""func _physics_process(_delta) -> void:
-	bars = Lib.process_bars(bars)
-	play_animation()
-	var bars_id = 0
-	move_and_slide()"""
+	
+
+func lose_all_items():
+	for i in get_children():
+		if i is Item:
+			i.queue_free()
+	print_debug("YOU LOSE ALL ITEMS!")
+
+
+func lose_random_item():
+	print_debug("YOU LOSE A ITEM!")

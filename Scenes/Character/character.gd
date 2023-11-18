@@ -3,7 +3,6 @@ class_name Character
 
 # export
 @export var data: Resource = preload("res://Database/Character/player.tres")
-@export var inv: Node
 @export var animSpr: Node
 
 var is_blink = false
@@ -16,8 +15,8 @@ var move_speed: float
 var sub_bar: int = 1
 @onready var bars = Global.bars_init
 
-var max_hp = 9999
-var strength = 9999
+var max_hp = 999999
+var strength = 99
 
 @onready var hp = max_hp
 
@@ -57,7 +56,7 @@ func process_player():
 	
 func hurt(_source) -> void:
 	# ลดเลือด
-	hp -= _source.damage * _source.caster.strength
+	hp -= _source.damage * (_source.caster.strength * 0.1)
 	knockback(_source)
 	
 func knockback(_source: Node):
