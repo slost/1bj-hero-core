@@ -245,7 +245,6 @@ paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
 background = NodePath("Control/Screen/SubViewport/Background")
 
 [node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
-tempo = 100.0
 listener = NodePath("AudioListener2D")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
@@ -254,19 +253,8 @@ position = Vector2(60, 383)
 [node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
 script = ExtResource("6_3wppi")
 musicH = NodePath("../MusicHandler")
-debugger = NodePath("Debugger")
+debugger = NodePath("../Control/Debugger")
 filter = NodePath("../Control/Screen/SubViewport/Filter")
-
-[node name="Debugger" type="Label" parent="DebugTool"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -478.0
-offset_bottom = 193.0
-grow_horizontal = 0
-theme = ExtResource("9_4jfow")
-text = "qrwqwr
-qweqwe"
 
 [node name="Frame" type="ColorRect" parent="."]
 layout_mode = 1
@@ -393,18 +381,25 @@ position = Vector2(-336, 183)
 color = Color(1, 1, 1, 0.509804)
 energy = 5.0
 
+[node name="Debugger" type="Label" parent="Control"]
+material = ExtResource("3_ut7rk")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 482.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -347.0
+grow_horizontal = 0
+theme = ExtResource("9_4jfow")
+text = "qrwqwr
+qweqwe"
+
 [node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
 
-[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
-material = SubResource("ShaderMaterial_s0gxm")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="TestTextButton" type="Button" parent="UIOutScreenCanvas"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -420,6 +415,15 @@ theme_override_fonts/font = ExtResource("14_rbyc1")
 theme_override_font_sizes/font_size = 42
 text = "Pause"
 script = ExtResource("8_0d1oi")
+
+[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
+material = SubResource("ShaderMaterial_s0gxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Rain" type="ColorRect" parent="."]
 visible = false

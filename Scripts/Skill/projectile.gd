@@ -22,12 +22,14 @@ var delta: float
 var caster: Node
 var sound_file: String
 var velocity: Vector2
+var db = 0
 
 
 func _ready() -> void:
 	if caster:
 		scale = caster.scale
 	scale *= scale_multiplier
+	knockback_power *= 10
 	spawn_sound()
 
 	
@@ -62,10 +64,11 @@ class Sound:
 	func _init():
 		autoplay = true
 		max_distance = 6000
-	func _ready():
-		volume_db += 0.005 * scale.x
+	#func _ready():
+		#volume_db += 0.1 * scale.x
 	func _process(_delta):
-		pitch_scale = (60 / 100) / Global.seconds_per_bar
+		var original_tempo = 60 / 100
+		# pitch_scale = original_tempo / Global.seconds_per_bar
 		if not playing:
 			queue_free()
 		if _delta >= Global.seconds_per_bar:
@@ -81,6 +84,7 @@ func spawn_sound():
 		sound.bus = "Monster"
 	sound.global_position = self.global_position
 	sound.scale = self.scale
+	sound.volume_db += db
 	if sound_path:
 		sound.stream = load(sound_path) 
 	Global.musicH.add_child(sound)

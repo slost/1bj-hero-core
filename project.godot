@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Herocore"
-config/version="1bj.0.0.0.666"
+config/version="1bj.666.1"
 run/main_scene="res://Scenes/Game/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -28,6 +28,7 @@ TurnManager="*res://Scripts/Autoload/turn_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

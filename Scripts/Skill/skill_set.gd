@@ -32,7 +32,11 @@ func _ready():
 	# caster = $".."
 	set_hostile()
 
+var is_spawned = false
 
+@onready var bars = Global.bars_init
+
+# กำหนดค่าศัตรูให้กระสุน
 func set_hostile() -> void:
 	if not caster == Global.player:
 		hostile = Global.player
@@ -44,48 +48,41 @@ func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
 	if current_turn.data.character == caster:
-		if Global.bars[0] >= bar_counter:
-			process_beat()
-			bar_counter += 1
+		process_beat()
 	else:
-		bar_counter = Global.bars[0]
-
+		bars = Global.bars_init
+	
 
 # ประมวลผลการสปอนจากบีท
 func process_beat():
-	var id = 0
+	if bars[1] != Global.bars[1]:
+		bars[1] = Global.bars[1]
+		is_spawned = false
+	if match_beat() == 0 and not is_spawned:
+		spawn_skill_from_id(0)
+		is_spawned = true
+
+
+func match_beat() -> int:	
 	for skill in skills:
 		match skill.beat_test:
 			"1" : 
-				if Global.bars[0] % 1 == 0:
-					spawn_skill_from_id(id)
+				return Global.bars[0] % 1
 			"2":
-				if Global.bars[0] % 2 == 0:
-					spawn_skill_from_id(id)
+				return Global.bars[0] % 2
 			"3":
-				if Global.bars[0] % 3 == 0:
-					spawn_skill_from_id(id)	
+				return Global.bars[0] % 3
 			"4":
-				if Global.bars[0] % 3 == 0:
-					spawn_skill_from_id(id)
+				return Global.bars[0] % 3
 			"1b":
-				if (Global.bars[0] - 1) % 8 == 0:
-					spawn_skill_from_id(id)
+				return (Global.bars[0] - 1) % 8
 			"8b":
-				if (Global.bars[0] -1) % 16 == 0:
-					spawn_skill_from_id(id)
+				return (Global.bars[0] -1) % 16
 			".1":
-				if Global.bars[1] % 1 == 0:
-					spawn_skill_from_id(id)	
-			".1":
-				if Global.bars[2] % 1 == 0:
-					spawn_skill_from_id(id)
-		id += 1
-				
-			# if beat != null:
-				#if Global.bars[0] % beat.find(beat) == 0:
-				# if Global.bars[0] % beat.find(beat) == 0:
-					# spawn_skill_from_id(0)
+				return Global.bars[1] % 1
+			".2":
+				return Global.bars[1] % 2
+	return 1
 		
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
@@ -98,6 +95,10 @@ func spawn_skill_from_id(_id: int) -> void:
 		if skill.sound_when_spawn:
 			tile["sound"] = skill.sound_when_spawn
 			tile["scale_multiplier"] = skill.scale_multiplier
+		if pattern_data["direction"].size() == 1:
+			tile["db"] = 10
+		else:
+			tile["db"] = 0
 		spawn_projectile(tile)
 		# print(tile)
 
@@ -109,6 +110,8 @@ func spawn_projectile(_data: Dictionary) -> void:
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
 	proj.sound_path = _data.sound
+	if _data.db:
+		proj.db = _data.db
 	proj.scale_multiplier = _data.scale_multiplier
 	$"..".add_child(proj)
 	

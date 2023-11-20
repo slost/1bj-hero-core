@@ -1,6 +1,6 @@
 extends Node
 
-@export var tempo: float = 300
+@onready var tempo = Global.base_tempo
 @export var listener: Node
 @export var is_metronome_enabled: bool
 
@@ -32,16 +32,20 @@ func _process(_delta) -> void:
 		listener.global_position = Global.player.global_position
 		listener.scale = Global.player.scale
 
-	Global.tempo = (Global.player.get_item_amount() + 1) * 25
+	Global.tempo = (Global.player.get_item_amount() + 1) * Global.base_tempo / 3
 	Global.bars = bars
 	
 	var sec_per_bar = Global.seconds_per_bar
 	
 	
-	var i = sec_per_bar * 0.1
+	var i = sec_per_bar * 0.5
 	
+
+
 	time += _delta
 	timer += _delta
+	var percentage_difference: float = (1.0 - timer / sec_per_bar) * 100.0
+	Global.bars[3] = round(percentage_difference)
 	
 	
 	if timer >= sec_per_bar * i:

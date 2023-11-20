@@ -15,6 +15,7 @@ func _ready() -> void:
 	z_index = 2
 	Global.player = self
 	TurnManager.create_turn_queue($"..")
+	stats.base_speed = 2
 
 
 # การควบคุม
@@ -47,7 +48,7 @@ func process_player():
 	process_item_power()
 
 func process_item_power():
-	if $Heal:
+	if get_node("Heal"):
 		hp+= round(max_hp * 0.01)
 
 func on_bar_change():

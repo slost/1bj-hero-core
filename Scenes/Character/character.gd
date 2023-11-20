@@ -6,7 +6,7 @@ class_name Character
 @export var animSpr: Node
 
 var is_blink = false
-@export var knockback_power: int = 10
+@export var knockback_power: int = 100
 
 # onready
 @onready var stats: Dictionary = data.stats
@@ -66,7 +66,7 @@ func knockback(_source: Node):
 	if is_blink:
 		return
 	# knockbac kDirection
-	velocity = (_source.velocity - velocity).normalized() * (knockback_power) * Global.tempo
+	velocity = (_source.velocity - velocity).normalized() * (knockback_power)
 	move_and_slide()
 	# animationPlayer.play("blink")
 	# is_blink = true # ฝากแก้ด้วย

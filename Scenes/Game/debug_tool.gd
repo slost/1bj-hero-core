@@ -13,9 +13,9 @@ func _input(_event):
 		Global.restart_game()
 		get_tree().reload_current_scene()
 	if Input.is_action_pressed("debug_tempo_increase"):
-		musicH.tempo += 2
+		Global.base_tempo += 2
 	if Input.is_action_pressed("debug_tempo_decrease"):
-		musicH.tempo -= 2
+		Global.base_tempo -= 2
 	if Input.is_action_pressed("debug_toggle_filter"):
 		for i in filter.get_children():
 			if Global.options["crt"] == false:
@@ -32,7 +32,7 @@ func _input(_event):
 func _process(_delta):
 	if Global.is_debugging:
 		debugger.text = ""
-		add_text("HEROCORE v.1bj.0.0.0.666")
+		add_text("HEROCORE v.1bj.0.666.1")
 		add_text("*DEBUGGER*")
 		add_text("Shortkey")
 		add_text("F1: RESTART")
@@ -42,7 +42,9 @@ func _process(_delta):
 		add_text("NUMPAD +/-: change tempo")
 		
 		
-		add_text("\nGAME")
+		add_text("\nITEMS: %s" % Global.player.get_item_amount())
+		
+		add_text("\nGAME") 
 		
 		if Global.turn_queue:
 			var turn = Global.turn_queue[0]
@@ -50,18 +52,23 @@ func _process(_delta):
 			add_text("Turn: %s" % turn.data.number)
 			if turn.data.character.name:
 				add_text("# %s" % turn.data.character.name)
-			add_text("Time left %ss" % (turn.data.time))
+			var turn_time = "%.2f" % turn.data.time
+			add_text("Time left %ss" % turn_time)
 		
 		add_text("\nMUSIC")
-		add_text("Bars: %s" % str(Global.bars))
-		add_text("musicH.bars %s" % str(musicH.bars))
-		add_text("player.bars: %s" % str(Global.player.bars))
-		add_text("player.bar_counter: %s" % str(Global.player.bar_counter))
+		add_text("Bars: %s" % get_bars_string())
+		# add_text("musicH.bars %s" % str(musicH.bars))
+		# add_text("player.bars: %s" % str(Global.player.bars))
+		# add_text("player.bar_counter: %s" % str(Global.player.bar_counter))
 		add_text("Bar Timer: %s" % str(musicH.timer))
 		
 		
-		debugger.text +=  "Tempo: %s bpm" % musicH.tempo
+		debugger.text +=  "Base Tempo: %s bpm" % Global.base_tempo
 		
 func add_text(_text: String) -> void:
 	debugger.text += _text
 	debugger.text += "\n"
+
+
+func get_bars_string():
+	return str(Global.bars[0]) + ":" + str(Global.bars[1]) + ":" + str(Global.bars[2]) + ":" + str(Global.bars[3]) 
