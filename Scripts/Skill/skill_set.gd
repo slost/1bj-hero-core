@@ -21,20 +21,11 @@ var bar_counter: int = 1
 var hostile: Node
 var patterns: Array = []
 var current_turn: Turn
-
-
-var bar_to_spawn: int = 3
-
-var beat: Array = ["1","1", "1", "2"]
-
+@onready var can_spawn = true
 
 func _ready():
 	# caster = $".."
 	set_hostile()
-
-var is_spawned = false
-
-@onready var bars = Global.bars_init
 
 # กำหนดค่าศัตรูให้กระสุน
 func set_hostile() -> void:
@@ -47,43 +38,26 @@ func set_hostile() -> void:
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
-	if current_turn.data.character == caster:
-		process_beat()
-	else:
-		bars = Global.bars_init
-	
+		if current_turn.data.character == caster:
+			process_beat()
+
 
 # ประมวลผลการสปอนจากบีท
 func process_beat():
-	if bars[1] != Global.bars[1]:
-		bars[1] = Global.bars[1]
-		is_spawned = false
-	if match_beat() == 0 and not is_spawned:
-		spawn_skill_from_id(0)
-		is_spawned = true
-
-
-func match_beat() -> int:	
+	if self.name != "Fireball":
+		#return
+		pass
 	for skill in skills:
-		match skill.beat_test:
-			"1" : 
-				return Global.bars[0] % 1
-			"2":
-				return Global.bars[0] % 2
-			"3":
-				return Global.bars[0] % 3
-			"4":
-				return Global.bars[0] % 3
-			"1b":
-				return (Global.bars[0] - 1) % 8
-			"8b":
-				return (Global.bars[0] -1) % 16
-			".1":
-				return Global.bars[1] % 1
-			".2":
-				return Global.bars[1] % 2
-	return 1
-		
+		if Global.bars[1] != skill.bars[1]:
+			skill.bars[1] = Global.bars[1]
+			skill.can_spawn = true
+		if skill.match_beat() == 0:
+			if skill.can_spawn:
+				print(self.name + " Spawned: " + str(skill.bars[1]))
+				spawn_skill_from_id(0)
+				skill.can_spawn = false
+
+
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
 func spawn_skill_from_id(_id: int) -> void:
@@ -100,7 +74,7 @@ func spawn_skill_from_id(_id: int) -> void:
 		else:
 			tile["db"] = 0
 		spawn_projectile(tile)
-		# print(tile)
+		
 
 # สปอนกระสุนจากซีนกระสุน
 func spawn_projectile(_data: Dictionary) -> void:
@@ -123,10 +97,4 @@ func get_projectile_direction(_direction: String):
 	match _direction:
 		"nearest_enemy":
 			return (hostile.global_position - caster.global_position).normalized()
-	return Vector2.ZERO	
-	
-"""
-func spawn_projectile(_projectile: String, _params = null) -> void:
-	var spawn_dist = _params.get("spawn_dist", 0) # ระยะห่างจากตำแหน่งสปอน
-"""
-		
+	return Vector2.ZERO

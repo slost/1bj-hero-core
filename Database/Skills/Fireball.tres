@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://b78lrovnvg7go"]
+
+[ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="1_2nx0h"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="2_bsi3v"]
+
+[resource]
+script = ExtResource("2_bsi3v")
+pattern = ExtResource("1_2nx0h")
+beat_test = ".2"
+sound_when_spawn = "res://Assets/Audio/Gameplay/snare.wav"
+base_damage = 10
+scale_multiplier = 1
+knockback_power = 1.0
+base_speed = 1
+duration = [1, 0, 0]
+acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false

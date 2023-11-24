@@ -14,16 +14,19 @@ var timer: float = 0.0
 
 var is_played = false
 
-var bars: Array = Global.bars
+@onready var bars: Array = [1, 1, 1, 1.0]
 
-func _init():
-	bars[0] = 1
-	bars[1] = 1
 	
 	
 var current_turn: Turn
 	
+
 func _process(_delta) -> void:
+	if Global.is_ready:
+		process_music(_delta)
+	
+	
+func process_music(_delta) -> void:
 	
 	Global.musicH = self
 	
@@ -45,7 +48,7 @@ func _process(_delta) -> void:
 	time += _delta
 	timer += _delta
 	var percentage_difference: float = (1.0 - timer / sec_per_bar) * 100.0
-	Global.bars[3] = round(percentage_difference)
+	# Global.bars[3] = round(percentage_difference)
 	
 	
 	if timer >= sec_per_bar * i:

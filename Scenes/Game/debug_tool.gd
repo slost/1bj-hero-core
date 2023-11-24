@@ -26,7 +26,7 @@ func _input(_event):
 				i.visible = false
 	if Input.is_action_just_pressed("debug_lose_all_items"):
 		Global.player.lose_all_items()
-	if Input.is_action_just_pressed("debug_lose_a_items"):
+	if Input.is_action_just_pressed("debug_lose_random_item"):
 		Global.player.lose_random_item()
 		
 func _process(_delta):

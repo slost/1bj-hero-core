@@ -10,6 +10,7 @@ resource_name = "SpectrumAnalyzer"
 resource_name = "SpectrumAnalyzer"
 
 [resource]
+bus/0/volume_db = -14.6228
 bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_g4mxg")
 bus/0/effect/0/enabled = true
 bus/1/name = &"Player"

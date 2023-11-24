@@ -1,15 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://ckkkvld6onpug"]
+[gd_scene load_steps=38 format=3 uid="uid://ckkkvld6onpug"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_wsl20"]
-[ext_resource type="PackedScene" uid="uid://cewgw4y4rf720" path="res://Scenes/item.tscn" id="2_fg3uk"]
 [ext_resource type="Script" path="res://Scripts/item.gd" id="3_g4w8r"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="3_iilgi"]
-[ext_resource type="Texture2D" uid="uid://081ttsje2npp" path="res://Assets/Sprites/Characters/knight_2.png" id="4_5e7dc"]
 [ext_resource type="PackedScene" uid="uid://cs7kym5pr3w6s" path="res://Database/Patterns/กลางตัว.tscn" id="4_k7uqy"]
-[ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="4_myo6y"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="6_2s4sa"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="6_fnou0"]
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="7_0p6ad"]
+[ext_resource type="Resource" uid="uid://b78lrovnvg7go" path="res://Database/Skills/Fireball.tres" id="7_x2w2l"]
 [ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="11_6hayk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydo62"]
@@ -20,13 +18,13 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="Resource" id="Resource_ssmks"]
+[sub_resource type="Resource" id="Resource_v7gaq"]
 script = ExtResource("6_fnou0")
 pattern = ExtResource("4_k7uqy")
 beat_test = ".1"
-sound_when_spawn = "res://Assets/Audio/Gameplay/kick.tres"
+sound_when_spawn = "res://Assets/Audio/Gameplay/kick.wav"
 base_damage = 0
-scale_multiplier = 16
+scale_multiplier = 8
 knockback_power = 1.0
 base_speed = 1
 duration = [1, 0, 0]
@@ -34,27 +32,20 @@ acceleration_rate = 0.0
 is_target_lock = false
 is_rotation_to_direction = false
 
-[sub_resource type="Resource" id="Resource_2t6kp"]
+[sub_resource type="Resource" id="Resource_hgl4j"]
 script = ExtResource("6_fnou0")
-pattern = ExtResource("4_myo6y")
-beat_test = ".2"
-sound_when_spawn = "res://Assets/Audio/Gameplay/snare.wav"
-base_damage = 0
-scale_multiplier = 2
+sprite = ExtResource("11_6hayk")
+pattern = ExtResource("4_k7uqy")
+beat_test = "8b"
+sound_when_spawn = "res://Assets/Audio/Gameplay/godspell.wav"
+base_damage = 5
+scale_multiplier = 1
 knockback_power = 1.0
 base_speed = 1
 duration = [1, 0, 0]
 acceleration_rate = 0.0
 is_target_lock = false
 is_rotation_to_direction = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh2ir"]
-shader = ExtResource("3_iilgi")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/width = 2.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_23hfq"]
 shader = ExtResource("3_iilgi")
@@ -222,21 +213,6 @@ _data = {
 "blink": SubResource("Animation_f00ps")
 }
 
-[sub_resource type="Resource" id="Resource_hgl4j"]
-script = ExtResource("6_fnou0")
-sprite = ExtResource("11_6hayk")
-pattern = ExtResource("4_k7uqy")
-beat_test = "8b"
-sound_when_spawn = "res://Assets/Audio/Gameplay/godspell.wav"
-base_damage = 5
-scale_multiplier = 1
-knockback_power = 1.0
-base_speed = 1
-duration = [1, 0, 0]
-acceleration_rate = 0.0
-is_target_lock = false
-is_rotation_to_direction = false
-
 [sub_resource type="Resource" id="Resource_0ll04"]
 script = ExtResource("6_fnou0")
 sprite = ExtResource("11_6hayk")
@@ -303,23 +279,28 @@ use_parent_material = true
 script = ExtResource("1_wsl20")
 animSpr = NodePath("AnimatedSprite2D")
 
+[node name="test" type="Node" parent="."]
+
+[node name="KickShield" type="Node" parent="test"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_v7gaq")])
+
+[node name="FireBall" type="Node" parent="."]
+script = ExtResource("3_g4w8r")
+
+[node name="Fireball" type="Node" parent="FireBall"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([ExtResource("7_x2w2l")])
+
+[node name="Wings" type="Node" parent="."]
+script = ExtResource("3_g4w8r")
+
+[node name="SkillSet3" type="Node" parent="Wings"]
+script = ExtResource("6_2s4sa")
+skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_hgl4j")])
+
 [node name="HolyShield" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
-
-[node name="KickingShield" parent="HolyShield" instance=ExtResource("2_fg3uk")]
-skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_ssmks")])
-
-[node name="Fireball" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
-
-[node name="Fireball" type="Node" parent="Fireball"]
-script = ExtResource("6_2s4sa")
-skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_2t6kp")])
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_oh2ir")
-texture = ExtResource("4_5e7dc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
@@ -342,17 +323,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ccj3b")
 }
 
-[node name="Wings" type="Node" parent="."]
-script = ExtResource("3_g4w8r")
-
-[node name="SkillSet3" type="Node" parent="Wings"]
-script = ExtResource("6_2s4sa")
-skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_hgl4j")])
-
 [node name="Heal" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
 
-[node name="SkillSet2" type="Node" parent="Heal"]
+[node name="Heal" type="Node" parent="Heal"]
 script = ExtResource("6_2s4sa")
 skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_0ll04")])
 
@@ -366,14 +340,14 @@ skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_u45pj")])
 [node name="Lute" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
 
-[node name="SkillSet4" type="Node" parent="Lute"]
+[node name="Lute" type="Node" parent="Lute"]
 script = ExtResource("6_2s4sa")
 skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_thdol")])
 
 [node name="Lute2" type="Node" parent="."]
 script = ExtResource("3_g4w8r")
 
-[node name="SkillSet4" type="Node" parent="Lute2"]
+[node name="Vox" type="Node" parent="Lute2"]
 script = ExtResource("6_2s4sa")
 skills = Array[ExtResource("6_fnou0")]([SubResource("Resource_8fju0")])
 

@@ -13,7 +13,7 @@ var is_blink = false
 
 var move_speed: float
 var sub_bar: int = 1
-@onready var bars = Global.bars_init
+@onready var bars = Global.BARS_INIT
 
 var max_hp = 999999
 var strength = 99
@@ -62,7 +62,6 @@ func hurt(_source) -> void:
 	knockback(_source)
 	
 func knockback(_source: Node):
-	print(is_blink)
 	if is_blink:
 		return
 	# knockbac kDirection

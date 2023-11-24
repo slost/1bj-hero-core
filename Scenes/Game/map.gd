@@ -14,3 +14,9 @@ func draw_background(color: Color) -> void:
 
 func _ready():
 	Global.map = self
+
+
+# จับเวลาเริ่มเกม
+func _on_timer_timeout():
+	Global.is_ready = true
+	TurnManager.create_turn_queue(self)

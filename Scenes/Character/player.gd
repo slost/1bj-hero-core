@@ -14,7 +14,6 @@ func _ready() -> void:
 	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self
-	TurnManager.create_turn_queue($"..")
 	stats.base_speed = 2
 
 

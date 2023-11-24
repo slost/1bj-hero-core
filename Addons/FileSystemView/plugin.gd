@@ -52,7 +52,7 @@ func load_views():
 	if not file:
 		file = FileAccess.open(PLUGIN_DIR + "defaultConfig.json", FileAccess.READ)
 		assert(file, str(FileAccess.get_open_error()))
-		print_debug("FileSystemView: load defaultConfig.json")
+		# print_debug("FileSystemView: load defaultConfig.json")
 	
 	var config = JSON.parse_string(file.get_as_text())
 	assert(config is Dictionary)
