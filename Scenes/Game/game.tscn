@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=58 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -17,10 +17,13 @@
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="14_rbyc1"]
 [ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
 [ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
+[ext_resource type="StyleBox" uid="uid://qgj3wt1wwy87" path="res://Assets/Systems/text_box_theme.tres" id="16_h6b5h"]
 [ext_resource type="Texture2D" uid="uid://ibtfjjky35u5" path="res://Assets/Sprites/interface.png" id="16_nnwlv"]
 [ext_resource type="Script" path="res://Scenes/Systems/hud_player.gd" id="18_5e34q"]
 [ext_resource type="PackedScene" uid="uid://b0qeriq1u0jqr" path="res://Scenes/Systems/playlist_label.tscn" id="18_7m1ic"]
 [ext_resource type="Script" path="res://Scenes/Systems/playlist_label.gd" id="20_04gik"]
+
+[sub_resource type="Theme" id="Theme_pypka"]
 
 [sub_resource type="Animation" id="Animation_66daw"]
 length = 0.001
@@ -667,6 +670,142 @@ vertical_alignment = 1
 wait_time = 0.5
 one_shot = true
 
+[node name="LoadSaveCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
+
+[node name="Control" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -384.0
+offset_right = 320.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Button" type="Button" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -80.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Load"
+
+[node name="Panel2" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Panel3" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel3"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
 [node name="Filter" type="CanvasLayer" parent="Control/Screen/SubViewport"]
 
 [node name="CRT" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
@@ -676,6 +815,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen"]
 position = Vector2(-336, 183)
@@ -711,6 +851,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TestTextButton" type="Button" parent="UIOutScreenCanvas"]
@@ -743,6 +884,7 @@ offset_right = 644.0
 offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.658824, 0.658824, 0.658824, 0)
 metadata/_edit_use_anchors_ = true
 
@@ -750,6 +892,7 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1077.0
+mouse_filter = 2
 script = ExtResource("15_tblgl")
 playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/TempoPlayerLabel")
 
