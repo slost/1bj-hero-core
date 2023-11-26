@@ -14,7 +14,7 @@ Skill: resource = {
 	}
 """
 
-@onready var caster: Node = $"../.."
+@onready var caster: Node = $"../../.."
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
 
 var bar_counter: int = 1
@@ -44,14 +44,11 @@ func _process(_delta) -> void:
 
 # ประมวลผลการสปอนจากบีท
 func process_beat():
-	if self.name != "Fireball":
-		#return
-		pass
 	for skill in skills:
 		if Global.bars[1] != skill.bars[1]:
 			skill.bars[1] = Global.bars[1]
 			skill.can_spawn = true
-		if skill.match_beat() == 0:
+		if skill.match_beat():
 			if skill.can_spawn:
 				print(self.name + " Spawned: " + str(skill.bars[1]))
 				spawn_skill_from_id(0)

@@ -27,29 +27,33 @@ class_name Skill
 @export var is_target_lock: bool
 @export var is_rotation_to_direction: bool
 
-
 var can_spawn: bool = true
 var bars: Array
+
 
 func _init():
 	bars = [1,1,1,0.0]
 
-func match_beat() -> int:	
+
+func match_beat() -> bool:	
 	match beat_test:
 		"1" : 
-			return Global.bars[0] % 1
+			return Global.bars[0] % 1 == 0
 		"2":
-			return Global.bars[0] % 2
+			return Global.bars[0] % 2 == 0
 		"3":
-			return Global.bars[0] % 3
+			return Global.bars[0] % 3 == 0
 		"4":
-			return Global.bars[0] % 3
+			return Global.bars[0] % 3 == 0
 		"1b":
-			return (Global.bars[0] - 1) % 8
+			return Global.bars[0] % 8 == 1
 		"8b":
-			return (Global.bars[0] -1) % 16
+			match Global.bars[0]:
+				1:
+					return true
 		".1":
-			return Global.bars[1] % 1
+			return Global.bars[1] % 1 == 0
 		".2":
-			return Global.bars[1] % 2
-	return 1
+			return Global.bars[1] % 2 == 0
+
+	return false
