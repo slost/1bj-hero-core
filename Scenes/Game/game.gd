@@ -7,6 +7,7 @@ extends Control
 #  Title
 # ---------------------------------- 
 @onready var TitleBG = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG
+@onready var TitleBG_Bottom = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG_bottom
 @onready var TitleLable = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleLabel
 @onready var TitlePressAnyKey = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel
 @onready var TitlePressAnyKeyTimer:Timer = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel/Timer
@@ -22,6 +23,7 @@ var is_wait_for_press_any_key = false
 func _ready():
 	MapObj.visible = false
 	TitleBG.visible = false
+	TitleBG_Bottom.visible = false
 	TitleLable.visible = false
 	TitlePressAnyKey.visible = false
 	TitlePressAnyKeyTimer.timeout.connect(_on_anykey_timeout)
