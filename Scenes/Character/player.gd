@@ -7,10 +7,10 @@ class_name Player
 # onready
 @onready var animationPlayer = $AnimationPlayer
 
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	animSpr.play("move_down")
-	# scale = Vector2(data.stats.size_scale, data.stats.size_scale)
 	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self
@@ -20,7 +20,7 @@ func _ready() -> void:
 # การควบคุม
 func get_input() -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if not has_node("Wings"):
+	if not inv.has_node("Wings"):
 		if abs(input_direction.x) > abs(input_direction.y):
 			input_direction.y = 0
 		else:
@@ -60,14 +60,14 @@ func on_death():
 	
 func get_item_amount() -> int:
 	var amount = 0
-	for i in get_children():
+	for i in inv.get_children():
 		if i is Item:
 			amount += 1
 	return amount
 			
 
 func lose_all_items():
-	for i in get_children():
+	for i in inv.get_children():
 		if i is Item:
 			i.queue_free()
 	print_debug("YOU LOSE ALL ITEMS!")
@@ -78,9 +78,9 @@ func hurt(_source) -> void:
 	lose_random_item()
 	knockback(_source)
 
+@onready var inv = $Inventory
+
 func lose_random_item():
-	for i in get_children():
-		if i is Item:
-			i.queue_free()
-			return
+	var item_amount = inv.get_children().size()
+	var random_item = rng.randi_range(0, item_amount)
 	print_debug("YOU LOSE A ITEM!")

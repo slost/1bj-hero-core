@@ -20,3 +20,4 @@ func _ready():
 func _on_timer_timeout():
 	Global.is_ready = true
 	TurnManager.create_turn_queue(self)
+	print_debug("Game Started!")

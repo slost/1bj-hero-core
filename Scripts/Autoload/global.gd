@@ -39,6 +39,15 @@ var turn_queue: Array = [] # ใช้เก็บคิวเทิร์น
 var turn: int
 var is_ready: bool = false
 
+enum GAME_SCREEN {
+	TITLE,
+	LOAD,
+	GAME,
+	DISCARD
+}
+var cureent_state = GAME_SCREEN.TITLE
+
+
 func restart_game():
 	turn_queue = []
 	bars = BARS_INIT
