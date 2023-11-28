@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d0apuuqa3qtek"
-path="res://.godot/imported/squealer embossed.ttf-859777669efaddd115d086d4063b4e04.fontdata"
+uid="uid://bgi60ucq16uu"
+path="res://.godot/imported/squealer.ttf-c71fa123a2e45d07605edd0af483be41.fontdata"
 
 [deps]
 
-source_file="res://Assets/squealer embossed.ttf"
-dest_files=["res://.godot/imported/squealer embossed.ttf-859777669efaddd115d086d4063b4e04.fontdata"]
+source_file="res://Assets/Fonts/squealer.ttf"
+dest_files=["res://.godot/imported/squealer.ttf-c71fa123a2e45d07605edd0af483be41.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -27,7 +27,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}
