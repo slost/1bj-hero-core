@@ -1,3 +1,4 @@
+@icon("res://Assets/Icons/icon_skill.png")
 ## ควบคุมการปล่อยสกิล
 extends Node
 class_name SkillSet
@@ -11,7 +12,6 @@ class_name SkillSet
 
 var bar_counter: int = 1
 var hostile: Node
-var patterns: Array = []
 var current_turn: Turn
 
 
@@ -35,7 +35,7 @@ func _process(_delta) -> void:
 
 
 # ประมวลผลการสปอนจากบีท
-func process_beat():
+func process_beat() -> void:
 	for skill in skills:
 		if Global.bars[1] != skill.bars[1]:
 			skill.bars[1] = Global.bars[1]
@@ -65,7 +65,7 @@ func spawn_skill_from_id(_id: int) -> void:
 		spawn_projectile(tile)
 		
 
-# สปอนกระสุนจากซีนกระสุน
+# สปอนซีนกระสุนจาก data ที่ได้จากแพทเทิร์น
 func spawn_projectile(_data: Dictionary) -> void:
 	var proj = projectile_scene.instantiate()
 	proj.caster = caster
@@ -80,7 +80,7 @@ func spawn_projectile(_data: Dictionary) -> void:
 	
 
 # หาทิศทางที่กระสุนจะไป
-func get_projectile_direction(_direction: String):
+func get_projectile_direction(_direction: String) -> Vector2:
 	if Lib.get_direction(_direction) is Vector2:
 		return Lib.get_direction(_direction)
 	match _direction:

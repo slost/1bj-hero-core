@@ -6,8 +6,10 @@ class_name Player
 
 # onready
 @onready var animationPlayer = $AnimationPlayer
+@onready var inv = $Inventory
 
 var rng = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
 	animSpr.play("move_down")
@@ -27,6 +29,7 @@ func get_input() -> void:
 			input_direction.x = 0
 	velocity = input_direction * move_speed
 
+
 func play_animation():
 	if Input.is_action_pressed("move_left"):
 		animSpr.play("move_left")
@@ -42,13 +45,15 @@ func play_animation():
 
 
 func process_player():
-	var bars_id = 0
 	play_animation()
 	process_item_power()
 
+
 func process_item_power():
-	if get_node("Heal"):
-		hp+= round(max_hp * 0.01)
+	""" if get_node("Heal"):
+		hp+= round(max_hp * 0.01) """
+	pass
+
 
 func on_bar_change():
 	get_input()
@@ -58,6 +63,7 @@ func on_death():
 	print("YOU DIED")
 	# เข้าฉากเกมโอเวอร์
 	
+
 func get_item_amount() -> int:
 	var amount = 0
 	for i in inv.get_children():
@@ -72,13 +78,13 @@ func lose_all_items():
 			i.queue_free()
 	print_debug("YOU LOSE ALL ITEMS!")
 	
+
 func hurt(_source) -> void:
 	# ลดเลือด
 	hp -= _source.damage * (_source.caster.strength * 0.1)
 	lose_random_item()
 	knockback(_source)
 
-@onready var inv = $Inventory
 
 func lose_random_item():
 	var item_amount = inv.get_children().size()

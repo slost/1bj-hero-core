@@ -186,6 +186,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_v7gaq"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 pattern = ExtResource("4_k7uqy")
 beat_test = ".1"
 sound_when_spawn = "res://Assets/Audio/Gameplay/kick.wav"
@@ -200,6 +201,7 @@ is_rotation_to_direction = false
 
 [sub_resource type="Resource" id="Resource_8fju0"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 sprite = ExtResource("11_6hayk")
 pattern = ExtResource("4_k7uqy")
 beat_test = "8b"
@@ -215,6 +217,7 @@ is_rotation_to_direction = false
 
 [sub_resource type="Resource" id="Resource_thdol"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 sprite = ExtResource("11_6hayk")
 pattern = ExtResource("4_k7uqy")
 beat_test = "8b"
@@ -230,6 +233,7 @@ is_rotation_to_direction = false
 
 [sub_resource type="Resource" id="Resource_u45pj"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 sprite = ExtResource("11_6hayk")
 pattern = ExtResource("4_k7uqy")
 beat_test = "8b"
@@ -245,6 +249,7 @@ is_rotation_to_direction = false
 
 [sub_resource type="Resource" id="Resource_0ll04"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 sprite = ExtResource("11_6hayk")
 pattern = ExtResource("4_k7uqy")
 beat_test = "8b"
@@ -260,6 +265,7 @@ is_rotation_to_direction = false
 
 [sub_resource type="Resource" id="Resource_hgl4j"]
 script = ExtResource("6_fnou0")
+name = "Skill Name"
 sprite = ExtResource("11_6hayk")
 pattern = ExtResource("4_k7uqy")
 beat_test = "8b"

@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_bsi3v")
+name = "Skill Name"
 pattern = ExtResource("1_2nx0h")
 beat_test = ".2"
 sound_when_spawn = "res://Assets/Audio/Gameplay/snare.wav"

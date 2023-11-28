@@ -1,32 +1,30 @@
 extends Control
+class_name Game
 
+## Nodes
 @export var paletteShader: Node
 @export var background: Node
+@export var map: Node2D
+@export var screenAnimation: AnimationPlayer
 
-# ----------------------------------
-#  Title
-# ---------------------------------- 
-@onready var TitleBG = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG
-@onready var TitleBG_Bottom = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG_bottom
-@onready var TitleLable = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleLabel
-@onready var TitlePressAnyKey = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel
-@onready var TitlePressAnyKeyTimer:Timer = $Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel/Timer
-# ----------------------------------
-
-@onready var MapObj = $Control/Screen/SubViewport/PaletteShader/SubViewport/Map
-
-@onready var ScreenAnimation:AnimationPlayer = $Control/Screen/AnimationScreen
+@export_category("Title")
+@export var titleBG: Node
+@export var titleBG_bottom: Node
+@export var titleLabel: Node
+@export var titlePressAnyKey: Node
+@export var titlePressAnyKeyTimer: Timer
 
 var current_state = null
 var is_wait_for_press_any_key = false
 
+
 func _ready():
-	MapObj.visible = false
-	TitleBG.visible = false
-	TitleBG_Bottom.visible = false
-	TitleLable.visible = false
-	TitlePressAnyKey.visible = false
-	TitlePressAnyKeyTimer.timeout.connect(_on_anykey_timeout)
+	map.visible = false
+	titleBG.visible = false
+	titleBG_bottom.visible = false
+	titleLabel.visible = false
+	titlePressAnyKey.visible = false
+	titlePressAnyKeyTimer.timeout.connect(_on_anykey_timeout)
 
 func _process(_delta):
 	background.color = Global.palette[1]
@@ -51,18 +49,18 @@ func update_state_to(new_state):
 	# คำสั่งที่อาจจะใช้ เพื่อเฟดซีนเก่าออก
 	match old_state:
 		Global.GAME_SCREEN.TITLE:
-			ScreenAnimation.play("fadeout_title")
-			await ScreenAnimation.animation_finished
+			screenAnimation.play("fadeout_title")
+			await screenAnimation.animation_finished
 	
 	# คำสั่งที่ใช้เมื่อเริ่มซีนใหม่
 	match new_state:
 		Global.GAME_SCREEN.TITLE:
-			ScreenAnimation.play("fadein_title")
-			await ScreenAnimation.animation_finished
+			screenAnimation.play("fadein_title")
+			await screenAnimation.animation_finished
 			is_wait_for_press_any_key = true
-			TitlePressAnyKeyTimer.start()
+			titlePressAnyKeyTimer.start()
 		Global.GAME_SCREEN.GAME:
-			MapObj.visible = true
+			map.visible = true
 	current_state = new_state
 
 func update_title_state():
@@ -72,8 +70,8 @@ func update_title_state():
 # ทำให้ตัว PressAnyKey กระพริบ
 func _on_anykey_timeout():
 	if current_state == Global.GAME_SCREEN.TITLE && is_wait_for_press_any_key:
-		TitlePressAnyKey.visible = !TitlePressAnyKey.visible
-		TitlePressAnyKeyTimer.start()
+		titlePressAnyKey.visible = !titlePressAnyKey.visible
+		titlePressAnyKeyTimer.start()
 
 func _input(event):
 	# รับค่า PressAnyKey
@@ -81,5 +79,5 @@ func _input(event):
 		if event is InputEventKey:
 			if event.pressed:
 				is_wait_for_press_any_key = false
-				TitlePressAnyKey.visible = false
+				titlePressAnyKey.visible = false
 				Global.cureent_state = Global.GAME_SCREEN.GAME

@@ -259,39 +259,6 @@ _data = {
 "fadeout_title": SubResource("Animation_2ukk3")
 }
 
-[sub_resource type="Gradient" id="Gradient_0m6if"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_p122c"]
-seed = 3
-frequency = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4h1xw"]
-seamless = true
-color_ramp = SubResource("Gradient_0m6if")
-noise = SubResource("FastNoiseLite_p122c")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0gxm"]
-shader = ExtResource("7_8lpkb")
-shader_parameter/strength = 4.2
-shader_parameter/uv_scaling = 1.0
-shader_parameter/movement_direction = Vector2(1, 1)
-shader_parameter/movement_speed = 0.5
-shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_grg4r"]
-shader = ExtResource("7_cgjvk")
-shader_parameter/rain_amount = 1600.0
-shader_parameter/near_rain_length = 0.01
-shader_parameter/far_rain_length = 0.1
-shader_parameter/near_rain_width = 0.89
-shader_parameter/far_rain_width = 0.5
-shader_parameter/near_rain_transparency = 1.0
-shader_parameter/far_rain_transparency = 0.5
-shader_parameter/rain_color = Color(0, 0, 0, 1)
-shader_parameter/base_rain_speed = 0.5
-shader_parameter/additional_rain_speed = 0.5
-shader_parameter/slant = 0.329
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrvtr"]
 atlas = ExtResource("16_nnwlv")
 region = Rect2(160, 0, 32, 32)
@@ -468,7 +435,40 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background")]
+[sub_resource type="Gradient" id="Gradient_0m6if"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p122c"]
+seed = 3
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4h1xw"]
+seamless = true
+color_ramp = SubResource("Gradient_0m6if")
+noise = SubResource("FastNoiseLite_p122c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0gxm"]
+shader = ExtResource("7_8lpkb")
+shader_parameter/strength = 4.2
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 1)
+shader_parameter/movement_speed = 0.5
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_4h1xw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grg4r"]
+shader = ExtResource("7_cgjvk")
+shader_parameter/rain_amount = 1600.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.1
+shader_parameter/near_rain_width = 0.89
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0, 0, 0, 1)
+shader_parameter/base_rain_speed = 0.5
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.329
+
+[node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background", "map", "screenAnimation", "titleBG", "titleBG_bottom", "titleLabel", "titlePressAnyKey", "titlePressAnyKeyTimer")]
 editor_description = "ตัวควบคุมเกม"
 layout_mode = 3
 anchors_preset = 15
@@ -478,20 +478,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_4jfow")
 script = ExtResource("1_dv3o6")
-paletteShader = NodePath("Control/Screen/SubViewport/PaletteShader")
-background = NodePath("Control/Screen/SubViewport/Background")
+paletteShader = NodePath("Screen/SubViewport/PaletteShader")
+background = NodePath("Screen/SubViewport/Background")
+map = NodePath("Screen/SubViewport/PaletteShader/SubViewport/Map")
+screenAnimation = NodePath("Screen/AnimationScreen")
+titleBG = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG")
+titleBG_bottom = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleBG_bottom")
+titleLabel = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleLabel")
+titlePressAnyKey = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel")
+titlePressAnyKeyTimer = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel/Timer")
 
-[node name="MusicHandler" parent="." node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
-listener = NodePath("AudioListener2D")
+[node name="System" type="Node" parent="."]
 
-[node name="AudioListener2D" type="AudioListener2D" parent="MusicHandler"]
-position = Vector2(60, 383)
-
-[node name="DebugTool" type="Node" parent="." node_paths=PackedStringArray("musicH", "debugger", "filter")]
+[node name="DebugTool" type="Node" parent="System" node_paths=PackedStringArray("musicH", "debugger", "map", "filter")]
 script = ExtResource("6_3wppi")
 musicH = NodePath("../MusicHandler")
-debugger = NodePath("../Control/Debugger")
-filter = NodePath("../Control/Screen/SubViewport/Filter")
+debugger = NodePath("Debugger")
+map = NodePath("../../Screen/SubViewport/PaletteShader/SubViewport/Map")
+filter = NodePath("../../Screen/SubViewport/Filter")
+
+[node name="Debugger" type="Label" parent="System/DebugTool"]
+material = ExtResource("3_ut7rk")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -478.0
+offset_bottom = 193.0
+grow_horizontal = 0
+theme = ExtResource("9_4jfow")
+text = "qrwqwr
+qweqwe"
+
+[node name="MusicHandler" parent="System" node_paths=PackedStringArray("listener") instance=ExtResource("5_ewm0u")]
+listener = NodePath("AudioListener2D")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="System/MusicHandler"]
+position = Vector2(60, 383)
 
 [node name="Frame" type="ColorRect" parent="."]
 layout_mode = 1
@@ -504,17 +526,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Screen" type="SubViewportContainer" parent="Control"]
+[node name="Screen" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -528,19 +540,19 @@ offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/Screen"]
+[node name="SubViewport" type="SubViewport" parent="Screen"]
 handle_input_locally = false
 size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
-[node name="Background" type="ColorRect" parent="Control/Screen/SubViewport"]
+[node name="Background" type="ColorRect" parent="Screen/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PaletteShader" type="SubViewportContainer" parent="Control/Screen/SubViewport"]
+[node name="PaletteShader" type="SubViewportContainer" parent="Screen/SubViewport"]
 z_index = 10
 material = ExtResource("3_ut7rk")
 anchors_preset = 8
@@ -555,26 +567,26 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/Screen/SubViewport/PaletteShader"]
+[node name="SubViewport" type="SubViewport" parent="Screen/SubViewport/PaletteShader"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
-[node name="Map" parent="Control/Screen/SubViewport/PaletteShader/SubViewport" instance=ExtResource("1_yipeh")]
+[node name="Map" parent="Screen/SubViewport/PaletteShader/SubViewport" instance=ExtResource("1_yipeh")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 
-[node name="HudPlayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/CanvasLayer" instance=ExtResource("9_rb7qm")]
+[node name="HudPlayer" parent="Screen/SubViewport/PaletteShader/SubViewport/CanvasLayer" instance=ExtResource("9_rb7qm")]
 offset_left = 64.0
 offset_right = -266.752
 offset_bottom = -257.408
 script = ExtResource("18_5e34q")
 
-[node name="DialogCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 script = ExtResource("8_sb75t")
 
-[node name="PositionTextBox" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer"]
+[node name="PositionTextBox" type="Control" parent="Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -590,7 +602,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(320, 96)
 
-[node name="TextBox - DEBUG" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer" instance=ExtResource("8_i5irp")]
+[node name="TextBox - DEBUG" parent="Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer" instance=ExtResource("8_i5irp")]
 visible = false
 offset_left = 632.0
 offset_top = 576.0
@@ -598,37 +610,33 @@ offset_right = 1272.0
 offset_bottom = 768.0
 pivot_offset = Vector2(320, 96)
 
-[node name="Control" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/DialogCanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
+[node name="TtileCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 
-[node name="TtileCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
-
-[node name="TitleBG" type="TextureRect" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+[node name="TitleBG" type="TextureRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2048.0
-offset_bottom = 2048.0
+offset_right = 3072.0
+offset_bottom = 3072.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 texture = ExtResource("11_h6efc")
 stretch_mode = 5
 
-[node name="TitleBG_bottom" type="ColorRect" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+[node name="TitleBG_bottom" type="ColorRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 896.0
-offset_right = 2048.0
+offset_right = 3072.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
 
-[node name="TitleLabel" type="Label" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+[node name="TitleLabel" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -646,7 +654,7 @@ text = "~ Hero Core ~"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PressAnyKeyLabel" type="Label" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+[node name="PressAnyKeyLabel" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -668,14 +676,14 @@ text = "- Press Any Key to Start -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel"]
+[node name="Timer" type="Timer" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel"]
 wait_time = 0.5
 one_shot = true
 
-[node name="LoadSaveCanvasLayer" type="CanvasLayer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport"]
-
-[node name="Control" type="Control" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer"]
+[node name="LoadSaveCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 visible = false
+
+[node name="Control" type="Control" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -684,7 +692,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 1
 anchors_preset = 8
@@ -701,13 +709,13 @@ grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Panel" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -731,7 +739,7 @@ HP 9999/9999
 MP 9999/9999"
 scroll_active = false
 
-[node name="Button" type="Button" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
+[node name="Button" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -748,13 +756,13 @@ pivot_offset = Vector2(128, 64)
 theme = ExtResource("9_4jfow")
 text = "Load"
 
-[node name="Panel2" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel2"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -778,13 +786,13 @@ HP 9999/9999
 MP 9999/9999"
 scroll_active = false
 
-[node name="Panel3" type="Panel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Panel3" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel3"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -808,9 +816,10 @@ HP 9999/9999
 MP 9999/9999"
 scroll_active = false
 
-[node name="Filter" type="CanvasLayer" parent="Control/Screen/SubViewport"]
+[node name="Filter" type="CanvasLayer" parent="Screen/SubViewport"]
+visible = false
 
-[node name="CRT" type="ColorRect" parent="Control/Screen/SubViewport/Filter"]
+[node name="CRT" type="ColorRect" parent="Screen/SubViewport/Filter"]
 material = ExtResource("12_y8pnv")
 anchors_preset = 15
 anchor_right = 1.0
@@ -819,81 +828,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Control/Screen"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Screen"]
 position = Vector2(-336, 183)
 color = Color(1, 1, 1, 0.509804)
 energy = 5.0
 
-[node name="AnimationScreen" type="AnimationPlayer" parent="Control/Screen"]
+[node name="AnimationScreen" type="AnimationPlayer" parent="Screen"]
 libraries = {
 "": SubResource("AnimationLibrary_tnmj0")
 }
 
-[node name="Debugger" type="Label" parent="Control"]
-material = ExtResource("3_ut7rk")
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 482.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = -347.0
-grow_horizontal = 0
-theme = ExtResource("9_4jfow")
-text = "qrwqwr
-qweqwe"
-
-[node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
-
-[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
-material = SubResource("ShaderMaterial_s0gxm")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="TestTextButton" type="Button" parent="UIOutScreenCanvas"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -192.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = 128.0
-grow_horizontal = 0
-pivot_offset = Vector2(128, 0)
-size_flags_horizontal = 0
-focus_mode = 0
-theme_override_fonts/font = ExtResource("14_rbyc1")
-theme_override_font_sizes/font_size = 42
-text = "Pause"
-script = ExtResource("8_0d1oi")
-
-[node name="Rain" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_grg4r")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -643.0
-offset_top = -231.0
-offset_right = 644.0
-offset_bottom = -33.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.658824, 0.658824, 0.658824, 0)
-metadata/_edit_use_anchors_ = true
-
 [node name="Interface" type="Control" parent="." node_paths=PackedStringArray("playerTempoLabel")]
+layout_mode = 3
 anchors_preset = 0
+offset_top = -2.0
 offset_right = 1920.0
-offset_bottom = 1077.0
+offset_bottom = 1075.0
 mouse_filter = 2
 script = ExtResource("15_tblgl")
 playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/AudioVisualizer/TempoPlayerLabel")
@@ -981,5 +931,51 @@ metadata/_edit_use_anchors_ = true
 [node name="PlaylistLabel" parent="Interface/LeftSide/Palette/SubViewport" instance=ExtResource("18_7m1ic")]
 scale = Vector2(0.715, 0.715)
 script = ExtResource("20_04gik")
+
+[node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
+
+[node name="NoiseOffset" type="ColorRect" parent="UIOutScreenCanvas"]
+material = SubResource("ShaderMaterial_s0gxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TestTextButton" type="Button" parent="UIOutScreenCanvas"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 128.0
+grow_horizontal = 0
+pivot_offset = Vector2(128, 0)
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("14_rbyc1")
+theme_override_font_sizes/font_size = 42
+text = "Pause"
+script = ExtResource("8_0d1oi")
+
+[node name="Rain" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_grg4r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -231.0
+offset_right = 644.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.658824, 0.658824, 0.658824, 0)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]
