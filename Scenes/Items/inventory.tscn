@@ -1,58 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bobgomofuy2pq"]
+[gd_scene load_steps=4 format=3 uid="uid://bobgomofuy2pq"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_cc1j7"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="2_dh6go"]
-[ext_resource type="PackedScene" uid="uid://cs7kym5pr3w6s" path="res://Database/Patterns/กลางตัว.tscn" id="3_8k0a1"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="4_wupnw"]
-[ext_resource type="Resource" uid="uid://b78lrovnvg7go" path="res://Database/Skills/Fireball.tres" id="5_ian6a"]
-[ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="6_hntxk"]
-
-[sub_resource type="Resource" id="Resource_v7gaq"]
-script = ExtResource("4_wupnw")
-name = "Skill Name"
-pattern = ExtResource("3_8k0a1")
-beat_test = ".1"
-sound_when_spawn = "res://Assets/Audio/Gameplay/kick.wav"
-base_damage = 0
-scale_multiplier = 8
-knockback_power = 1.0
-base_speed = 1
-duration = [1, 0, 0]
-acceleration_rate = 0.0
-is_target_lock = false
-is_rotation_to_direction = false
-
-[sub_resource type="Resource" id="Resource_8fju0"]
-script = ExtResource("4_wupnw")
-name = "Skill Name"
-sprite = ExtResource("6_hntxk")
-pattern = ExtResource("3_8k0a1")
-beat_test = "8b"
-sound_when_spawn = "res://Assets/Audio/Gameplay/vox_vg.wav"
-base_damage = 5
-scale_multiplier = 1
-knockback_power = 1.0
-base_speed = 1
-duration = [1, 0, 0]
-acceleration_rate = 0.0
-is_target_lock = false
-is_rotation_to_direction = false
-
-[sub_resource type="Resource" id="Resource_thdol"]
-script = ExtResource("4_wupnw")
-name = "Skill Name"
-sprite = ExtResource("6_hntxk")
-pattern = ExtResource("3_8k0a1")
-beat_test = "8b"
-sound_when_spawn = "res://Assets/Audio/Gameplay/1b_lute.wav"
-base_damage = 5
-scale_multiplier = 1
-knockback_power = 1.0
-base_speed = 1
-duration = [1, 0, 0]
-acceleration_rate = 0.0
-is_target_lock = false
-is_rotation_to_direction = false
 
 [node name="Inventory" type="Node"]
 
@@ -63,7 +13,9 @@ description = "Proctecting you from the unholy things."
 
 [node name="KickShield" type="Node" parent="KickShield"]
 script = ExtResource("2_dh6go")
-skills = Array[ExtResource("4_wupnw")]([SubResource("Resource_v7gaq")])
+
+[node name="Skill" type="Node" parent="KickShield"]
+script = ExtResource("4_wupnw")
 
 [node name="FireGlove" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
@@ -71,21 +23,18 @@ NAME = "Fire Glove"
 
 [node name="Fireball" type="Node" parent="FireGlove"]
 script = ExtResource("2_dh6go")
-skills = Array[ExtResource("4_wupnw")]([ExtResource("5_ian6a")])
 
 [node name="AngleWing" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
 [node name="PassiveHeal" type="Node" parent="AngleWing"]
 script = ExtResource("2_dh6go")
-skills = Array[ExtResource("4_wupnw")]([SubResource("Resource_8fju0")])
 
 [node name="Lute" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
 [node name="Lute" type="Node" parent="Lute"]
 script = ExtResource("2_dh6go")
-skills = Array[ExtResource("4_wupnw")]([SubResource("Resource_thdol")])
 
 [node name="HermesBoots" type="Node" parent="."]
 script = ExtResource("1_cc1j7")

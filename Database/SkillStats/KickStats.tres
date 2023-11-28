@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=2 format=3 uid="uid://d05dwftqcmlym"]
+
+[ext_resource type="Script" path="res://Scripts/Skill/skill_stats.gd" id="1_q5aqj"]
+
+[resource]
+script = ExtResource("1_q5aqj")
+base_damage = 10

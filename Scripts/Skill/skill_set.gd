@@ -4,7 +4,7 @@ extends Node
 class_name SkillSet
 
 ## สกิลที่จะมีในสกิลเซ็ตนี้
-@export var skills: Array[Skill] = []
+@export var skills: Array[SkillDB] = []
 
 @onready var caster: Node = $"../../.."
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")

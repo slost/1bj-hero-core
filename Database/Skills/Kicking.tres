@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dpjsta3ow2gvu"]
+[gd_resource type="Resource" script_class="SkillDB" load_steps=3 format=3 uid="uid://dpjsta3ow2gvu"]
 
-[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="1_cmc7a"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="1_cmc7a"]
 [ext_resource type="PackedScene" uid="uid://b2ep33c6tw3as" path="res://Database/Patterns/รอบตัว.tscn" id="1_i7qdr"]
 
 [resource]
 script = ExtResource("1_cmc7a")
+name = "Skill Name"
 pattern = ExtResource("1_i7qdr")
+beat_test = "1"
 sound_when_spawn = ""
 base_damage = 0
-scale_multiply = 1
+scale_multiplier = 1
+knockback_power = 1.0
 base_speed = 1
 duration = [1, 0, 0]
 acceleration_rate = 0.0
+is_target_lock = false
+is_rotation_to_direction = false

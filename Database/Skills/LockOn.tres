@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://dxwjiehfgx2iw"]
+[gd_resource type="Resource" script_class="SkillDB" load_steps=4 format=3 uid="uid://dxwjiehfgx2iw"]
 
 [ext_resource type="PackedScene" uid="uid://d0qapsnfxoga2" path="res://Database/Patterns/Pat_LockOn.tscn" id="1_pd063"]
-[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="1_w3jsj"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="1_w3jsj"]
 [ext_resource type="PackedScene" uid="uid://b6e3hpa0ypnvu" path="res://Database/ProjectileSprites/ProjectileSprite.tscn" id="3_iip72"]
 
 [resource]

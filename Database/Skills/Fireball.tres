@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://b78lrovnvg7go"]
+[gd_resource type="Resource" script_class="SkillDB" load_steps=3 format=3 uid="uid://b78lrovnvg7go"]
 
 [ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="1_2nx0h"]
-[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="2_bsi3v"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="2_bsi3v"]
 
 [resource]
 script = ExtResource("2_bsi3v")
