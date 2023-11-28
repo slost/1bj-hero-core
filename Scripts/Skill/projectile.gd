@@ -16,13 +16,11 @@ var knockback_power: float = 1.0
 var acceleration_rate: float = 1
 var damage:int = 10
 
-var sound_path: String
+
 var timer: float
 var delta: float
 var caster: Node
-var sound_file: String
 var velocity: Vector2
-var db = 0
 
 
 func _ready() -> void:
@@ -30,9 +28,8 @@ func _ready() -> void:
 		scale = caster.scale
 	scale *= scale_multiplier
 	knockback_power *= 10
-	spawn_sound()
-
 	
+
 func _physics_process(_delta) -> void:
 	delta = _delta
 	if is_target_lock: # ล็อคเป้าอ๊ะเปล่า
@@ -57,22 +54,3 @@ func process_duration() -> void:
 func process_visual() -> void:
 	if Global.is_alpha_mode:
 		modulate.a = 0.75
-
-
-
-
-# สร้าง AudioStreamPlayer2D ในโหนด MusicHanlder
-func spawn_sound():
-	var sound = Sound.new()
-	if caster == Global.player:
-		sound.bus = "Player"
-	else:
-		sound.bus = "Monster"
-	sound.global_position = self.global_position
-	sound.scale = self.scale
-	sound.volume_db += db
-	if sound_path:
-		sound.stream = load(sound_path) 
-	Global.musicH.add_child(sound)
-
-

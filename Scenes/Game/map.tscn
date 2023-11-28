@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=19 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="1_fwmxs"]
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
 [ext_resource type="PackedScene" uid="uid://ckkkvld6onpug" path="res://Scenes/Character/player.tscn" id="2_ljpgr"]
 [ext_resource type="Texture2D" uid="uid://cc8tgllu7pqgu" path="res://Assets/Sprites/Map/tileset1.png" id="3_gjmot"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
+[ext_resource type="PackedScene" uid="uid://bobgomofuy2pq" path="res://Scenes/Items/inventory.tscn" id="3_vxu7v"]
 [ext_resource type="Resource" uid="uid://brmrjogk2rdpr" path="res://Database/Character/dummy.tres" id="4_gmtff"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
 [ext_resource type="Texture2D" uid="uid://0f6tc6t1b8nk" path="res://Assets/Sprites/Map/tile0.png" id="4_yqt88"]
@@ -154,6 +155,8 @@ script = ExtResource("1_fwmxs")
 [node name="Player" parent="." instance=ExtResource("2_ljpgr")]
 editor_description = "ผู้เล่นไง"
 position = Vector2(680, 632)
+
+[node name="Inventory" parent="Player" instance=ExtResource("3_vxu7v")]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(8, 8)

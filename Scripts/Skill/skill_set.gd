@@ -14,10 +14,13 @@ var bar_counter: int = 1
 var hostile: Node
 var current_turn: Turn
 
+var sound_path: String
+
 
 func _ready():
 	# caster = $".."
 	set_hostile()
+
 
 # กำหนดค่าศัตรูให้กระสุน
 func set_hostile() -> void:
@@ -42,10 +45,10 @@ func process_beat() -> void:
 			skill.can_spawn = true
 		if skill.match_beat():
 			if skill.can_spawn:
-				print(self.name + " Spawned: " + str(skill.bars[1]))
+				# print(self.name + " Spawned: " + str(skill.bars[1]))
 				spawn_skill_from_id(0)
+				spawn_sound(skill.sound_when_spawn, 10)
 				skill.can_spawn = false
-
 
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills
@@ -72,9 +75,6 @@ func spawn_projectile(_data: Dictionary) -> void:
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
-	proj.sound_path = _data.sound
-	if _data.db:
-		proj.db = _data.db
 	proj.scale_multiplier = _data.scale_multiplier
 	$"..".add_child(proj)
 	
@@ -87,3 +87,16 @@ func get_projectile_direction(_direction: String) -> Vector2:
 		"nearest_enemy":
 			return (hostile.global_position - caster.global_position).normalized()
 	return Vector2.ZERO
+
+
+# สร้าง AudioStreamPlayer2D ในโหนด MusicHanlder
+func spawn_sound(_sound_path, _db) -> void:
+	var sound = Sound.new()
+	if caster == Global.player:
+		sound.bus = "Player"
+	else:
+		sound.bus = "Monster"
+	sound.global_position = caster.global_position
+	sound.volume_db += _db
+	sound.stream = load(_sound_path) 
+	Global.musicH.add_child(sound)

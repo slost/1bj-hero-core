@@ -14,4 +14,3 @@ func _process(_delta):
         queue_free()
     if _delta >= Global.seconds_per_bar:
         queue_free()
-
