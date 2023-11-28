@@ -39,7 +39,7 @@ project/assembly_name="1 Bj-hero-core"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/FileSystemView/plugin.cfg", "res://addons/nv.file_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/FileSystemView/plugin.cfg", "res://addons/horizontal_file_system/plugin.cfg")
 
 [filesystem]
 

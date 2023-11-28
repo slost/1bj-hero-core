@@ -5,23 +5,15 @@ class_name SkillSet
 ## สกิลที่จะมีในสกิลเซ็ตนี้
 @export var skills: Array[Skill] = []
 
-"""
-Skill: resource = {
-	projectile = กระสุนที่จะสปอน
-	pattern = รูปแบบของกลุ่มกระสุน เช่น ไปซ้าย อยู่เฉย ๆ และตำแหน่งของกระสุนทั้งหมด
-	beat = จังหวะเพลงที่จะสปอนแพทเทิร์นกระสุน
-	sound = เสียงที่จะปล่อยตอนปล่อยกระสุน
-	}
-"""
-
 @onready var caster: Node = $"../../.."
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
+@onready var can_spawn = true
 
 var bar_counter: int = 1
 var hostile: Node
 var patterns: Array = []
 var current_turn: Turn
-@onready var can_spawn = true
+
 
 func _ready():
 	# caster = $".."
