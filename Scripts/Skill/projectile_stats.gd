@@ -19,4 +19,13 @@ class_name ProjectileStats
 ## ค่าที่จะนำไปคูณกับขนาด
 @export var scale_multiplier: int = 1
 
-
+func get_stats():
+    return {
+        "base_damage": base_damage,
+        "base_speed": base_speed,
+        "acceleration_rate": acceleration_rate,
+        "duration": duration,
+        "is_target_lock": is_target_lock,
+        "is_rotation_to_direction": is_rotation_to_direction,
+        "scale_multiplier": scale_multiplier,
+    }

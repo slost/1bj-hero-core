@@ -14,14 +14,18 @@ var is_target_lock: bool = false
 var scale_multiplier: float = 1.0
 var knockback_power: float = 1.0
 var acceleration_rate: float = 1
+## ความเสียหาย
 var damage:int = 10
 
 
 var timer: float
 var delta: float
+## ตัวละครที่ใช้สกิล
 var caster: Node
 var velocity: Vector2
 
+
+var stats: Dictionary
 
 func _ready() -> void:
 	if caster:

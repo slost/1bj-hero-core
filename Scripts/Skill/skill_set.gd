@@ -4,7 +4,7 @@ extends Node
 class_name SkillSet
 
 ## สกิลที่จะมีในสกิลเซ็ตนี้
-@export var skills: Array[SkillDB] = []
+@export var skills: Array[Skill] = []
 
 @onready var caster: Node = $"../../.."
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
@@ -43,12 +43,12 @@ func process_beat() -> void:
 		if Global.bars[1] != skill.bars[1]:
 			skill.bars[1] = Global.bars[1]
 			skill.can_spawn = true
-		if skill.match_beat():
-			if skill.can_spawn:
-				# print(self.name + " Spawned: " + str(skill.bars[1]))
-				spawn_skill_from_id(0)
-				spawn_sound(skill.sound_when_spawn, 10)
-				skill.can_spawn = false
+		# if skill.match_beat():
+		# 	if skill.can_spawn:
+		# 		# print(self.name + " Spawned: " + str(skill.bars[1]))
+		# 		spawn_skill_from_id(0)
+		# 		spawn_sound(skill.sound_when_spawn, 10)
+		# 		skill.can_spawn = false
 
 		
 # สปอนแพทเทิร์นกระสุนจาก id ของอาร์เรย์ใน skills

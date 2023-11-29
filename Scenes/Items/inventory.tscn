@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bobgomofuy2pq"]
+[gd_scene load_steps=7 format=3 uid="uid://bobgomofuy2pq"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_cc1j7"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_btanu"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="2_dh6go"]
-[ext_resource type="Script" path="res://Scripts/Skill/skill.gd" id="4_wupnw"]
+[ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="3_wwv4r"]
+[ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="4_v31i3"]
+
+[sub_resource type="Resource" id="Resource_e82ab"]
+script = ExtResource("4_v31i3")
+base_damage = 10
+base_speed = 1
+acceleration_rate = 0.0
+duration = [1, 0, 0]
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 1
 
 [node name="Inventory" type="Node"]
 
@@ -11,11 +23,10 @@ script = ExtResource("1_cc1j7")
 NAME = "Holy Shield"
 description = "Proctecting you from the unholy things."
 
-[node name="KickShield" type="Node" parent="KickShield"]
-script = ExtResource("2_dh6go")
-
-[node name="Skill" type="Node" parent="KickShield"]
-script = ExtResource("4_wupnw")
+[node name="SkillSingle" type="Node" parent="KickShield"]
+script = ExtResource("2_btanu")
+data = ExtResource("3_wwv4r")
+projectile_stats = SubResource("Resource_e82ab")
 
 [node name="FireGlove" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
@@ -23,18 +34,21 @@ NAME = "Fire Glove"
 
 [node name="Fireball" type="Node" parent="FireGlove"]
 script = ExtResource("2_dh6go")
+skills = null
 
 [node name="AngleWing" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
 [node name="PassiveHeal" type="Node" parent="AngleWing"]
 script = ExtResource("2_dh6go")
+skills = null
 
 [node name="Lute" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
 [node name="Lute" type="Node" parent="Lute"]
 script = ExtResource("2_dh6go")
+skills = null
 
 [node name="HermesBoots" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
