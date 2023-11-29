@@ -1,4 +1,4 @@
-@icon("res://Assets/Icons/icon_skill.png")
+@icon("res://Assets/Icons/icon_skillset.png")
 ## ควบคุมการปล่อยสกิล
 extends Node
 class_name SkillSet

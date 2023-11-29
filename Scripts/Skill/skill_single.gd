@@ -1,3 +1,4 @@
+@icon("res://Assets/Icons/icon_skill.png")
 extends Skill
 class_name SkillSingle
 
