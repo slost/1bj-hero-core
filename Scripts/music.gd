@@ -2,7 +2,7 @@ extends Node
 class_name Music
 
 @onready var tempo = Global.base_tempo
-@onready var bars: Array = [1, 1, 1, 1.0]
+@onready var bars: Array = [1, 1, 1]
 
 var time: float = 0.0
 var timer: float = 0.0

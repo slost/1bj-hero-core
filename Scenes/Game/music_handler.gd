@@ -54,7 +54,7 @@ func process_music(_delta) -> void:
 		bars[2] += 1
 		timer -= sec_per_bar * i
 	
-	bars = Lib.process_bars(bars)
+	bars = Lib.fix_bars(bars)
 	
 	
 	if Global.turn_queue.size() > 0:

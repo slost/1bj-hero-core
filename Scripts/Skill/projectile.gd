@@ -2,6 +2,7 @@
 extends Area2D
 class_name Projectile
 
+@onready var bars = caster.bars
 
 ### Stats
 ## ระยะทางที่จะพุ่งไป (สามารถกำหนดได้ใน Skill Pattern)
@@ -18,6 +19,10 @@ var acceleration_rate: float = 1
 var damage:int = 10
 
 
+var timer = 0.0
+
+var dur = [0, 2, 0]
+
 var sprite = null
 var delta: float
 ## ตัวละครที่ใช้สกิล
@@ -30,10 +35,12 @@ var stats: Dictionary = {
 	"scale_multiplier": 1.0,
 	"knockback_power": 1.0,
 	"acceleration_rate": 1.0,
-	"duration": [1, 1, 1],
+	"duration": [1, 0, 0],
 	"target": null,
 	"is_target_lock": false,
 }
+
+var timeout_bars 
 
 func _init():
 	pass
@@ -44,6 +51,8 @@ func _ready() -> void:
 	scale *= stats.scale_multiplier
 	knockback_power *= 10
 	create_sprite()
+	get_timeout_bars(bars, dur)
+	timeout_bars = get_timeout_bars(bars, stats.duration)
 	
 
 # สร้างสไปรต์	
@@ -65,17 +74,27 @@ func _physics_process(_delta) -> void:
 		# velocity = target * speed
 	velocity = (direction) * (speed)
 	translate(velocity)
+
+func _process(_delta):
 	process_duration() 
 	# process_visual()
 	
-var timer = 0.0
+
 
 func process_duration() -> void:
-	# = stats["duration"]
-	timer += delta * 0.1
-	if timer >= Global.seconds_per_bar:
+	if caster.bars >= timeout_bars:
 		queue_free()
+
+
 	
 func process_visual() -> void:
 	if Global.is_alpha_mode:
 		modulate.a = 0.75
+
+
+func get_timeout_bars(_bars: Array, _duration: Array) -> Array:
+	var result = []
+	for i in range(_bars.size()):
+		var sum_result = _bars[i] + _duration[i]
+		result.append(sum_result)
+	return Lib.fix_bars(result)

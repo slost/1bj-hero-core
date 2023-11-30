@@ -70,4 +70,4 @@ func add_text(_text: String) -> void:
 
 
 func get_bars_string(_bars: Array) -> String:
-	return str(_bars[0]) + ":" + str(_bars[1]) + ":" + str(_bars[2]) + ":" + str(_bars[3]) 
+	return str(_bars[0]) + ":" + str(_bars[1]) + ":" + str(_bars[2]) # + ":" + str(_bars[3]) 

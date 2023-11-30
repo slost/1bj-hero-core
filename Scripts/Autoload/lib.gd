@@ -38,17 +38,17 @@ func get_seconds_per_bar(_tempo: float) -> float:
 	return 60.0 / _tempo
 
 
-func process_bars(_bar: Array) -> Array:
-	var first = _bar[0]
-	var second = _bar[1]
-	var third = _bar[2]
-	if _bar[2] > 4:
+func fix_bars(_bars: Array) -> Array:
+	var first = _bars[0]
+	var second = _bars[1]
+	var third = _bars[2]
+	if _bars[2] > 4:
 		third = 1
 		second += 1
 	if second > 4:
 		second = 1
 		first += 1
-	return [first, second, third, 0.0]	
+	return [first, second, third]	
 
 
 # รีเทิร์นข้อมูลแพทเทิร์นออกมาเป็นดิคชันนารีที่รวมค่าในแต่ละเลเยอร์เอาไว้
