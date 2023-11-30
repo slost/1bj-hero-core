@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=18 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="1_fwmxs"]
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8tgllu7pqgu" path="res://Assets/Sprites/Map/tileset1.png" id="3_gjmot"]
 [ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="3_qrfdy"]
 [ext_resource type="PackedScene" uid="uid://bobgomofuy2pq" path="res://Scenes/Items/inventory.tscn" id="3_vxu7v"]
+[ext_resource type="PackedScene" uid="uid://dyfth16hjen4o" path="res://Scenes/Items/agza_inventory.tscn" id="4_74wuw"]
 [ext_resource type="Resource" uid="uid://brmrjogk2rdpr" path="res://Database/Character/dummy.tres" id="4_gmtff"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
 [ext_resource type="Texture2D" uid="uid://0f6tc6t1b8nk" path="res://Assets/Sprites/Map/tile0.png" id="4_yqt88"]
@@ -155,6 +156,8 @@ editor_description = "ผู้เล่นไง"
 position = Vector2(680, 632)
 
 [node name="Inventory" parent="Player" instance=ExtResource("3_vxu7v")]
+
+[node name="AgzaInventory" parent="Player" instance=ExtResource("4_74wuw")]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
