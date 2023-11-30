@@ -2,13 +2,15 @@
 extends Resource
 class_name SkillDB
 
+## ตำแหน่งที่สกิลจะสปอน
+@export_enum("Caster", "All Enemy", "Closest Enemy", "Furtest Enemy") var spawn_location: int
 ## สไปรต์กระสุน
 @export var sprite: PackedScene
 ## รูปแบบของกลุ่มกระสุน เช่น ไปซ้าย อยู่เฉย ๆ และตำแหน่งของกระสุนทั้งหมด
 @export var pattern: PackedScene
 ## จังหวะเพลงที่จะกำหนดเวลาสปอนแพทเทิร์นกระสุน
 @export var beat: PackedScene
-@export var beat_test: String = "1"
+@export var beat_test: String = ".1"
 ## เสียงที่จะเล่นตอนปล่อยกระสุน
 @export_file() var sound_when_spawn: String
 

@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://tfkvdtqv0y1q"]
+
+[ext_resource type="PackedScene" uid="uid://caox48g08q8j4" path="res://Scenes/Character/monster.tscn" id="1_hklng"]
+[ext_resource type="PackedScene" uid="uid://delfu1kfis7i0" path="res://Scenes/Character/enemy/monster_bat.tscn" id="2_cvy5e"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="3_dryy1"]
+[ext_resource type="PackedScene" uid="uid://hhmu31l3ip3y" path="res://Scenes/Character/enemy/monster_flower.tscn" id="4_fando"]
+[ext_resource type="PackedScene" uid="uid://bsfbga1rflh72" path="res://Scenes/Character/enemy/monster_wolf.tscn" id="5_jn563"]
+
+[node name="Node" type="Node2D"]
+visible = false
+
+[node name="MonsterDummy3" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("1_hklng")]
+position = Vector2(1004, 367)
+scale = Vector2(4, 4)
+move_behavior = 5
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="MonsterDummy4" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("1_hklng")]
+visible = false
+position = Vector2(840, 568)
+scale = Vector2(4, 4)
+move_behavior = 6
+speed = 200
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="Node" type="Node" parent="MonsterDummy4"]
+
+[node name="Monster_Bat" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("2_cvy5e")]
+position = Vector2(1586, 101)
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="Node" type="Node" parent="Monster_Bat"]
+
+[node name="SkillSet" type="Node" parent="Monster_Bat/Node"]
+script = ExtResource("3_dryy1")
+
+[node name="Monster_Flower" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("4_fando")]
+position = Vector2(2024, 908)
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="Node" type="Node" parent="Monster_Flower"]
+
+[node name="SkillSet" type="Node" parent="Monster_Flower/Node"]
+script = ExtResource("3_dryy1")
+
+[node name="Monster_Wolf" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("5_jn563")]
+position = Vector2(2883, 411)
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="Node" type="Node" parent="Monster_Wolf"]
+
+[node name="SkillSet" type="Node" parent="Monster_Wolf/Node"]
+script = ExtResource("3_dryy1")
+
+[node name="MonsterDummy2" parent="." node_paths=PackedStringArray("debugger", "spr") instance=ExtResource("1_hklng")]
+position = Vector2(800, 160)
+scale = Vector2(4, 4)
+debugger = NodePath("")
+spr = NodePath("")
+
+[node name="Node" type="Node" parent="MonsterDummy2"]
+
+[node name="SkillSet" type="Node" parent="MonsterDummy2/Node"]
+script = ExtResource("3_dryy1")

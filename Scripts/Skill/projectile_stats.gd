@@ -19,6 +19,9 @@ class_name ProjectileStats
 ## ค่าที่จะนำไปคูณกับขนาด
 @export var scale_multiplier: float = 1.0
 
+## จำนวนครั้งที่กระสุนจะเจาะ
+@export var penetrate: int = 1
+
 func get_stats():
     return {
         "base_damage": base_damage,

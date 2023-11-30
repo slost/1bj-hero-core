@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_cmc7a")
+spawn_location = 0
 sprite = ExtResource("3_y1im5")
 pattern = ExtResource("1_j0mvx")
 beat_test = ".1"

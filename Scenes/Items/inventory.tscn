@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bobgomofuy2pq"]
+[gd_scene load_steps=15 format=3 uid="uid://bobgomofuy2pq"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_cc1j7"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_btanu"]
 [ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="3_wwv4r"]
 [ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="4_v31i3"]
 [ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="5_g8and"]
+[ext_resource type="PackedScene" uid="uid://c8lut6iaq0c1" path="res://Database/Patterns/pat_พุ่งไปหาตัวใกล้สุด.tscn" id="5_htqfl"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="5_wfu4t"]
 [ext_resource type="PackedScene" uid="uid://c55cxwc8jx0ws" path="res://Database/ProjectileSprites/Fireball.tscn" id="7_imo4w"]
+[ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="9_01hgl"]
 
 [sub_resource type="Resource" id="Resource_e82ab"]
 script = ExtResource("4_v31i3")
@@ -17,10 +19,31 @@ duration = [0, 1, 0]
 is_target_lock = false
 is_rotation_to_direction = false
 scale_multiplier = 4.0
+penetrate = 1
+
+[sub_resource type="Resource" id="Resource_81kpn"]
+script = ExtResource("5_wfu4t")
+spawn_location = 0
+sprite = ExtResource("7_imo4w")
+pattern = ExtResource("5_htqfl")
+beat_test = ".2"
+sound_when_spawn = "res://Assets/Audio/Skills/kick.wav"
+
+[sub_resource type="Resource" id="Resource_yplpi"]
+script = ExtResource("4_v31i3")
+base_damage = 10
+base_speed = 1
+acceleration_rate = 0.0
+duration = [1, 0, 0]
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 2.0
+penetrate = 1
 
 [sub_resource type="Resource" id="Resource_i334s"]
 script = ExtResource("5_wfu4t")
-sprite = ExtResource("7_imo4w")
+spawn_location = 0
+sprite = ExtResource("9_01hgl")
 pattern = ExtResource("5_g8and")
 beat_test = ".2"
 sound_when_spawn = "res://Assets/Audio/Skills/snare.wav"
@@ -34,6 +57,7 @@ duration = [4, 0, 0]
 is_target_lock = false
 is_rotation_to_direction = false
 scale_multiplier = 1.0
+penetrate = 1
 
 [node name="Inventory" type="Node"]
 
@@ -47,11 +71,21 @@ script = ExtResource("2_btanu")
 data = ExtResource("3_wwv4r")
 projectile_stats = SubResource("Resource_e82ab")
 
-[node name="FireGlove" type="Node" parent="."]
+[node name="Glove" type="Node" parent="."]
+script = ExtResource("1_cc1j7")
+title = "Holy Shield"
+description = "Proctecting you from the unholy things."
+
+[node name="Glove" type="Node" parent="Glove"]
+script = ExtResource("2_btanu")
+data = SubResource("Resource_81kpn")
+projectile_stats = SubResource("Resource_yplpi")
+
+[node name="Lighting" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 title = "Fire Glove"
 
-[node name="Glove" type="Node" parent="FireGlove"]
+[node name="Lighting" type="Node" parent="Lighting"]
 script = ExtResource("2_btanu")
 data = SubResource("Resource_i334s")
 projectile_stats = SubResource("Resource_koyu8")

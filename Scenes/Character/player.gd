@@ -11,7 +11,8 @@ class_name Player
 var rng = RandomNumberGenerator.new()
 
 
-func ready_player() -> void:
+func ready_character() -> void:
+	
 	animSpr.play("move_down")
 	scale = Global.SCALE_VEC
 	z_index = 2

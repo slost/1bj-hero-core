@@ -30,6 +30,7 @@ var seconds_per_bar: float
 # Node
 var map: Node
 var player: Node
+var boss: Node
 var musicH: Node
 var dialogCanvas: Node
 var debugTool: Node
