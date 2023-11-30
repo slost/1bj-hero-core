@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c55cxwc8jx0ws"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_okrpc"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_3b60c"]
+
+[node name="Fireball" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_okrpc")
+frame = 2
+script = ExtResource("2_3b60c")

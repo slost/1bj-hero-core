@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dd6urpg6r653v"
-path="res://.godot/imported/8b-ah.wav-096af1abaede23c42a9c73afd3a48d43.sample"
+uid="uid://c4q4751fn0oss"
+path="res://.godot/imported/hihats.wav-012351ae987c6f76a4faee80b4f6bbe7.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Gameplay/8b-ah.wav"
-dest_files=["res://.godot/imported/8b-ah.wav-096af1abaede23c42a9c73afd3a48d43.sample"]
+source_file="res://Assets/Audio/Skills/hihats.wav"
+dest_files=["res://.godot/imported/hihats.wav-012351ae987c6f76a4faee80b4f6bbe7.sample"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c4q4751fn0oss"
-path="res://.godot/imported/hihats.wav-1a63db6111276cbbc79f741262ea6279.sample"
+uid="uid://dyp7ya0h7gwo"
+path="res://.godot/imported/snare.wav-67a4ad9343a3dccb6638448465214c33.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Gameplay/hihats.wav"
-dest_files=["res://.godot/imported/hihats.wav-1a63db6111276cbbc79f741262ea6279.sample"]
+source_file="res://Assets/Audio/Skills/snare.wav"
+dest_files=["res://.godot/imported/snare.wav-67a4ad9343a3dccb6638448465214c33.sample"]
 
 [params]
 

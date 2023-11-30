@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b5h1y2mdq3bfd"
-path="res://.godot/imported/1b_lute.wav-5ee76ff54f25565e9e56e17f17c0aeb8.sample"
+uid="uid://dmqy2j74g0aq8"
+path="res://.godot/imported/vox_vg.wav-17625ab51b3a00c834cb2851db112b83.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Gameplay/1b_lute.wav"
-dest_files=["res://.godot/imported/1b_lute.wav-5ee76ff54f25565e9e56e17f17c0aeb8.sample"]
+source_file="res://Assets/Audio/Skills/vox_vg.wav"
+dest_files=["res://.godot/imported/vox_vg.wav-17625ab51b3a00c834cb2851db112b83.sample"]
 
 [params]
 

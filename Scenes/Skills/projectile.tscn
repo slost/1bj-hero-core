@@ -46,6 +46,7 @@ texture = SubResource("GradientTexture2D_vyyt1")
 shape = SubResource("CircleShape2D_2qbqd")
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 material = ExtResource("2_ddexa")
 position = Vector2(-8, -8)
 tile_set = SubResource("TileSet_phh86")

@@ -1,12 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://bobgomofuy2pq"]
+[gd_scene load_steps=11 format=3 uid="uid://bobgomofuy2pq"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_cc1j7"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_btanu"]
-[ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="2_dh6go"]
 [ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="3_wwv4r"]
 [ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="4_v31i3"]
+[ext_resource type="PackedScene" uid="uid://drgcu28hh3v2j" path="res://Database/Patterns/พุ่งออกจากตัว.tscn" id="5_g8and"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="5_wfu4t"]
+[ext_resource type="PackedScene" uid="uid://c55cxwc8jx0ws" path="res://Database/ProjectileSprites/Fireball.tscn" id="7_imo4w"]
 
 [sub_resource type="Resource" id="Resource_e82ab"]
+script = ExtResource("4_v31i3")
+base_damage = 10
+base_speed = 1
+acceleration_rate = 0.0
+duration = [1, 0, 0]
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 1
+
+[sub_resource type="Resource" id="Resource_i334s"]
+script = ExtResource("5_wfu4t")
+sprite = ExtResource("7_imo4w")
+pattern = ExtResource("5_g8and")
+beat_test = ".2"
+sound_when_spawn = "res://Assets/Audio/Skills/snare.wav"
+
+[sub_resource type="Resource" id="Resource_koyu8"]
 script = ExtResource("4_v31i3")
 base_damage = 10
 base_speed = 1
@@ -20,37 +39,29 @@ scale_multiplier = 1
 
 [node name="KickShield" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
-NAME = "Holy Shield"
+title = "Holy Shield"
 description = "Proctecting you from the unholy things."
 
-[node name="SkillSingle" type="Node" parent="KickShield"]
+[node name="Kick" type="Node" parent="KickShield"]
 script = ExtResource("2_btanu")
 data = ExtResource("3_wwv4r")
 projectile_stats = SubResource("Resource_e82ab")
 
 [node name="FireGlove" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
-NAME = "Fire Glove"
+title = "Fire Glove"
 
-[node name="Fireball" type="Node" parent="FireGlove"]
-script = ExtResource("2_dh6go")
-skills = null
+[node name="Glove" type="Node" parent="FireGlove"]
+script = ExtResource("2_btanu")
+data = SubResource("Resource_i334s")
+projectile_stats = SubResource("Resource_koyu8")
 
 [node name="AngleWing" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
-[node name="PassiveHeal" type="Node" parent="AngleWing"]
-script = ExtResource("2_dh6go")
-skills = null
-
 [node name="Lute" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 
-[node name="Lute" type="Node" parent="Lute"]
-script = ExtResource("2_dh6go")
-skills = null
-
 [node name="HermesBoots" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
-NAME = "Hermes Boots"
 description = "Faster."

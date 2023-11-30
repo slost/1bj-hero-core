@@ -5,7 +5,7 @@ class_name Item
 
 @export_category("Infomation")
 ## ชื่อ
-@export var NAME: = "Item"
+@export var title: = "Item Name"
 ## คำอธิบาย
 @export_multiline var description = ""
 ## ประเภทของไอเทม (Command ยังไม่ทำ)

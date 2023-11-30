@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c70ikirupcmew"
-path="res://.godot/imported/lute.wav-fb3b450d5dab72a795709ae32c61cd2a.sample"
+uid="uid://w3rsvxybd36t"
+path="res://.godot/imported/godspell.wav-cdcc1f75a39db13a604c3dd500122726.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Gameplay/lute.wav"
-dest_files=["res://.godot/imported/lute.wav-fb3b450d5dab72a795709ae32c61cd2a.sample"]
+source_file="res://Assets/Audio/Skills/godspell.wav"
+dest_files=["res://.godot/imported/godspell.wav-cdcc1f75a39db13a604c3dd500122726.sample"]
 
 [params]
 

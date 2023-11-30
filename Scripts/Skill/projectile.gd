@@ -5,8 +5,8 @@ class_name Projectile
 
 ### Stats
 ## ระยะทางที่จะพุ่งไป (สามารถกำหนดได้ใน Skill Pattern)
-var base_speed: int = 1
 var direction: Vector2
+var base_speed: int = 1
 var target
 ## ล็อคเป้าหมายหรือไม่
 var is_target_lock: bool = false 
@@ -18,21 +18,41 @@ var acceleration_rate: float = 1
 var damage:int = 10
 
 
+var sprite = null
 var timer: float
 var delta: float
 ## ตัวละครที่ใช้สกิล
 var caster: Node
 var velocity: Vector2
 
+var stats: Dictionary = {
+	"damage": 10,
+	"base_speed": 1,
+	"scale_multiplier": 1.0,
+	"knockback_power": 1.0,
+	"acceleration_rate": 1.0,
+	"duration": 1.0,
+	"target": null,
+	"is_target_lock": false,
+}
 
-var stats: Dictionary
+func _init():
+	pass
 
 func _ready() -> void:
 	if caster:
 		scale = caster.scale
-	scale *= scale_multiplier
+	scale *= stats.scale_multiplier
 	knockback_power *= 10
 	
+	create_sprite()
+	
+func create_sprite() -> void:
+	if sprite:
+		var inst_sprite = sprite.instantiate()
+		inst_sprite.scale = scale
+		add_child(inst_sprite)
+	print(sprite)
 
 func _physics_process(_delta) -> void:
 	delta = _delta

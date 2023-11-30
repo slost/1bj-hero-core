@@ -8,18 +8,20 @@ class_name SkillSingle
 ## ค่าสถานะของกระสุนจะเก็บไว้ในตัวแปรนี้
 @export var projectile_stats: ProjectileStats
 
-var bars = [1, 1, 1, 1.0]
+@export var test: ProjectileSprite
+
+
 
 func process_skill():
-    process_beat(data)
+	process_beat(data)
 
 # ประมวลผลการสปอนจากบีท
 func process_beat(_data: SkillDB) -> void:
-    if Global.bars[1] != bars[1]:
-        bars[1] = Global.bars[1]
-        data.can_spawn = true
-    if match_beat(data.beat_test):
-        if data.can_spawn:
-            spawn_skill(data)
-            spawn_sound(data.sound_when_spawn, 10)
-            data.can_spawn = false
+	if Global.bars[1] != bars[1]:
+		bars[1] = Global.bars[1]
+		data.can_spawn = true
+	if match_beat(data.beat_test):
+		if data.can_spawn:
+			spawn_skill(data, projectile_stats)
+			spawn_sound(data.sound_when_spawn, 10)
+			data.can_spawn = false

@@ -10,9 +10,9 @@ var hostile: Node
 
 # เทิร์นปัจจุบัน
 var current_turn: Turn
-
 var can_spawn = true
 
+var bars = [1, 1, 1, 1.0]
 
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
@@ -21,47 +21,37 @@ func _process(_delta) -> void:
 			process_skill()
 
 
+# ไปเขียนใน SkillSingle และ SkillSet แทน
 func process_skill():
 	pass
 
 
-# ประมวลผลการสปอนจากบีท
-func process_beat(_data: SkillDB) -> void:
-	var skill = SkillDB
-	if Global.bars[1] != skill.bars[1]:
-		skill.bars[1] = Global.bars[1]
-		skill.can_spawn = true
-	if match_beat(skill.beat_test):
-		if skill.can_spawn:
-			spawn_skill(skill)
-			spawn_sound(skill.sound_when_spawn, 10)
-			skill.can_spawn = false
-
-
-func spawn_skill(_data: SkillDB) -> void:
-	var skill = _data
-	var pattern = skill.pattern.instantiate()
+func spawn_skill(_data: SkillDB, _proj_stats: ProjectileStats) -> void:
+	var pattern = _data.pattern.instantiate()
 	var pattern_data = Lib.get_pattern_data(pattern)
-	# print_debug(pattern_data)
+	# ใส่ข้อมูลกระสุนจากในแต่ละไทล์
 	for tile in pattern_data["direction"]:
-		if skill.sound_when_spawn:
-			tile["sound"] = skill.sound_when_spawn
-			tile["scale_multiplier"] = skill.scale_multiplier
+		if _data.sound_when_spawn:
+			tile["sound"] = _data.sound_when_spawn
+			tile["scale_multiplier"] = _proj_stats.scale_multiplier
 		if pattern_data["direction"].size() == 1:
 			tile["db"] = 10
 		else:
 			tile["db"] = 0
-		spawn_projectile(tile)
+		tile["sprite"] = _data.sprite
+		spawn_projectile(tile, _proj_stats)
 
 
 # สปอนซีนกระสุนจาก data ที่ได้จากแพทเทิร์น
-func spawn_projectile(_data: Dictionary) -> void:
+func spawn_projectile(_data: Dictionary, _proj_stats: ProjectileStats) -> void:
 	var proj = projectile_scene.instantiate()
+	proj.sprite = _data.sprite
 	proj.caster = caster
 	proj.global_position = caster.global_position + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
-	# proj.scale_multiplier = _data.scale_multiplier
+	proj.stats = _proj_stats.get_stats()
+	proj.scale_multiplier = _data.scale_multiplier
 	$"..".add_child(proj)
 
 
@@ -73,6 +63,7 @@ func get_projectile_direction(_direction: String) -> Vector2:
 		"nearest_enemy":
 			return (hostile.global_position - caster.global_position).normalized()
 	return Vector2.ZERO
+
 
 # สร้าง AudioStreamPlayer2D ในโหนด MusicHanlder
 func spawn_sound(_sound_path: String, _db: float) -> void:

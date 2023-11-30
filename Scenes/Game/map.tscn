@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bq64ij7kka531"]
+[gd_scene load_steps=17 format=3 uid="uid://bq64ij7kka531"]
 
 [ext_resource type="Script" path="res://Scenes/Game/map.gd" id="1_fwmxs"]
 [ext_resource type="Texture2D" uid="uid://cr7ls5w5ptksn" path="res://Assets/Sprites/Map/map.png" id="1_mynbq"]
@@ -9,9 +9,7 @@
 [ext_resource type="Resource" uid="uid://brmrjogk2rdpr" path="res://Database/Character/dummy.tres" id="4_gmtff"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_set.gd" id="4_wq5wf"]
 [ext_resource type="Texture2D" uid="uid://0f6tc6t1b8nk" path="res://Assets/Sprites/Map/tile0.png" id="4_yqt88"]
-[ext_resource type="Resource" uid="uid://br6clo88gttl5" path="res://Database/Skills/มอนกระจอกยิง.tres" id="5_l0y45"]
 [ext_resource type="PackedScene" uid="uid://bsfbga1rflh72" path="res://Scenes/Character/enemy/monster_wolf.tscn" id="9_35svg"]
-[ext_resource type="Resource" uid="uid://eeafbtyb7px7" path="res://Database/Skills/FireFlower.tres" id="10_dg0fr"]
 [ext_resource type="PackedScene" uid="uid://hhmu31l3ip3y" path="res://Scenes/Character/enemy/monster_flower.tscn" id="10_tjr3o"]
 [ext_resource type="PackedScene" uid="uid://delfu1kfis7i0" path="res://Scenes/Character/enemy/monster_bat.tscn" id="11_lv6c8"]
 
@@ -159,6 +157,7 @@ position = Vector2(680, 632)
 [node name="Inventory" parent="Player" instance=ExtResource("3_vxu7v")]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_53ayf")
 format = 2
@@ -179,9 +178,9 @@ data = ExtResource("4_gmtff")
 
 [node name="SkillSet" type="Node" parent="MonsterDummy/Node"]
 script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("5_l0y45")])
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node2D" parent="."]
+visible = false
 
 [node name="MonsterDummy3" parent="Node" instance=ExtResource("3_qrfdy")]
 position = Vector2(1004, 367)
@@ -204,7 +203,6 @@ position = Vector2(1586, 101)
 
 [node name="SkillSet" type="Node" parent="Node/Monster_Bat/Node"]
 script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("10_dg0fr")])
 
 [node name="Monster_Flower" parent="Node" instance=ExtResource("10_tjr3o")]
 position = Vector2(2024, 908)
@@ -213,7 +211,6 @@ position = Vector2(2024, 908)
 
 [node name="SkillSet" type="Node" parent="Node/Monster_Flower/Node"]
 script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("10_dg0fr")])
 
 [node name="Monster_Wolf" parent="Node" instance=ExtResource("9_35svg")]
 position = Vector2(2883, 411)
@@ -222,7 +219,6 @@ position = Vector2(2883, 411)
 
 [node name="SkillSet" type="Node" parent="Node/Monster_Wolf/Node"]
 script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("10_dg0fr")])
 
 [node name="MonsterDummy2" parent="Node" instance=ExtResource("3_qrfdy")]
 position = Vector2(800, 160)
@@ -232,7 +228,6 @@ scale = Vector2(4, 4)
 
 [node name="SkillSet" type="Node" parent="Node/MonsterDummy2/Node"]
 script = ExtResource("4_wq5wf")
-skills = Array[Resource("res://Scripts/Skill/skill.gd")]([ExtResource("10_dg0fr")])
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

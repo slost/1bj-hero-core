@@ -6,6 +6,9 @@ func get_character_speed(_base_speed: int, _scale:Vector2 ) -> float:
 	return (_base_speed * _scale.x) * (Global.tempo / 160) * (Global.TILE_SIZE  * Global.SCALE)
 	
 
+func int_to_vector2(_int: int) -> Vector2:
+	return Vector2(_int, _int)
+
 func get_direction(_direction: String):
 	var direction: Vector2
 	match _direction:

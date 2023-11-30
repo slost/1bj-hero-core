@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://3f62s5oe1gpf"
-path="res://.godot/imported/kick.wav-b49122b272ed00ebf7089a9fa9a34675.sample"
+uid="uid://c70ikirupcmew"
+path="res://.godot/imported/lute.wav-1be8bebe57c82871e065a4ac907066f6.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Gameplay/kick.wav"
-dest_files=["res://.godot/imported/kick.wav-b49122b272ed00ebf7089a9fa9a34675.sample"]
+source_file="res://Assets/Audio/Skills/lute.wav"
+dest_files=["res://.godot/imported/lute.wav-1be8bebe57c82871e065a4ac907066f6.sample"]
 
 [params]
 

@@ -5,4 +5,5 @@
 
 [node name="ProjectileSprite" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_mb7io")
+frame = 10
 script = ExtResource("2_pf2ka")
