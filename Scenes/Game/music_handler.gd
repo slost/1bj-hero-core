@@ -12,8 +12,6 @@ var bar_timer: float = 0.0
 var verse: int = 0
 var timer: float = 0.0
 
-var is_played = false
-
 @onready var bars: Array = [1, 1, 1, 1.0]
 
 	
@@ -35,7 +33,8 @@ func process_music(_delta) -> void:
 		listener.global_position = Global.player.global_position
 		listener.scale = Global.player.scale
 
-	Global.tempo = (Global.player.get_item_amount() + 1) * Global.base_tempo / 3
+	Global.tempo = Global.base_tempo
+
 	Global.bars = bars
 	
 	var sec_per_bar = Global.seconds_per_bar
@@ -58,19 +57,6 @@ func process_music(_delta) -> void:
 	bars = Lib.process_bars(bars)
 	
 	
-	if bar_timer >= sec_per_bar:
-		Global.sub_bar += 1
-		is_played = false
-		sub_bar += 1
-		bar_timer -= sec_per_bar
-		
-	if sub_bar > 4:
-		sub_bar = 1
-		current_bar += 1
-		
-	# if is_metronome_enabled:
-	 # play_metronome()
-	
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
 		if current_turn.data.character == Global.player:
@@ -86,12 +72,6 @@ func play_metronome():
 		$Kick.play()
 
 	
-func test_sound():	
-	if !is_played:
-		play_sound(1, $Kick)
-		play_sound(2, $Snare)
-		is_played = true
-
 func play_sound(_bar, _sound) -> void:
 	if sub_bar == _bar:
 		_sound.play()

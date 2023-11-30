@@ -12,8 +12,11 @@ var is_blink = false
 @onready var stats: Dictionary = data.stats
 
 var move_speed: float
-var sub_bar: int = 1
-@onready var bars = Global.BARS_INIT
+
+# Music Stuffs
+var music = null
+var bars = [1,1,1, 0.0]
+
 
 var max_hp = 999999
 var strength = 99
@@ -24,8 +27,15 @@ var strength = 99
 func _ready() -> void:
 	animSpr.play("move_down")
 	# scale = Global.SCALE_VEC * stats.scale_multiplier
+	ready_player()
+
+	music = Music.new()
+	add_child(music)
+	bars = music.bars
 	z_index = 2
+	print(music)
 		
+
 func init_stat() -> void:
 	pass
 
@@ -35,11 +45,10 @@ func _physics_process(_delta) -> void:
 	if DialogManger.is_dialog_active:
 		return
 	move_speed = Lib.get_character_speed(stats.base_speed, scale)
-	bars = Lib.process_bars(bars)
 	var bars_id = 1
 	if bar_counter > 4:
 		bar_counter = 0
-	if bar_counter <= Global.bars[bars_id]:
+	if bar_counter <= bars[bars_id]:
 		on_bar_change()
 		bar_counter += 1
 	move_and_slide()
@@ -56,6 +65,9 @@ func on_bar_change():
 func process_player():
 	pass	
 	
+func ready_player():
+	pass
+
 func hurt(_source) -> void:
 	# ลดเลือด
 	hp -= _source.damage * (_source.caster.strength * 0.1)

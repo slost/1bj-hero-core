@@ -22,7 +22,7 @@ const SCALE_VEC = Vector2(4, 4)
 
 # เพลง
 var tempo: float
-var base_tempo = 50
+var base_tempo = 100
 const BARS_INIT: Array = [1, 1, 1, 0.0]
 var bars: Array = BARS_INIT
 var seconds_per_bar: float

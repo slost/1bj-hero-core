@@ -8,11 +8,13 @@ var hostile: Node
 # ซีนกระสุน
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
 
+var bars = [1, 1, 1, 1.0]
+
 # เทิร์นปัจจุบัน
 var current_turn: Turn
 var can_spawn = true
 
-var bars = [1, 1, 1, 1.0]
+
 
 func _process(_delta) -> void:
 	if Global.turn_queue.size() > 0:
@@ -82,21 +84,21 @@ func spawn_sound(_sound_path: String, _db: float) -> void:
 func match_beat(_beat_test: String) -> bool:	
 	match _beat_test:
 		"1": 
-			return Global.bars[0] % 1 == 0
+			return caster.bars[0] % 1 == 0
 		"2":
-			return Global.bars[0] % 2 == 0
+			return caster.bars[0] % 2 == 0
 		"3":
-			return Global.bars[0] % 3 == 0
+			return caster.bars[0] % 3 == 0
 		"4":
-			return Global.bars[0] % 3 == 0
+			return caster.bars[0] % 3 == 0
 		"1b":
-			return Global.bars[0] % 8 == 1
+			return caster.bars[0] % 8 == 1
 		"8b":
-			match Global.bars[0]:
+			match caster.bars[0]:
 				1:
 					return true
 		".1":
-			return Global.bars[1] % 1 == 0
+			return caster.bars[1] % 1 == 0
 		".2":
-			return Global.bars[1] % 2 == 0
+			return caster.bars[1] % 2 == 0
 	return false

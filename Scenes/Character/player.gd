@@ -11,13 +11,13 @@ class_name Player
 var rng = RandomNumberGenerator.new()
 
 
-func _ready() -> void:
+func ready_player() -> void:
 	animSpr.play("move_down")
 	scale = Global.SCALE_VEC
 	z_index = 2
 	Global.player = self
 	stats.base_speed = 2
-
+	
 
 # การควบคุม
 func get_input() -> void:
@@ -45,6 +45,7 @@ func play_animation():
 
 
 func process_player():
+	music.tempo = (Global.player.get_item_amount() + 1) * Global.base_tempo / 3
 	play_animation()
 	process_item_power()
 

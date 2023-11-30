@@ -56,10 +56,9 @@ func _process(_delta):
 			add_text("Time left %ss" % turn_time)
 		
 		add_text("\nMUSIC")
-		add_text("Bars: %s" % get_bars_string())
-		# add_text("musicH.bars %s" % str(musicH.bars))
-		# add_text("player.bars: %s" % str(Global.player.bars))
-		# add_text("player.bar_counter: %s" % str(Global.player.bar_counter))
+		add_text("Bars: %s" % get_bars_string(Global.bars))
+		if Global.player.music:
+			add_text("Hero Bars: %s" % get_bars_string(Global.player.bars))
 		add_text("Bar Timer: %s" % str(musicH.timer))
 		
 		
@@ -70,5 +69,5 @@ func add_text(_text: String) -> void:
 	debugger.text += "\n"
 
 
-func get_bars_string():
-	return str(Global.bars[0]) + ":" + str(Global.bars[1]) + ":" + str(Global.bars[2]) + ":" + str(Global.bars[3]) 
+func get_bars_string(_bars: Array) -> String:
+	return str(_bars[0]) + ":" + str(_bars[1]) + ":" + str(_bars[2]) + ":" + str(_bars[3]) 

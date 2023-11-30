@@ -19,7 +19,6 @@ var damage:int = 10
 
 
 var sprite = null
-var timer: float
 var delta: float
 ## ตัวละครที่ใช้สกิล
 var caster: Node
@@ -31,7 +30,7 @@ var stats: Dictionary = {
 	"scale_multiplier": 1.0,
 	"knockback_power": 1.0,
 	"acceleration_rate": 1.0,
-	"duration": 1.0,
+	"duration": [1, 1, 1],
 	"target": null,
 	"is_target_lock": false,
 }
@@ -44,14 +43,15 @@ func _ready() -> void:
 		scale = caster.scale
 	scale *= stats.scale_multiplier
 	knockback_power *= 10
-	
 	create_sprite()
 	
+
+# สร้างสไปรต์	
 func create_sprite() -> void:
 	if sprite:
 		var inst_sprite = sprite.instantiate()
 		add_child(inst_sprite)
-	print(caster.scale)
+
 
 func _physics_process(_delta) -> void:
 	delta = _delta
@@ -68,9 +68,11 @@ func _physics_process(_delta) -> void:
 	process_duration() 
 	# process_visual()
 	
-	
+var timer = 0.0
+
 func process_duration() -> void:
-	timer += delta
+	# = stats["duration"]
+	timer += delta * 0.1
 	if timer >= Global.seconds_per_bar:
 		queue_free()
 	

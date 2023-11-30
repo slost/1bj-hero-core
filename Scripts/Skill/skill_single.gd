@@ -17,8 +17,8 @@ func process_skill():
 
 # ประมวลผลการสปอนจากบีท
 func process_beat(_data: SkillDB) -> void:
-	if Global.bars[1] != bars[1]:
-		bars[1] = Global.bars[1]
+	if caster.bars[1] != bars[1]:
+		bars[1] = caster.bars[1]
 		data.can_spawn = true
 	if match_beat(data.beat_test):
 		if data.can_spawn:
