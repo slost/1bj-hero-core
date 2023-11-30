@@ -23,7 +23,7 @@ var strength = 99
 
 func _ready() -> void:
 	animSpr.play("move_down")
-	scale = Global.SCALE_VEC * stats.scale_multiplier
+	# scale = Global.SCALE_VEC * stats.scale_multiplier
 	z_index = 2
 		
 func init_stat() -> void:

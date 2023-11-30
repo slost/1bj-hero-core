@@ -50,9 +50,8 @@ func _ready() -> void:
 func create_sprite() -> void:
 	if sprite:
 		var inst_sprite = sprite.instantiate()
-		inst_sprite.scale = scale
 		add_child(inst_sprite)
-	print(sprite)
+	print(caster.scale)
 
 func _physics_process(_delta) -> void:
 	delta = _delta

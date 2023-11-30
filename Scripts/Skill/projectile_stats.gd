@@ -17,7 +17,7 @@ class_name ProjectileStats
 @export var is_rotation_to_direction: bool
 
 ## ค่าที่จะนำไปคูณกับขนาด
-@export var scale_multiplier: int = 1
+@export var scale_multiplier: float = 1.0
 
 func get_stats():
     return {
