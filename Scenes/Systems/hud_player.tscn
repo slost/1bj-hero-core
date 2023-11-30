@@ -30,10 +30,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -107.0
-offset_top = 4.0
-offset_right = 107.0
-offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_feikj")
@@ -44,6 +40,6 @@ theme_override_fonts/normal_font = ExtResource("2_mtef5")
 theme_override_font_sizes/normal_font_size = 31
 bbcode_enabled = true
 text = "[center]Knight LV 99[/center]
-HP 9999/9999
-MP 9999/9999"
+[center]HP 9999/9999[/center]
+[center]MP 9999/9999[/center]"
 scroll_active = false
