@@ -52,13 +52,15 @@ var move_timer = move_timer_init
 var stop_timer_init = 3
 var stop_timer = stop_timer_init 
 
-func _ready():
+func ready_character():
 	scale = Vector2(8, 8)
 	if Global.is_alpha_mode:
 		$Line2D.default_color.a = 0.5
 	z_index = 2
 	current_state = STATE.CHASE
 	radius = speed
+	Global.boss = self
+	print(Global.boss)
 
 
 func _process(_delta) -> void:

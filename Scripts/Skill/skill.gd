@@ -5,6 +5,8 @@ class_name Skill
 @onready var caster: Node = $"../../.."
 # ศัตรูที่ถูกโจมตี
 var hostile: Node
+var target: Node
+
 # ซีนกระสุน
 @onready var projectile_scene = load("res://Scenes/Skills/projectile.tscn")
 
@@ -15,8 +17,20 @@ var current_turn: Turn
 var can_spawn = true
 
 
+func _ready() -> void:
+	set_hostile()
+
+
+# กำหนดค่าศัตรูให้กระสุน
+func set_hostile() -> void:
+	if caster == Global.player:
+		target = Global.boss
+	else:
+		target = Global.player
+
 
 func _process(_delta) -> void:
+	set_hostile()
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
 		if current_turn.data.character == caster:
@@ -42,6 +56,7 @@ func spawn_skill(_data: SkillDB, _proj_stats: ProjectileStats) -> void:
 			tile["db"] = 0
 		tile["sprite"] = _data.sprite
 		spawn_projectile(tile, _proj_stats)
+		print("SPAWNED")
 
 
 # สปอนซีนกระสุนจาก data ที่ได้จากแพทเทิร์น
@@ -62,8 +77,9 @@ func get_projectile_direction(_direction: String) -> Vector2:
 	if Lib.get_direction(_direction) is Vector2:
 		return Lib.get_direction(_direction)
 	match _direction:
-		"nearest_enemy":
-			return (hostile.global_position - caster.global_position).normalized()
+		"closest_enemy":
+			if target:
+				return (target.position - caster.global_position).normalized()
 	return Vector2.ZERO
 
 

@@ -25,14 +25,15 @@ var strength = 99
 
 
 func _ready() -> void:
-	animSpr.play("move_down")
 	z_index = 2
 	# scale = Global.SCALE_VEC * stats.scale_multiplier
-	ready_player()
 
 	music = Music.new()
+	music.tempo = 100
 	add_child(music)
 	bars = music.bars
+	
+	ready_character()
 		
 
 func init_stat() -> void:
@@ -64,7 +65,7 @@ func on_bar_change():
 func process_player():
 	pass	
 	
-func ready_player():
+func ready_character():
 	pass
 
 func hurt(_source) -> void:

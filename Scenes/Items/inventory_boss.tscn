@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmmx15iirqykp"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_h6ffl"]
+[ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_lkwf2"]
+[ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="3_uq6a8"]
+[ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="4_jsw83"]
+
+[sub_resource type="Resource" id="Resource_dfyh2"]
+script = ExtResource("4_jsw83")
+base_damage = 10
+base_speed = 1
+acceleration_rate = 0.0
+duration = [0, 1, 0]
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 4.0
+penetrate = 1
+
+[node name="InventoryBoss" type="Node"]
+
+[node name="KickShield" type="Node" parent="."]
+script = ExtResource("1_h6ffl")
+title = "Holy Shield"
+description = "Proctecting you from the unholy things."
+
+[node name="Kick" type="Node" parent="KickShield"]
+script = ExtResource("2_lkwf2")
+data = ExtResource("3_uq6a8")
+projectile_stats = SubResource("Resource_dfyh2")
