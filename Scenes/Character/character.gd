@@ -6,7 +6,7 @@ class_name Character
 @export var animSpr: Node
 
 var is_blink = false
-@export var knockback_power: int = 100
+var knockback_power: int = 1000
 
 # onready
 @onready var stats: Dictionary = data.stats
@@ -44,7 +44,7 @@ var bar_counter = 1
 func _physics_process(_delta) -> void:
 	if DialogManger.is_dialog_active:
 		return
-	move_speed = Lib.get_character_speed(stats.base_speed, scale)
+	move_speed = Lib.get_character_speed(1, scale)
 	var bars_id = 1
 	if bar_counter > 4:
 		bar_counter = 0
@@ -68,16 +68,18 @@ func process_player():
 func ready_character():
 	pass
 
+
 func hurt(_source) -> void:
 	# ลดเลือด
 	hp -= _source.damage * (_source.caster.strength * 0.1)
 	knockback(_source)
 	
+
 func knockback(_source: Node):
 	if is_blink:
 		return
 	# knockbac kDirection
-	velocity = (_source.velocity - velocity).normalized() * (knockback_power)
+	velocity = (_source.velocity - velocity).normalized() * (_source.knockback_power * 10)
 	move_and_slide()
 	# animationPlayer.play("blink")
 	# is_blink = true # ฝากแก้ด้วย

@@ -156,6 +156,9 @@ position = Vector2(680, 632)
 
 [node name="AgzaInventory" parent="Player" instance=ExtResource("4_74wuw")]
 
+[node name="Camera" type="Camera2D" parent="Player"]
+zoom = Vector2(0.25, 0.25)
+
 [node name="Boss" parent="." instance=ExtResource("3_qrfdy")]
 position = Vector2(0, -1)
 move_behavior = 1

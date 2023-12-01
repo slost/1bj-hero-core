@@ -2,9 +2,19 @@
 extends Node
 
 # สมการคำนวณความเร็วสำหรับ CharactorBody2D
-func get_character_speed(_base_speed: int, _scale:Vector2 ) -> float:
-	return (_base_speed * _scale.x) * (Global.tempo / 160) * (Global.TILE_SIZE  * Global.SCALE)
+func get_character_speed(_distance: int, _scale:Vector2) -> float:
+	var character_size = _distance * _scale.x
+	var tile_size = Global.TILE_SIZE * Global.SCALE
+	return character_size * tile_size
 	
+
+func bars_to_seconds(_bars: Array, _tempo: float) -> float:
+	var seconds_per_bar = get_seconds_per_bar(_tempo)
+	var seconds = 0
+	seconds += seconds_per_bar * _bars[0]
+	seconds += seconds_per_bar / 2 * _bars[1]
+	seconds += seconds_per_bar / 4 * _bars[2]
+	return seconds
 
 func int_to_vector2(_int: int) -> Vector2:
 	return Vector2(_int, _int)

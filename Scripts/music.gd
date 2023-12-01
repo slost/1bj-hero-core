@@ -3,20 +3,24 @@ class_name Music
 
 @onready var tempo = Global.base_tempo
 @onready var bars: Array = [1, 1, 1]
+@onready var seconds_per_bar: float = Lib.get_seconds_per_bar(tempo)
 
 var time: float = 0.0
 var timer: float = 0.0
+var beat_timer: float = 0.0
+
 
 func _process(_delta):
-    var sec_per_bar = Lib.get_seconds_per_bar(tempo)
-    var i = sec_per_bar * 0.5
+    beat_timer = Lib.bars_to_seconds(bars, tempo)
+    seconds_per_bar = Lib.get_seconds_per_bar(tempo)
+    var i = seconds_per_bar * 0.5
 
     time += _delta
     timer += _delta
 
-    if timer >= sec_per_bar:
+    if timer >= seconds_per_bar:
         bars[2] += 1
-        timer -= sec_per_bar * i
+        timer -= seconds_per_bar * i
         
     if bars[2] > 4:
         bars[2] = 1

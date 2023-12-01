@@ -56,7 +56,6 @@ func spawn_skill(_data: SkillDB, _proj_stats: ProjectileStats) -> void:
 			tile["db"] = 0
 		tile["sprite"] = _data.sprite
 		spawn_projectile(tile, _proj_stats)
-		print("SPAWNED")
 
 
 # สปอนซีนกระสุนจาก data ที่ได้จากแพทเทิร์น

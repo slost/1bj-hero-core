@@ -13,7 +13,7 @@ var target
 var is_target_lock: bool = false 
 ## ขนาดที่จะคูณ
 var scale_multiplier: float = 1.0
-var knockback_power: float = 1.0
+var knockback_power: float = 100
 var acceleration_rate: float = 1
 ## ความเสียหาย
 var damage:int = 10
@@ -38,6 +38,7 @@ var stats: Dictionary = {
 	"duration": [1, 0, 0],
 	"target": null,
 	"is_target_lock": false,
+	"distance": 1,
 }
 
 var timeout_bars 
@@ -49,9 +50,8 @@ func _ready() -> void:
 	if caster:
 		scale = caster.scale
 	scale *= stats.scale_multiplier
-	knockback_power *= 10
+	knockback_power = stats.knockback_power
 	create_sprite()
-	get_timeout_bars(bars, dur)
 	timeout_bars = get_timeout_bars(bars, stats.duration)
 	
 
@@ -63,16 +63,21 @@ func create_sprite() -> void:
 
 
 func _physics_process(_delta) -> void:
+	acceleration_rate = 1
 	delta = _delta
 	if is_target_lock: # ล็อคเป้าอ๊ะเปล่า
 		direction = (target.global_position - global_position).normalized()
-	var speed = Lib.get_character_speed(base_speed, scale) \
-		* Global.seconds_per_bar * 0.25
-	speed -= (acceleration_rate * 1000) * _delta
-	#scale -= scale * ( 60 / Global.tempo ) * 0.1
-	# if target:
-		# velocity = target * speed
-	velocity = (direction) * (speed)
+	
+
+	var sec_per_bars = Lib.get_seconds_per_bar(caster.music.tempo)
+	var timeout_seconds = Lib.bars_to_seconds(timeout_bars, caster.music.tempo)
+	# TODO
+	var distance_speed = Lib.get_character_speed(2, scale)
+	var music_speed =  (sec_per_bars / timeout_seconds)
+	var speed = distance_speed * music_speed
+	speed = speed / timeout_seconds
+	speed -= acceleration_rate * 0.1 * _delta # ลดความเร็ว
+	velocity = direction * speed
 	translate(velocity)
 
 func _process(_delta):
