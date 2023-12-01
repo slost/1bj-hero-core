@@ -72,6 +72,7 @@ func _physics_process(_delta) -> void:
 func on_death():
 	if self is Monster:
 		queue_free()
+		DialogManger.start_dialog(Vector2(), ["You Win!!"], true)
 		return
 	if self is Player:
 		queue_free()
