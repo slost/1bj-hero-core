@@ -786,13 +786,14 @@ pivot_offset = Vector2(320, 96)
 [node name="TtileCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 
 [node name="TitleBG" type="TextureRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
-layout_direction = 1
+custom_minimum_size = Vector2(1024, 1024)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 6
 texture = ExtResource("11_h6efc")
 stretch_mode = 5
 
@@ -802,7 +803,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -128.0
-offset_right = 14336.0
+offset_right = 16384.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -877,7 +878,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(448, 80)
 theme = ExtResource("9_4jfow")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 32
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 74
 text = "Data List"
 horizontal_alignment = 1
@@ -896,7 +897,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(448, 80)
 theme = ExtResource("9_4jfow")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 32
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 48
 text = "- Select Data to load -"
 vertical_alignment = 1
