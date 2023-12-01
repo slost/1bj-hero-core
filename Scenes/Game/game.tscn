@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=53 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://claojfmd65oqh" path="res://Assets/Systems/title0_nobg.png" id="11_h6efc"]
 [ext_resource type="Material" uid="uid://c3qhteu5oxjsq" path="res://Materials/crt.tres" id="12_y8pnv"]
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="14_rbyc1"]
+[ext_resource type="Texture2D" uid="uid://36odmxetvdqy" path="res://Assets/Sprites/Coffin.png" id="14_ydvlq"]
 [ext_resource type="PackedScene" uid="uid://ccj62greqfy2y" path="res://Scenes/Systems/audio_visualizer.tscn" id="15_jpn56"]
 [ext_resource type="Script" path="res://Scenes/Game/Interface.gd" id="15_tblgl"]
 [ext_resource type="StyleBox" uid="uid://qgj3wt1wwy87" path="res://Assets/Systems/text_box_theme.tres" id="16_h6b5h"]
@@ -22,8 +23,60 @@
 [ext_resource type="PackedScene" uid="uid://b0qeriq1u0jqr" path="res://Scenes/Systems/playlist_label.tscn" id="18_7m1ic"]
 [ext_resource type="Texture2D" uid="uid://cr1g2yavnp0de" path="res://Assets/Sprites/Interface/interface2.png" id="19_i1f0w"]
 [ext_resource type="Script" path="res://Scenes/Systems/playlist_label.gd" id="20_04gik"]
+[ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="22_lo16q"]
 
 [sub_resource type="Theme" id="Theme_pypka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v73u8"]
+atlas = ExtResource("22_lo16q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quplj"]
+atlas = ExtResource("22_lo16q")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5fkh"]
+atlas = ExtResource("22_lo16q")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61x63"]
+atlas = ExtResource("22_lo16q")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phkql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v73u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quplj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5fkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61x63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf88e"]
+atlas = ExtResource("14_ydvlq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2die"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf88e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_66daw"]
 length = 0.001
@@ -94,6 +147,78 @@ tracks/5/path = NodePath("SubViewport/PaletteShader/SubViewport/TtileCanvasLayer
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 65)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 112)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(184, 200)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -252,10 +377,163 @@ tracks/5/keys = {
 "values": [true, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_4anm5"]
+resource_name = "fadein_load"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, -165), Vector2(96, 65)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(68, -212), Vector2(96, 112)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1200, 200), Vector2(184, 200)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p6jjp"]
+resource_name = "fadeout_load"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 65), Vector2(96, -165)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 112), Vector2(96, -212)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(184, 200), Vector2(1200, 200)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tnmj0"]
 _data = {
 "RESET": SubResource("Animation_66daw"),
+"fadein_load": SubResource("Animation_4anm5"),
 "fadein_title": SubResource("Animation_k0cis"),
+"fadeout_load": SubResource("Animation_p6jjp"),
 "fadeout_title": SubResource("Animation_2ukk3")
 }
 
@@ -356,7 +634,7 @@ shader_parameter/base_rain_speed = 0.5
 shader_parameter/additional_rain_speed = 0.5
 shader_parameter/slant = 0.329
 
-[node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background", "map", "screenAnimation", "titleBG", "titleBG_bottom", "titleLabel", "titlePressAnyKey", "titlePressAnyKeyTimer")]
+[node name="Game" type="Control" node_paths=PackedStringArray("paletteShader", "background", "map", "screenAnimation", "titleBG", "titleBG_bottom", "titleLabel", "titlePressAnyKey", "titlePressAnyKeyTimer", "loadLabel1", "loadLabel2", "loadControl", "loadBtn", "loadBtn_cant")]
 editor_description = "ตัวควบคุมเกม"
 layout_mode = 3
 anchors_preset = 15
@@ -375,6 +653,11 @@ titleBG_bottom = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCan
 titleLabel = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/TitleLabel")
 titlePressAnyKey = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel")
 titlePressAnyKeyTimer = NodePath("Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/PressAnyKeyLabel/Timer")
+loadLabel1 = NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel")
+loadLabel2 = NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/TitleLabel2")
+loadControl = NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer")
+loadBtn = NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel/Button")
+loadBtn_cant = [NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2/Button"), NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3/Button2"), NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4/Button2"), NodePath("Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5/Button")]
 
 [node name="System" type="Node" parent="."]
 
@@ -503,11 +786,10 @@ pivot_offset = Vector2(320, 96)
 [node name="TtileCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 
 [node name="TitleBG" type="TextureRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4096.0
-offset_bottom = 4096.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -520,7 +802,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -128.0
-offset_right = 13312.0
+offset_right = 14336.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -571,7 +853,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="LoadSaveCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
-visible = false
 
 [node name="Control" type="Control" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer"]
 layout_mode = 3
@@ -581,118 +862,508 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("9_4jfow")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
-custom_minimum_size = Vector2(0, 192)
+[node name="TitleLabel" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -384.0
-offset_right = 320.0
-offset_bottom = 384.0
+offset_left = -416.0
+offset_top = 65.0
+offset_right = -163.999
+offset_bottom = 126.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 32
+pivot_offset = Vector2(448, 80)
+theme = ExtResource("9_4jfow")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 74
+text = "Data List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -416.0
+offset_top = 112.0
+offset_right = -1.99976
+offset_bottom = 173.0
+grow_horizontal = 2
+pivot_offset = Vector2(448, 80)
+theme = ExtResource("9_4jfow")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "- Select Data to load -"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_top = 200.0
+offset_right = 336.001
+offset_bottom = 931.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer"]
+custom_minimum_size = Vector2(640, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Panel" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_4jfow")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("14_rbyc1")
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "[center]Knight LV 99[/center]
-HP 9999/9999
-MP 9999/9999"
-scroll_active = false
-
-[node name="Button" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel"]
+[node name="Button" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -80.0
+offset_left = -176.0
+offset_top = -60.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(128, 64)
 theme = ExtResource("9_4jfow")
-text = "Load"
+text = "Continue"
 
-[node name="Panel2" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Label_File" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #1"
+
+[node name="Label_Name" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Knight"
+
+[node name="Label_LV" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  99"
+
+[node name="Label_Location" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Journey's End"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 666h 6m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 140.0
+offset_right = 468.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_phkql")
+autoplay = "default"
+frame_progress = 0.360687
+
+[node name="Label_Class" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< The Brave One >>"
+
+[node name="Panel2" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel2"]
-clip_contents = false
+[node name="Button" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
 theme = ExtResource("9_4jfow")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("14_rbyc1")
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "[center]Knight LV 99[/center]
-HP 9999/9999
-MP 9999/9999"
-scroll_active = false
+text = "Continue"
 
-[node name="Panel3" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer"]
+[node name="Label_File" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #2"
+
+[node name="Label_Name" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Slost"
+
+[node name="Label_LV" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  22"
+
+[node name="Label_Location" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Sinful Brothel"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+frame_progress = 0.980481
+
+[node name="Label_Class" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Scholar >>"
+
+[node name="Panel3" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 theme = SubResource("Theme_pypka")
 theme_override_styles/panel = ExtResource("16_h6b5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/VBoxContainer/Panel3"]
-clip_contents = false
+[node name="Label_File" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #3"
+
+[node name="Label_Name" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Jelato"
+
+[node name="Label_LV" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  74"
+
+[node name="Label_Location" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Donut's Shop"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2074-19-63 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button2" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
 theme = ExtResource("9_4jfow")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("14_rbyc1")
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "[center]Knight LV 99[/center]
-HP 9999/9999
-MP 9999/9999"
-scroll_active = false
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Prophet >>"
+
+[node name="Panel4" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="Label_File" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #4"
+
+[node name="Label_Name" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Mr.Pokati"
+
+[node name="Label_LV" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  55"
+
+[node name="Label_Location" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Orange Gallery"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button2" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Painter >>"
+
+[node name="Panel5" type="Panel" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="Label_File" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #5"
+
+[node name="Label_Name" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "AGZA13"
+
+[node name="Label_LV" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  13"
+
+[node name="Label_Location" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Toilet"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2013-13-13 13:31 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button" type="Button" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="Screen/SubViewport/PaletteShader/SubViewport/LoadSaveCanvasLayer/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Assassin >>"
 
 [node name="Filter" type="CanvasLayer" parent="Screen/SubViewport"]
 
@@ -923,6 +1594,601 @@ theme_override_fonts/font = ExtResource("14_rbyc1")
 theme_override_font_sizes/font_size = 42
 text = "Pause"
 script = ExtResource("8_0d1oi")
+
+[node name="Control" type="Control" parent="UIOutScreenCanvas"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_4jfow")
+
+[node name="TitleLabel" type="Label" parent="UIOutScreenCanvas/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -416.0
+offset_top = 65.0
+offset_right = -164.0
+offset_bottom = 126.0
+grow_horizontal = 2
+pivot_offset = Vector2(448, 80)
+theme = ExtResource("9_4jfow")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 74
+text = "Data List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="UIOutScreenCanvas/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -416.0
+offset_top = 112.0
+offset_right = -2.0
+offset_bottom = 173.0
+grow_horizontal = 2
+pivot_offset = Vector2(448, 80)
+theme = ExtResource("9_4jfow")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "- Select Data to load -"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIOutScreenCanvas/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_top = 200.0
+offset_right = 336.0
+offset_bottom = 931.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIOutScreenCanvas/Control/ScrollContainer"]
+custom_minimum_size = Vector2(640, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Panel" type="Panel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Button" type="Button" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_File" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #1"
+
+[node name="Label_Name" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Knight"
+
+[node name="Label_LV" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  99"
+
+[node name="Label_Location" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Journey's End"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 666h 6m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 140.0
+offset_right = 468.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_phkql")
+autoplay = "default"
+
+[node name="Label_Class" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< The Brave One >>"
+
+[node name="Panel2" type="Panel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="Button" type="Button" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_File" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #2"
+
+[node name="Label_Name" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Slost"
+
+[node name="Label_LV" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  22"
+
+[node name="Label_Location" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Sinful Brothel"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Label_Class" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel2"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Scholar >>"
+
+[node name="Panel3" type="Panel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Label_File" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #3"
+
+[node name="Label_Name" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Jelato"
+
+[node name="Label_LV" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  74"
+
+[node name="Label_Location" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Donut's Shop"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2074-19-63 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button2" type="Button" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel3"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Prophet >>"
+
+[node name="Panel4" type="Panel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Label_File" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #4"
+
+[node name="Label_Name" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "Mr.Pokati"
+
+[node name="Label_LV" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  55"
+
+[node name="Label_Location" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Orange Gallery"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2023-12-02 01:00 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button2" type="Button" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel4"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Painter >>"
+
+[node name="Panel5" type="Panel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme = SubResource("Theme_pypka")
+theme_override_styles/panel = ExtResource("16_h6b5h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_4jfow")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("14_rbyc1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Knight LV 99[/center]
+HP 9999/9999
+MP 9999/9999"
+scroll_active = false
+
+[node name="Label_File" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "File #5"
+
+[node name="Label_Name" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 48
+text = "AGZA13"
+
+[node name="Label_LV" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 252.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 48
+text = "LV  13"
+
+[node name="Label_Location" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 320.0
+offset_top = 12.0
+offset_right = 620.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 48
+text = "Toilet"
+horizontal_alignment = 2
+
+[node name="Label_Playtime" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 296.0
+offset_top = 60.0
+offset_right = 620.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 42
+text = "Play Time: 404h 4m"
+horizontal_alignment = 2
+
+[node name="Label_Date" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 132.0
+offset_right = 468.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 35
+text = "2013-13-13 13:31 AM"
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+position = Vector2(72, 121)
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_w2die")
+autoplay = "default"
+
+[node name="Button" type="Button" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -60.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(128, 64)
+theme = ExtResource("9_4jfow")
+text = "Continue"
+
+[node name="Label_Class" type="Label" parent="UIOutScreenCanvas/Control/ScrollContainer/VBoxContainer/Panel5"]
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 35
+text = "<< Assassin >>"
 
 [node name="Rain" type="ColorRect" parent="."]
 visible = false
