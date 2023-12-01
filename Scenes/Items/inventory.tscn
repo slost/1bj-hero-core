@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8lut6iaq0c1" path="res://Database/Patterns/pat_พุ่งไปหาตัวใกล้สุด.tscn" id="5_htqfl"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="5_wfu4t"]
 [ext_resource type="PackedScene" uid="uid://cs7kym5pr3w6s" path="res://Database/Patterns/กลางตัว.tscn" id="5_xotdy"]
-[ext_resource type="PackedScene" path="res://Database/ProjectileSprites/spr_1.tscn" id="7_g66la"]
+[ext_resource type="PackedScene" uid="uid://dtbqpworqqdhg" path="res://Database/ProjectileSprites/spr_1.tscn" id="7_g66la"]
 [ext_resource type="PackedScene" uid="uid://c55cxwc8jx0ws" path="res://Database/ProjectileSprites/Fireball.tscn" id="7_imo4w"]
 [ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="9_01hgl"]
 [ext_resource type="PackedScene" uid="uid://v34g71uqaone" path="res://Database/Patterns/Pat_Tornado.tscn" id="10_4rh1l"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://7o3ii561pfcj" path="res://Database/Patterns/Pat_FlameShield.tscn" id="12_wclgx"]
 [ext_resource type="PackedScene" uid="uid://ds245pqddx3pl" path="res://Database/FlameShieldSprite.tscn" id="13_hga81"]
 [ext_resource type="PackedScene" uid="uid://h4cbnectriv2" path="res://Database/Patterns/Pat_FireFlower.tscn" id="16_xp5cb"]
-[ext_resource type="PackedScene" uid="uid://df6ax54yu2cek" path="res://Database/ProjectileSprites/spr_2.tscn" id="17_06vuw"]
+[ext_resource type="PackedScene" uid="uid://df5ty3xjihai6" path="res://Database/ProjectileSprites/spr_2.tscn" id="17_06vuw"]
 
 [sub_resource type="Resource" id="Resource_e82ab"]
 script = ExtResource("4_v31i3")

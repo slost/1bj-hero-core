@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://6ky0uul30p5q"]
+[gd_scene load_steps=3 format=3 uid="uid://c1b10oosn20ld"]
 
 [ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_sg78b"]
 [ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_6iybc"]

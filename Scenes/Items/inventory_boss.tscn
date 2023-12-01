@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_lkwf2"]
 [ext_resource type="Resource" uid="uid://dpjsta3ow2gvu" path="res://Database/Skills/Kicking.tres" id="3_uq6a8"]
 [ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="4_jsw83"]
-[ext_resource type="PackedScene" path="res://Database/ProjectileSprites/pat_metal_drum.tscn" id="5_bqqhq"]
+[ext_resource type="PackedScene" uid="uid://d1rbvdk3ujuqy" path="res://Database/ProjectileSprites/pat_metal_drum.tscn" id="5_bqqhq"]
 [ext_resource type="PackedScene" uid="uid://c8lut6iaq0c1" path="res://Database/Patterns/pat_พุ่งไปหาตัวใกล้สุด.tscn" id="5_udbrv"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="6_gs0y8"]
 [ext_resource type="PackedScene" uid="uid://cbil1snt3s8sm" path="res://Database/ProjectileSprites/spr_wolf.tscn" id="7_h8apq"]
-[ext_resource type="PackedScene" uid="uid://6ky0uul30p5q" path="res://Database/ProjectileSprites/spr_drum.tscn" id="7_koexw"]
+[ext_resource type="PackedScene" uid="uid://c1b10oosn20ld" path="res://Database/ProjectileSprites/spr_drum.tscn" id="7_koexw"]
 [ext_resource type="PackedScene" uid="uid://h4cbnectriv2" path="res://Database/Patterns/Pat_FireFlower.tscn" id="8_fybhs"]
-[ext_resource type="PackedScene" uid="uid://dy4u8bfs5oaog" path="res://Database/ProjectileSprites/spr_scream.tscn" id="9_h61fx"]
+[ext_resource type="PackedScene" uid="uid://buap7x4slx3tb" path="res://Database/ProjectileSprites/spr_scream.tscn" id="9_h61fx"]
 
 [sub_resource type="Resource" id="Resource_dfyh2"]
 script = ExtResource("4_jsw83")
