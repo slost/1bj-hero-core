@@ -41,6 +41,18 @@ project/assembly_name="1 Bj-hero-core"
 
 enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/FileSystemView/plugin.cfg", "res://addons/horizontal_file_system/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Addons/": "green",
+"res://Assets/": "orange",
+"res://Database/": "yellow",
+"res://Materials/": "teal",
+"res://Scenes/": "red",
+"res://Scripts/": "blue",
+"res://Shaders/": "teal"
+}
+
 [filesystem]
 
 import/blender/enabled=false

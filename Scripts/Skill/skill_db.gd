@@ -3,7 +3,7 @@ extends Resource
 class_name SkillDB
 
 ## ตำแหน่งที่สกิลจะสปอน
-@export_enum("Caster", "All Enemy", "Closest Enemy", "Furtest Enemy") var spawn_location: int
+@export_enum("Caster", "All Enemy", "Closest Enemy", "Furtest Enemy") var spawn_location: String = "Caster"
 ## สไปรต์กระสุน
 @export var sprite: PackedScene
 ## รูปแบบของกลุ่มกระสุน เช่น ไปซ้าย อยู่เฉย ๆ และตำแหน่งของกระสุนทั้งหมด
