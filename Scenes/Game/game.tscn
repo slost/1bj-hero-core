@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=55 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://cr1g2yavnp0de" path="res://Assets/Sprites/Interface/interface2.png" id="19_i1f0w"]
 [ext_resource type="Script" path="res://Scenes/Systems/playlist_label.gd" id="20_04gik"]
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="22_lo16q"]
+[ext_resource type="AudioStream" uid="uid://bf0p88wwgcgh5" path="res://Assets/Audio/SE/error2.wav" id="25_p5boi"]
+[ext_resource type="AudioStream" uid="uid://bn32embqsfjfd" path="res://Assets/Audio/SE/beep.wav" id="26_ckmnj"]
 
 [sub_resource type="Theme" id="Theme_pypka"]
 
@@ -2267,5 +2269,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.658824, 0.658824, 0.658824, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="SndError" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_p5boi")
+
+[node name="SndBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_ckmnj")
+volume_db = 10.0
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

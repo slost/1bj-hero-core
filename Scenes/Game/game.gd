@@ -103,10 +103,8 @@ func _input(event):
 				Global.cureent_state = Global.GAME_SCREEN.LOAD
 
 func _on_button_load_pressed():
-	# เล่นเสียงตกลง
-	
+	$SndBeep.play()
 	Global.cureent_state = Global.GAME_SCREEN.GAME
 
 func _on_button_load_cant_pressed():
-	# เล่นเสียง กดโหลดไม่ได้
-	pass
+	$SndError.play()
