@@ -12,6 +12,10 @@ class_name Player
 var rng = RandomNumberGenerator.new()
 
 
+var dialog_lose_item: Array[String] = [
+	"YOU LOSE A ITEM!"
+]
+
 func ready_character() -> void:
 	
 	animSpr.play("move_down")
@@ -93,3 +97,4 @@ func lose_random_item():
 	var item_amount = inv.get_children().size()
 	var random_item = rng.randi_range(0, item_amount)
 	print_debug("YOU LOSE A ITEM!")
+	DialogManger.start_dialog(Vector2(), dialog_lose_item, true)

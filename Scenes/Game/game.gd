@@ -80,6 +80,7 @@ func update_state_to(new_state):
 			await screenAnimation.animation_finished
 		Global.GAME_SCREEN.GAME:
 			map.visible = true
+			Global.map.get_node("Timer").start()
 	current_state = new_state
 
 func update_title_state():
