@@ -50,6 +50,7 @@ func spawn_skill(_data: SkillDB, _proj_stats: ProjectileStats) -> void:
 		if _data.sound_when_spawn:
 			tile["sound"] = _data.sound_when_spawn
 			tile["scale_multiplier"] = _proj_stats.scale_multiplier
+			tile["spawn_location"] = _data.spawn_location
 		if pattern_data["direction"].size() == 1:
 			tile["db"] = 10
 		else:
@@ -63,11 +64,17 @@ func spawn_projectile(_data: Dictionary, _proj_stats: ProjectileStats) -> void:
 	var proj = projectile_scene.instantiate()
 	proj.sprite = _data.sprite
 	proj.caster = caster
-	proj.global_position = caster.global_position + \
+	var spawn_location
+	if _data.spawn_location == "Caster":
+		spawn_location = caster.global_position
+	else:
+		spawn_location = target.global_position
+	proj.global_position = spawn_location + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
 	proj.stats = _proj_stats.get_stats()
 	proj.scale_multiplier = _data.scale_multiplier
+
 	$"..".add_child(proj)
 
 
