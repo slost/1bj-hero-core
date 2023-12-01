@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy4u8bfs5oaog"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_eqhq6"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_s125u"]
+
+[node name="SprScream" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_eqhq6")
+animation = &"projectiles"
+frame = 14
+script = ExtResource("2_s125u")
