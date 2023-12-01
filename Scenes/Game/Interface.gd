@@ -29,10 +29,8 @@ func update_tempo_label() -> void:
 func update_hud() -> void:
 	var playerHudLabel = playerHud.get_node("Panel/RichTextLabel")
 	playerHudLabel.clear()
-	playerHudLabel.append_text("[center]Knight LV 99\n \
-	HP %s/%s\n\
-	MP 9999/9999[/center] \
-		" % [Global.player.hp, Global.player.max_hp])
+	playerHudLabel.append_text("[center]Knight LV 99\nHP %s/%s\nItems: %s [/center]\
+		" % [Global.player.hp, Global.player.max_hp, Global.player.get_item_amount()])
 	var monsterHudLabel = monsterHud.get_node("Panel/RichTextLabel")
 	monsterHudLabel.clear()	
 	monsterHudLabel.append_text("[center]Monster LV 99\n \

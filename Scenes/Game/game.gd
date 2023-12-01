@@ -103,6 +103,7 @@ func _input(event):
 				Global.cureent_state = Global.GAME_SCREEN.LOAD
 
 func _on_button_load_pressed():
+	$Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer/ColorRect.queue_free()
 	$SndBeep.play()
 	Global.cureent_state = Global.GAME_SCREEN.GAME
 

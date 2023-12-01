@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=58 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/DialogCanvasLayer.gd" id="8_sb75t"]
 [ext_resource type="Theme" uid="uid://biqe21c3m8tyk" path="res://Assets/theme.tres" id="9_4jfow"]
 [ext_resource type="PackedScene" uid="uid://clylb38wvo4hh" path="res://Scenes/Systems/hud_player.tscn" id="9_rb7qm"]
+[ext_resource type="Shader" path="res://Shaders/bush_effect.gdshader" id="11_7ye4b"]
 [ext_resource type="Texture2D" uid="uid://claojfmd65oqh" path="res://Assets/Systems/title0_nobg.png" id="11_h6efc"]
 [ext_resource type="Material" uid="uid://c3qhteu5oxjsq" path="res://Materials/crt.tres" id="12_y8pnv"]
 [ext_resource type="FontFile" uid="uid://dhpdtnasofto8" path="res://Assets/Fonts/monogram-extended.ttf" id="14_rbyc1"]
@@ -26,6 +27,15 @@
 [ext_resource type="Texture2D" uid="uid://eubdcg0v8kf3" path="res://Assets/Sprites/Characters/hero_sheet.png" id="22_lo16q"]
 [ext_resource type="AudioStream" uid="uid://bf0p88wwgcgh5" path="res://Assets/Audio/SE/error2.wav" id="25_p5boi"]
 [ext_resource type="AudioStream" uid="uid://bn32embqsfjfd" path="res://Assets/Audio/SE/beep.wav" id="26_ckmnj"]
+[ext_resource type="AudioStream" uid="uid://4euewsrrxmhn" path="res://Assets/Audio/SE/machine.wav" id="28_ummb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wwj3"]
+shader = ExtResource("11_7ye4b")
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 10.0
+shader_parameter/enable_sway_x = true
+shader_parameter/sway_x_amplitude = 1.0
 
 [sub_resource type="Theme" id="Theme_pypka"]
 
@@ -787,13 +797,25 @@ pivot_offset = Vector2(320, 96)
 
 [node name="TtileCanvasLayer" type="CanvasLayer" parent="Screen/SubViewport/PaletteShader/SubViewport"]
 
-[node name="TitleBG" type="TextureRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
-custom_minimum_size = Vector2(1024, 1024)
+[node name="ColorRect" type="ColorRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleBG" type="TextureRect" parent="Screen/SubViewport/PaletteShader/SubViewport/TtileCanvasLayer"]
+material = SubResource("ShaderMaterial_1wwj3")
+custom_minimum_size = Vector2(1024, 1024)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1024.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
 size_flags_vertical = 6
 texture = ExtResource("11_h6efc")
@@ -805,7 +827,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -128.0
-offset_right = 16384.0
+offset_right = 17408.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -825,7 +847,7 @@ theme = ExtResource("9_4jfow")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
 theme_override_font_sizes/font_size = 144
-text = "~ Hero Core ~"
+text = "~ HEROCORE ~"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2276,5 +2298,9 @@ stream = ExtResource("25_p5boi")
 [node name="SndBeep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_ckmnj")
 volume_db = 10.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_ummb3")
+autoplay = true
 
 [connection signal="pressed" from="UIOutScreenCanvas/TestTextButton" to="UIOutScreenCanvas/TestTextButton" method="_on_pressed"]

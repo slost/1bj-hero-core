@@ -95,6 +95,9 @@ func hurt(_source) -> void:
 
 func lose_random_item():
 	var item_amount = inv.get_children().size()
-	var random_item = rng.randi_range(0, item_amount)
-	print_debug("YOU LOSE SOME LEGENDARY ITEM!")
+	var random_item = rng.randi_range(0, item_amount - 1)
+	if inv.get_child(random_item):
+		inv.get_child(random_item).queue_free()
+	if item_amount == 0:
+		dialog_lose_item = ["You don't have nothing to lose!"]
 	DialogManger.start_dialog(Vector2(), dialog_lose_item, true)
