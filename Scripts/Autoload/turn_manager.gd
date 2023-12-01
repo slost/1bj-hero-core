@@ -19,7 +19,7 @@ func add_turn(_character: Node):
 	var _turn = Turn.new()
 	_turn.data = get_turn_data(_character)
 	turn_number += 1
-	_turn.data.time = Global.seconds_per_bar * 2 * 4
+	_turn.data.time = _character.music.seconds_per_bar * 2 * 4
 	# if _character == Global.player:
 	# 	_turn.data.time *= 8
 	# TODO เดี๋ยวจะทำให้จำนวนเวลาขึ้นอยู่กับ stats ตัวละคร
@@ -45,12 +45,15 @@ func debug():
 func on_end_turn():
 	Global.turn_queue.pop_front()
 	if Global.turn_queue.size() == 0: # ถ้าคิวเทิร์นหมดจะสร้างคิวเทิร์นใหม่
+		Global.player.lose_random_item()
 		create_turn_queue(Global.map)
 
 var turn = 0.0
 
 
 func _process(_delta):
+	if DialogManger.is_dialog_active:
+		return
 	if Global.turn_queue:
 		turn = Global.turn_queue[0]
 		turn.data.time -= _delta

@@ -63,6 +63,8 @@ func create_sprite() -> void:
 
 
 func _physics_process(_delta) -> void:
+	if DialogManger.is_dialog_active:
+		return
 	acceleration_rate = 1
 	delta = _delta
 	if is_target_lock: # ล็อคเป้าอ๊ะเปล่า

@@ -12,6 +12,8 @@ var play: bool = false
 
 
 func _process(_delta):
+    if DialogManger.is_dialog_active:
+        return
     if play:
         beat_timer = Lib.bars_to_seconds(bars, tempo)
         seconds_per_bar = Lib.get_seconds_per_bar(tempo)

@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 
 
 var dialog_lose_item: Array[String] = [
-	"YOU LOSE A ITEM!"
+	"YOU LOSE SOME LEGENDARY ITEM!"
 ]
 
 func ready_character() -> void:
@@ -89,12 +89,12 @@ func lose_all_items():
 func hurt(_source) -> void:
 	# ลดเลือด
 	hp -= _source.damage * (_source.caster.strength * 0.1)
-	lose_random_item()
+	# lose_random_item()
 	knockback(_source)
 
 
 func lose_random_item():
 	var item_amount = inv.get_children().size()
 	var random_item = rng.randi_range(0, item_amount)
-	print_debug("YOU LOSE A ITEM!")
+	print_debug("YOU LOSE SOME LEGENDARY ITEM!")
 	DialogManger.start_dialog(Vector2(), dialog_lose_item, true)

@@ -164,7 +164,7 @@ position = Vector2(0, -1)
 move_behavior = 1
 speed = 500
 data = ExtResource("4_gmtff")
-max_hp = 99
+max_hp = 99999
 
 [node name="InventoryBoss" parent="Boss" instance=ExtResource("14_ufpw0")]
 

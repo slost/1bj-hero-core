@@ -31,6 +31,8 @@ func set_hostile() -> void:
 
 
 func _process(_delta) -> void:
+	if DialogManger.is_dialog_active:
+		return
 	set_hostile()
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
