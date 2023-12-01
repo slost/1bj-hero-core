@@ -7,16 +7,24 @@ extends Control
 
 
 func _process(_delta):
+	if Global.is_ready:
+		update_tempo_label()
+		update_hud()
+	else:
+		playerTempoLabel.text = ""
+		monsterTempoLabel.text = ""
+		playerHud.get_node("Panel/RichTextLabel").text = ""
+		monsterHud.get_node("Panel/RichTextLabel").text = ""
+
+func update_tempo_label() -> void:
 	var player = Global.player
 	var player_tempo = "[center]TEMPO: " + str(player.music.tempo)
 	if Global.player.music:
 		playerTempoLabel.text = player_tempo + "\n" + Lib.get_bars_string(player.bars) 
 	var boss = Global.boss
-	var boss_tempo = "[center]TEMPO: " + str(boss.music.tempo)
 	if Global.boss.music:
+		var boss_tempo = "[center]TEMPO: " + str(boss.music.tempo)
 		monsterTempoLabel.text = boss_tempo + "\n" + Lib.get_bars_string(boss.bars)
-	update_hud()
-
 
 func update_hud() -> void:
 	var playerHudLabel = playerHud.get_node("Panel/RichTextLabel")

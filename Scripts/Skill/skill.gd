@@ -1,8 +1,9 @@
 extends Node
 class_name Skill
 
-# ผู้ใช้สกิล
-@onready var caster: Node = $"../../.."
+@onready var caster: Node = $"../../.." # ผู้ใช้สกิล
+@onready var item: Node = $".." # ไอเทมที่ใช้สกิล
+
 # ศัตรูที่ถูกโจมตี
 var hostile: Node
 var target: Node
@@ -33,7 +34,13 @@ func _process(_delta) -> void:
 	set_hostile()
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
-		if current_turn.data.character == caster:
+		if item.type == 2:
+			if current_turn.data.character == caster:
+				process_skill()
+		if item.type == 4:
+			if current_turn.data.character != caster:
+				process_skill()
+		if item.type == 6:
 			process_skill()
 
 
@@ -64,11 +71,10 @@ func spawn_projectile(_data: Dictionary, _proj_stats: ProjectileStats) -> void:
 	var proj = projectile_scene.instantiate()
 	proj.sprite = _data.sprite
 	proj.caster = caster
-	var spawn_location
-	if _data.spawn_location == "Caster":
-		spawn_location = caster.global_position
-	else:
-		spawn_location = target.global_position
+	var spawn_location = caster.global_position
+	if _data.spawn_location:
+		if _data.spawn_location != "Caster":
+			spawn_location = target.global_position
 	proj.global_position = spawn_location + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
@@ -105,22 +111,43 @@ func spawn_sound(_sound_path: String, _db: float) -> void:
 # ตรงกับจังหวะที่กำหนดหรือไม่
 func match_beat(_beat_test: String) -> bool:	
 	match _beat_test:
-		"1": 
+		# bars[0]
+		"%1": 
 			return caster.bars[0] % 1 == 0
-		"2":
+		"%2":
 			return caster.bars[0] % 2 == 0
-		"3":
-			return caster.bars[0] % 3 == 0
-		"4":
-			return caster.bars[0] % 3 == 0
-		"1b":
+		"%4", "1 verse":
+			return caster.bars[0] % 4 == 1
+		"%8", "2 verse":
 			return caster.bars[0] % 8 == 1
-		"8b":
-			match caster.bars[0]:
-				1:
-					return true
+		"%16", "4 verse":
+			return caster.bars[0] % 16 == 1
+		"%32", "8 verse":
+			return caster.bars[0] % 32 == 1
+		# bars[1]
 		".1":
-			return caster.bars[1] % 1 == 0
+			return caster.bars[1] == 1
 		".2":
+			return caster.bars[1] == 2
+		".3":
+			return caster.bars[1] == 3
+		".4":
+			return caster.bars[1] == 4
+		".%1":
+			return caster.bars[1] % 1 == 0
+		".%2":
 			return caster.bars[1] % 2 == 0
+		# bars[2]
+		"..1":
+			return caster.bars[2] == 1
+		"..2":
+			return caster.bars[2] == 2
+		"..3":
+			return caster.bars[2] == 3
+		"..4":
+			return caster.bars[2] == 4
+		"..%1":
+			return caster.bars[2] % 1 == 0
+		"..%2":
+			return caster.bars[2] % 2 == 0
 	return false

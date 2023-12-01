@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0rpt4bbcl7s6"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_wvbid"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_1mos3"]
+
+[node name="PatGun" type="TileMap"]
+tile_set = ExtResource("1_wvbid")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(0, 0, 5)
+script = ExtResource("2_1mos3")

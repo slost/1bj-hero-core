@@ -5,6 +5,12 @@ class_name Character
 @export var data: Resource = preload("res://Database/Character/player.tres")
 @export var animSpr: Node
 
+@export_category("Stats")
+@export var max_hp: int = 9999
+@export var max_mp: int = 9999
+## ดาเมจของกระสุนจะคูณด้วย 0.1 ของค่า strength
+@export var strength: int = 99
+
 var is_blink = false
 var knockback_power: int = 1000
 
@@ -17,9 +23,8 @@ var move_speed: float
 var music = null
 var bars = [1,1,1, 0.0]
 
-
-var max_hp = 999999
-var strength = 99
+var cap_stats = 9999
+var is_cap_stats: bool = false
 
 @onready var hp = max_hp
 
@@ -42,6 +47,9 @@ func init_stat() -> void:
 var bar_counter = 1
 	
 func _physics_process(_delta) -> void:
+	if Global.is_ready:
+		music.play = true
+
 	if DialogManger.is_dialog_active:
 		return
 	move_speed = Lib.get_character_speed(1, scale)
@@ -55,8 +63,19 @@ func _physics_process(_delta) -> void:
 	process_player()
 	if hp <= 0:
 		on_death()
+
+	if is_cap_stats:
+		if max_hp > cap_stats:
+			max_hp = cap_stats
+	
 	
 func on_death():
+	if self is Monster:
+		queue_free()
+		return
+	if self is Player:
+		queue_free()
+		return
 	visible = false
 	
 func on_bar_change():

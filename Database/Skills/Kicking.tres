@@ -9,5 +9,5 @@ script = ExtResource("1_cmc7a")
 spawn_location = "Caster"
 sprite = ExtResource("3_y1im5")
 pattern = ExtResource("1_j0mvx")
-beat_test = ".1"
+beat_test = ".%1"
 sound_when_spawn = "res://Assets/Audio/Skills/kick.wav"

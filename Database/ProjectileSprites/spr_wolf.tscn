@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbil1snt3s8sm"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_jeusb"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_4i3k0"]
+
+[node name="SprWolf" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_jeusb")
+animation = &"monsters"
+frame = 2
+script = ExtResource("2_4i3k0")

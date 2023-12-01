@@ -72,9 +72,9 @@ func _physics_process(_delta) -> void:
 	var sec_per_bars = Lib.get_seconds_per_bar(caster.music.tempo)
 	var timeout_seconds = Lib.bars_to_seconds(timeout_bars, caster.music.tempo)
 	# TODO
-	var distance_speed = Lib.get_character_speed(2, scale)
+	var distance_speed = Lib.get_character_speed(stats.distance, scale)
 	var music_speed =  (sec_per_bars / timeout_seconds)
-	var speed = distance_speed * music_speed
+	var speed = distance_speed * sec_per_bars * 0.1
 	speed = speed / timeout_seconds
 	speed -= acceleration_rate * 0.1 * _delta # ลดความเร็ว
 	velocity = direction * speed
