@@ -681,6 +681,7 @@ map = NodePath("../../Screen/SubViewport/PaletteShader/SubViewport/Map")
 filter = NodePath("../../Screen/SubViewport/Filter")
 
 [node name="Debugger" type="Label" parent="System/DebugTool"]
+visible = false
 material = ExtResource("3_ut7rk")
 anchors_preset = 1
 anchor_left = 1.0
