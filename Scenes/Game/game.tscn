@@ -439,8 +439,8 @@ pivot_offset = Vector2(320, 96)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_right = 2048.0
+offset_bottom = 2048.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -453,7 +453,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 896.0
-offset_right = 10240.0
+offset_right = 11264.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -731,6 +731,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PlaylistLabel" parent="Interface/LeftSide/Palette/SubViewport" instance=ExtResource("18_7m1ic")]
 scale = Vector2(0.715, 0.715)
+text = "Playlist: HEROCORE
+[font_size={48}]Plaing: Knight.mp3[/font_size]
+[font_size={40}]Next:
+- Rogue.mp3 
+<File Missing!>
+- Priest.mp3
+<File Missing!>
+- Wizard.mp3
+<File Missing!>
+[/font_size]"
 script = ExtResource("20_04gik")
 
 [node name="UIOutScreenCanvas" type="CanvasLayer" parent="."]
