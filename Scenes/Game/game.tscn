@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://033l120yy5tk"]
+[gd_scene load_steps=42 format=3 uid="uid://033l120yy5tk"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_dv3o6"]
 [ext_resource type="PackedScene" uid="uid://bq64ij7kka531" path="res://Scenes/Game/map.tscn" id="1_yipeh"]
@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://qgj3wt1wwy87" path="res://Assets/Systems/text_box_theme.tres" id="16_h6b5h"]
 [ext_resource type="Script" path="res://Scenes/Systems/hud_player.gd" id="18_5e34q"]
 [ext_resource type="PackedScene" uid="uid://b0qeriq1u0jqr" path="res://Scenes/Systems/playlist_label.tscn" id="18_7m1ic"]
+[ext_resource type="Texture2D" uid="uid://cr1g2yavnp0de" path="res://Assets/Sprites/Interface/interface2.png" id="19_i1f0w"]
 [ext_resource type="Script" path="res://Scenes/Systems/playlist_label.gd" id="20_04gik"]
 
 [sub_resource type="Theme" id="Theme_pypka"]
@@ -258,6 +259,70 @@ _data = {
 "fadeout_title": SubResource("Animation_2ukk3")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_woosw"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iek8"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh0id"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yq2n"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjwmt"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eliju"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6he2i"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl14r"]
+atlas = ExtResource("19_i1f0w")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnknf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woosw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iek8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh0id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yq2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjwmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eliju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6he2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl14r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_0m6if"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_p122c"]
@@ -441,8 +506,8 @@ pivot_offset = Vector2(320, 96)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3072.0
-offset_bottom = 3072.0
+offset_right = 4096.0
+offset_bottom = 4096.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -454,9 +519,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 896.0
-offset_right = 12288.0
-offset_bottom = 1080.0
+offset_top = -128.0
+offset_right = 13312.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
@@ -465,9 +530,9 @@ size_flags_vertical = 4
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 75.0
+offset_left = -437.0
 offset_top = 128.0
-offset_right = 971.0
+offset_right = 459.0
 offset_bottom = 288.0
 grow_horizontal = 2
 pivot_offset = Vector2(448, 80)
@@ -674,9 +739,9 @@ anchor_top = 0.5
 anchor_right = 0.233
 anchor_bottom = 1.0
 offset_left = 13.0
-offset_top = 4.99994
+offset_top = 64.0
 offset_right = 461.001
-offset_bottom = 1280.0
+offset_bottom = 1339.0
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
 
@@ -746,8 +811,14 @@ text = "[center]Playlist: Braves
 [/font_size][/center]"
 script = ExtResource("20_04gik")
 
+[node name="ButtonPlay" type="AnimatedSprite2D" parent="Interface/LeftSide/Palette/SubViewport"]
+position = Vector2(175, 1000)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_qnknf")
+frame = 2
+
 [node name="RightSide" type="Node2D" parent="Interface"]
-position = Vector2(0, 3)
+position = Vector2(0, 64)
 
 [node name="Palette" type="SubViewportContainer" parent="Interface/RightSide"]
 z_index = 10
