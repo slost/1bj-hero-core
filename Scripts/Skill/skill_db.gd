@@ -20,6 +20,6 @@ var bars: Array = [1,1,1,0.0]
 
 
 func _init():
-	sound_when_spawn = "res://Assets/Audio/Gameplay/kick.wav"	
+	sound_when_spawn = "res://Assets/Audio/Skills/kick.wav"	
 	pattern = load("res://Database/Patterns/พุ่งออกจากตัว.tscn")
 	sprite = load("res://Database/ProjectileSprites/ProjectileSprite.tscn")

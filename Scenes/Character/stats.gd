@@ -4,7 +4,7 @@ extends Node
 @export var base_speed = 50
 
 ## พลังชีวิตฐาน
-@export var base_hp: float = 3
+@export var max_hp: float = 9999
 
 ## สเกลขนาด
 @export var size_scale = 4
