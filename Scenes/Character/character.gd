@@ -18,7 +18,7 @@ var music = null
 var bars = [1,1,1, 0.0]
 
 
-var max_hp = 999999
+var max_hp = 9999
 var strength = 99
 
 @onready var hp = max_hp
