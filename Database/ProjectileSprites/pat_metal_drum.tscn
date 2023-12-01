@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1rbvdk3ujuqy"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_jkscd"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_h4j7f"]
+
+[node name="PatMetalDrum" type="TileMap"]
+tile_set = ExtResource("1_jkscd")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(196606, 65536, 3, 131071, 65536, 3, 65537, 196608, 3, 131074, 196608, 3, 65534, 65536, 2, 65533, 65536, 2, -1, 65536, 1, -65538, 65536, 1, -65535, 196608, 1, -131070, 196608, 1, 2, 196608, 2, 3, 196608, 2, 5, 196608, 2, 6, 196608, 2, 262148, 196608, 3, 327685, 196608, 3, 327676, 65536, 3, 393211, 65536, 3, 65531, 65536, 2, 65530, 65536, 2, 262144, 131072, 3, 327680, 131072, 3, -196608, 131072, 1, -262144, 131072, 1, -196612, 65536, 1, -262149, 65536, 1, -262141, 196608, 1, -327676, 196608, 1)
+script = ExtResource("2_h4j7f")
