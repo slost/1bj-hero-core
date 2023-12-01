@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_66vaq"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_f3v87"]
-[ext_resource type="PackedScene" uid="uid://p6t5worbad2i" path="res://Database/Patterns/Pat_Tornado.tscn" id="3_61o4u"]
+[ext_resource type="PackedScene" uid="uid://v34g71uqaone" path="res://Database/Patterns/Pat_Tornado.tscn" id="3_61o4u"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="3_mr00q"]
 [ext_resource type="PackedScene" uid="uid://34ipmt0vdpqt" path="res://Database/ProjectileSprites/Projectile Tornado.tscn" id="4_vn1lv"]
 [ext_resource type="Script" path="res://Scripts/Skill/projectile_stats.gd" id="5_ttfx8"]
 [ext_resource type="PackedScene" uid="uid://7o3ii561pfcj" path="res://Database/Patterns/Pat_FlameShield.tscn" id="7_22oh0"]
-[ext_resource type="PackedScene" uid="uid://ds245pqddx3pl" path="res://Database/FlameShieldSprite.tscn" id="8_2w7t8"]
+[ext_resource type="PackedScene" path="res://Database/FlameShieldSprite.tscn" id="8_2w7t8"]
 
 [sub_resource type="Resource" id="Resource_ycrm3"]
 script = ExtResource("3_mr00q")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu5vs8yvp6lx6"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_m2ank"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_x8wa3"]
+
+[node name="Tornado" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_m2ank")
+animation = &"projectiles"
+frame = 10
+script = ExtResource("2_x8wa3")

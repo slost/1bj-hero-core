@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://p6t5worbad2i"]
+[gd_scene load_steps=3 format=3 uid="uid://v34g71uqaone"]
 
-[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_4ff3p"]
-[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_37x6v"]
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_4ppcu"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_56dil"]
 
-[node name="PatTornado" type="TileMap"]
-tile_set = ExtResource("1_4ff3p")
+[node name="Tornado" type="TileMap"]
+tile_set = ExtResource("1_4ppcu")
 format = 2
 layer_0/name = "direction"
-layer_0/tile_data = PackedInt32Array(131072, 131072, 1, -131072, 131072, 3, 65534, 196608, 2, 2, 65536, 2, -2, 196608, 3, 196607, 196608, 1, -131071, 65536, 3, 65538, 65536, 1)
-script = ExtResource("2_37x6v")
+layer_0/tile_data = PackedInt32Array(9, 65536, 2, 65527, 196608, 2, -589824, 131072, 3, 458752, 131072, 1, -262148, 196608, 3, 327684, 65536, 1, 327675, 196608, 1, -262139, 65536, 3)
+script = ExtResource("2_56dil")
