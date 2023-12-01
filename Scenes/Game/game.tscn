@@ -441,8 +441,8 @@ pivot_offset = Vector2(320, 96)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2048.0
-offset_bottom = 2048.0
+offset_right = 3072.0
+offset_bottom = 3072.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -454,9 +454,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 11264.0
-offset_bottom = 56.0
+offset_top = 896.0
+offset_right = 12288.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
@@ -465,9 +465,9 @@ size_flags_vertical = 4
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -437.0
+offset_left = 75.0
 offset_top = 128.0
-offset_right = 459.0
+offset_right = 971.0
 offset_bottom = 288.0
 grow_horizontal = 2
 pivot_offset = Vector2(448, 80)
@@ -650,7 +650,7 @@ libraries = {
 "": SubResource("AnimationLibrary_tnmj0")
 }
 
-[node name="Interface" type="Control" parent="." node_paths=PackedStringArray("playerTempoLabel", "monsterTempoLabel")]
+[node name="Interface" type="Control" parent="." node_paths=PackedStringArray("playerTempoLabel", "playerHud", "monsterTempoLabel", "monsterHud")]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -2.0
@@ -659,7 +659,9 @@ offset_bottom = 1075.0
 mouse_filter = 2
 script = ExtResource("15_tblgl")
 playerTempoLabel = NodePath("LeftSide/Palette/SubViewport/HUD/TempoPlayerLabel")
+playerHud = NodePath("LeftSide/Palette/SubViewport/HUD/HudPlayer")
 monsterTempoLabel = NodePath("RightSide/Palette/SubViewport/HUD/TempoMonsterLabel")
+monsterHud = NodePath("RightSide/Palette/SubViewport/HUD/HudMonster")
 
 [node name="LeftSide" type="Node2D" parent="Interface"]
 position = Vector2(0, 3)
@@ -802,7 +804,7 @@ position = Vector2(0, 450)
 scale = Vector2(0.74, 1)
 bus = "Monster"
 
-[node name="HudPlayer" parent="Interface/RightSide/Palette/SubViewport/HUD" instance=ExtResource("9_rb7qm")]
+[node name="HudMonster" parent="Interface/RightSide/Palette/SubViewport/HUD" instance=ExtResource("9_rb7qm")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

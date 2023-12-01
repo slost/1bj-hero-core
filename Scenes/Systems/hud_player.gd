@@ -6,9 +6,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	$Panel/RichTextLabel.clear()
-	$Panel/RichTextLabel.append_text("[center]Knight LV 99\n \
-HP %s/%s\n\
-MP 9999/9999[/center] \
-	" % [Global.player.hp,Global.player.max_hp])
+# func _process(_delta):
+# 	$Panel/RichTextLabel.clear()
+# 	$Panel/RichTextLabel.append_text("[center]Knight LV 99\n \
+# HP %s/%s\n\
+# MP 9999/9999[/center] \
+# 	" % [Global.player.hp,Global.player.max_hp])
