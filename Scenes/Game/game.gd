@@ -17,6 +17,12 @@ class_name Game
 var current_state = null
 var is_wait_for_press_any_key = false
 
+@export_category("Load")
+@export var loadLabel1: Node
+@export var loadLabel2: Node
+@export var loadControl: Node
+@export var loadBtn: Node
+@export var loadBtn_cant:Array[Node]
 
 func _ready():
 	map.visible = false
@@ -25,6 +31,13 @@ func _ready():
 	titleLabel.visible = false
 	titlePressAnyKey.visible = false
 	titlePressAnyKeyTimer.timeout.connect(_on_anykey_timeout)
+	#----
+	loadLabel1.visible = false
+	loadLabel2.visible = false
+	loadControl.visible = false
+	loadBtn.pressed.connect(_on_button_load_pressed)
+	for i in loadBtn_cant:
+		i.pressed.connect(_on_button_load_cant_pressed)
 
 func _process(_delta):
 	background.color = Global.palette[1]
@@ -51,6 +64,9 @@ func update_state_to(new_state):
 		Global.GAME_SCREEN.TITLE:
 			screenAnimation.play("fadeout_title")
 			await screenAnimation.animation_finished
+		Global.GAME_SCREEN.LOAD:
+			screenAnimation.play("fadeout_load")
+			await screenAnimation.animation_finished
 	
 	# คำสั่งที่ใช้เมื่อเริ่มซีนใหม่
 	match new_state:
@@ -59,6 +75,9 @@ func update_state_to(new_state):
 			await screenAnimation.animation_finished
 			is_wait_for_press_any_key = true
 			titlePressAnyKeyTimer.start()
+		Global.GAME_SCREEN.LOAD:
+			screenAnimation.play("fadein_load")
+			await screenAnimation.animation_finished
 		Global.GAME_SCREEN.GAME:
 			map.visible = true
 	current_state = new_state
@@ -80,4 +99,13 @@ func _input(event):
 			if event.pressed:
 				is_wait_for_press_any_key = false
 				titlePressAnyKey.visible = false
-				Global.cureent_state = Global.GAME_SCREEN.GAME
+				Global.cureent_state = Global.GAME_SCREEN.LOAD
+
+func _on_button_load_pressed():
+	# เล่นเสียงตกลง
+	
+	Global.cureent_state = Global.GAME_SCREEN.GAME
+
+func _on_button_load_cant_pressed():
+	# เล่นเสียง กดโหลดไม่ได้
+	pass
