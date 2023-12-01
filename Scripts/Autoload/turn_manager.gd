@@ -19,7 +19,7 @@ func add_turn(_character: Node):
 	var _turn = Turn.new()
 	_turn.data = get_turn_data(_character)
 	turn_number += 1
-	_turn.data.time = Global.seconds_per_bar * 2 * 8
+	_turn.data.time = Global.seconds_per_bar * 2 * 4
 	# if _character == Global.player:
 	# 	_turn.data.time *= 8
 	# TODO เดี๋ยวจะทำให้จำนวนเวลาขึ้นอยู่กับ stats ตัวละคร
