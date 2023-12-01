@@ -1,8 +1,9 @@
 extends Node
 class_name Skill
 
-# ผู้ใช้สกิล
-@onready var caster: Node = $"../../.."
+@onready var caster: Node = $"../../.." # ผู้ใช้สกิล
+@onready var item: Node = $".." # ไอเทมที่ใช้สกิล
+
 # ศัตรูที่ถูกโจมตี
 var hostile: Node
 var target: Node
@@ -33,7 +34,13 @@ func _process(_delta) -> void:
 	set_hostile()
 	if Global.turn_queue.size() > 0:
 		current_turn = Global.turn_queue[0]
-		if current_turn.data.character == caster:
+		if item.type == 2:
+			if current_turn.data.character == caster:
+				process_skill()
+		if item.type == 4:
+			if current_turn.data.character != caster:
+				process_skill()
+		if item.type == 6:
 			process_skill()
 
 

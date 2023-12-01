@@ -9,7 +9,7 @@ class_name Item
 ## คำอธิบาย
 @export_multiline var description = ""
 ## ประเภทของไอเทม (Command ยังไม่ทำ)
-@export_flags("Passive", "Auto Attack", "Auto Defendse", "Command") var type = 0
+@export_flags("Passive", "Auto Attack", "Auto Defense", "Command") var type = 0
 
 ## ทำงานอยู่หรือไม่
 @export var is_active: bool = true

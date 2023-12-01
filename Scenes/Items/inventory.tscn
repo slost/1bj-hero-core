@@ -68,6 +68,7 @@ penetrate = null
 script = ExtResource("1_cc1j7")
 title = "Holy Shield"
 description = "Proctecting you from the unholy things."
+type = 6
 
 [node name="Kick" type="Node" parent="KickShield"]
 script = ExtResource("2_btanu")
@@ -78,6 +79,7 @@ projectile_stats = SubResource("Resource_e82ab")
 script = ExtResource("1_cc1j7")
 title = "Holy Shield"
 description = "Proctecting you from the unholy things."
+type = 2
 
 [node name="Glove" type="Node" parent="Glove"]
 script = ExtResource("2_btanu")
@@ -87,6 +89,7 @@ projectile_stats = SubResource("Resource_yplpi")
 [node name="Lighting" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
 title = "Fire Glove"
+type = 2
 
 [node name="Lighting" type="Node" parent="Lighting"]
 script = ExtResource("2_btanu")
