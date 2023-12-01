@@ -1,3 +1,4 @@
+@icon("res://Assets/Icons/icon_knight.png")
 extends Character
 class_name Player
 
