@@ -64,11 +64,10 @@ func spawn_projectile(_data: Dictionary, _proj_stats: ProjectileStats) -> void:
 	var proj = projectile_scene.instantiate()
 	proj.sprite = _data.sprite
 	proj.caster = caster
-	var spawn_location
-	if _data.spawn_location == "Caster":
-		spawn_location = caster.global_position
-	else:
-		spawn_location = target.global_position
+	var spawn_location = caster.global_position
+	if _data.spawn_location:
+		if _data.spawn_location != "Caster":
+			spawn_location = target.global_position
 	proj.global_position = spawn_location + \
 		(caster.scale * _data.position * Global.TILE_RES)
 	proj.direction = get_projectile_direction(_data.direction)
