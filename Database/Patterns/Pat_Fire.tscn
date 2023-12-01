@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://xyuq7col7r2t"]
+
+[ext_resource type="TileSet" uid="uid://bfsfdi3na5gdo" path="res://Scenes/Skills/pattern_tile.tres" id="1_grcgh"]
+[ext_resource type="Script" path="res://Scenes/Skills/pattern.gd" id="2_q3e7b"]
+
+[node name="PatFire" type="TileMap"]
+tile_set = ExtResource("1_grcgh")
+format = 2
+layer_0/name = "direction"
+layer_0/tile_data = PackedInt32Array(-131072, 131072, 3, 131072, 131072, 1, 65534, 196608, 2, 2, 65536, 2, 131074, 65536, 1, 196606, 196608, 1, -65538, 196608, 3, -131070, 65536, 3)
+script = ExtResource("2_q3e7b")

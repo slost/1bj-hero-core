@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds245pqddx3pl"]
+
+[ext_resource type="SpriteFrames" uid="uid://cfnhra5w7tfyt" path="res://Database/ProjectileSprites/ProjectileSprite.tres" id="1_a7jru"]
+[ext_resource type="Script" path="res://Database/ProjectileSprites/ProjectileSprite.gd" id="2_7hmis"]
+
+[node name="FlameShieldSprite" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_a7jru")
+animation = &"projectiles"
+script = ExtResource("2_7hmis")
