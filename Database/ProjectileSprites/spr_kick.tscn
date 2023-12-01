@@ -5,5 +5,5 @@
 
 [node name="SprKick" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_4d5mc")
-animation = &"projectiles"
+animation = &"items"
 script = ExtResource("2_edf85")

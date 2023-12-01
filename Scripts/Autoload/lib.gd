@@ -79,3 +79,7 @@ func get_pattern_data(_pattern) -> Dictionary:
 			layer_data.append(tile)
 		pattern_data[layer_name] = layer_data
 	return pattern_data
+
+
+func get_bars_string(_bars: Array) -> String:
+	return str(_bars[0]) + ":" + str(_bars[1]) + ":" + str(_bars[2]) # + ":" + str(_bars[3]) 
