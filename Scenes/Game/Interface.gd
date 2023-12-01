@@ -22,8 +22,8 @@ func update_tempo_label() -> void:
 	if Global.player.music:
 		playerTempoLabel.text = player_tempo + "\n" + Lib.get_bars_string(player.bars) 
 	var boss = Global.boss
-	var boss_tempo = "[center]TEMPO: " + str(boss.music.tempo)
 	if Global.boss.music:
+		var boss_tempo = "[center]TEMPO: " + str(boss.music.tempo)
 		monsterTempoLabel.text = boss_tempo + "\n" + Lib.get_bars_string(boss.bars)
 
 func update_hud() -> void:

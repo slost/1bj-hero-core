@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bobgomofuy2pq"]
+[gd_scene load_steps=23 format=3 uid="uid://bobgomofuy2pq"]
 
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_cc1j7"]
 [ext_resource type="Script" path="res://Scripts/Skill/skill_single.gd" id="2_btanu"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://Scripts/Skill/skill_db.gd" id="5_wfu4t"]
 [ext_resource type="PackedScene" uid="uid://c55cxwc8jx0ws" path="res://Database/ProjectileSprites/Fireball.tscn" id="7_imo4w"]
 [ext_resource type="PackedScene" uid="uid://x3wv7hlvrgrw" path="res://Database/ProjectileSprites/Lighting.tscn" id="9_01hgl"]
+[ext_resource type="PackedScene" uid="uid://v34g71uqaone" path="res://Database/Patterns/Pat_Tornado.tscn" id="10_4rh1l"]
+[ext_resource type="PackedScene" uid="uid://34ipmt0vdpqt" path="res://Database/ProjectileSprites/Projectile Tornado.tscn" id="11_84mk1"]
+[ext_resource type="PackedScene" uid="uid://7o3ii561pfcj" path="res://Database/Patterns/Pat_FlameShield.tscn" id="12_wclgx"]
+[ext_resource type="PackedScene" uid="uid://ds245pqddx3pl" path="res://Database/FlameShieldSprite.tscn" id="13_hga81"]
 
 [sub_resource type="Resource" id="Resource_e82ab"]
 script = ExtResource("4_v31i3")
@@ -27,15 +31,15 @@ script = ExtResource("5_wfu4t")
 spawn_location = "Caster"
 sprite = ExtResource("7_imo4w")
 pattern = ExtResource("5_htqfl")
-beat_test = ".2"
+beat_test = ".%2"
 sound_when_spawn = "res://Assets/Audio/Skills/kick.wav"
 
 [sub_resource type="Resource" id="Resource_yplpi"]
 script = ExtResource("4_v31i3")
 base_damage = null
-distance = null
+distance = 20
 acceleration_rate = null
-duration = [0, 2, 0]
+duration = [4, 0, 0]
 knockback_power = null
 is_target_lock = null
 is_rotation_to_direction = null
@@ -52,15 +56,55 @@ sound_when_spawn = "res://Assets/Audio/Skills/snare.wav"
 
 [sub_resource type="Resource" id="Resource_koyu8"]
 script = ExtResource("4_v31i3")
-base_damage = null
-distance = null
-acceleration_rate = null
-duration = null
-knockback_power = null
-is_target_lock = null
-is_rotation_to_direction = null
-scale_multiplier = null
-penetrate = null
+base_damage = 10
+distance = 1
+acceleration_rate = 0.0
+duration = [1, 0, 0]
+knockback_power = 0
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 1.0
+penetrate = 1
+
+[sub_resource type="Resource" id="Resource_rymjf"]
+script = ExtResource("5_wfu4t")
+spawn_location = "All Enemy"
+sprite = ExtResource("11_84mk1")
+pattern = ExtResource("10_4rh1l")
+beat_test = "%32"
+sound_when_spawn = "res://Assets/Audio/SE/beep.wav"
+
+[sub_resource type="Resource" id="Resource_725o0"]
+script = ExtResource("4_v31i3")
+base_damage = 10
+distance = 1
+acceleration_rate = 3.0
+duration = [4, 0, 0]
+knockback_power = 1
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 1.0
+penetrate = 1
+
+[sub_resource type="Resource" id="Resource_w0s6k"]
+script = ExtResource("5_wfu4t")
+spawn_location = "Caster"
+sprite = ExtResource("13_hga81")
+pattern = ExtResource("12_wclgx")
+beat_test = ".1"
+sound_when_spawn = "res://Assets/Audio/Skills/8b-ah.wav"
+
+[sub_resource type="Resource" id="Resource_j8lw1"]
+script = ExtResource("4_v31i3")
+base_damage = 0
+distance = 1
+acceleration_rate = 0.0
+duration = [1, 0, 0]
+knockback_power = 500
+is_target_lock = false
+is_rotation_to_direction = false
+scale_multiplier = 1.0
+penetrate = 1
 
 [node name="Inventory" type="Node"]
 
@@ -96,12 +140,24 @@ script = ExtResource("2_btanu")
 data = SubResource("Resource_i334s")
 projectile_stats = SubResource("Resource_koyu8")
 
-[node name="AngleWing" type="Node" parent="."]
+[node name="TornadoGun" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
+title = "Tornado Gun"
+description = "Spawn projectiles around the target."
+type = 2
 
-[node name="Lute" type="Node" parent="."]
-script = ExtResource("1_cc1j7")
+[node name="TornadoSkill" type="Node" parent="TornadoGun"]
+script = ExtResource("2_btanu")
+data = SubResource("Resource_rymjf")
+projectile_stats = SubResource("Resource_725o0")
 
-[node name="HermesBoots" type="Node" parent="."]
+[node name="FlameShield" type="Node" parent="."]
 script = ExtResource("1_cc1j7")
-description = "Faster."
+title = "Flame Shield"
+description = "When you're defending, there will be wall build out of flame."
+type = 4
+
+[node name="FlameShieldSkill" type="Node" parent="FlameShield"]
+script = ExtResource("2_btanu")
+data = SubResource("Resource_w0s6k")
+projectile_stats = SubResource("Resource_j8lw1")

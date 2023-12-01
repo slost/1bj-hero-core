@@ -47,6 +47,9 @@ func init_stat() -> void:
 var bar_counter = 1
 	
 func _physics_process(_delta) -> void:
+	if Global.is_ready:
+		music.play = true
+
 	if DialogManger.is_dialog_active:
 		return
 	move_speed = Lib.get_character_speed(1, scale)
